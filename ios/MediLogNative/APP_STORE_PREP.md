@@ -25,6 +25,7 @@
 - ASC App-Version-Metadaten `de-DE`: Beschreibung inklusive Apple-Standard-EULA-Link, Keywords, Promotional Text, Support-URL und Marketing-URL sind gesetzt
 - ASC Content Rights: `DOES_NOT_USE_THIRD_PARTY_CONTENT`
 - ASC Kategorie: `MEDICAL`
+- ASC Subscription-Verfuegbarkeit: fuer den Deutschland-Start auf `DEU` begrenzt; AUT/CHE koennen spaeter mit passenden Preisen aktiviert werden
 - Launch-Seiten fuer GitHub Pages vorbereitet:
   - Marketing: `https://meloxkgz-ship-it.github.io/medilog-care/landing.html`
   - Support: `https://meloxkgz-ship-it.github.io/medilog-care/support.html`
@@ -69,7 +70,6 @@ Aktuelle Architektur:
 - Copyright/Inhaber fuer App-Version setzen
 - Altersfreigabe und Export-Compliance in App Store Connect finalisieren
 - App-Verfuegbarkeit/Preisplan finalisieren
-- Subscription-Preisabdeckung fuer AUT/CHE ergaenzen oder Verfuegbarkeit auf DEU begrenzen
 - iPad-Screenshots bei Bedarf erzeugen und hochladen
 - TestFlight-Build hochladen und mit den StoreKit-Produkten testen
 - Medizinische Claims final juristisch pruefen

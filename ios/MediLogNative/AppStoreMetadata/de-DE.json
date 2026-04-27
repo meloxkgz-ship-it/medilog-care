@@ -9,6 +9,9 @@
   "marketingUrl": "https://meloxkgz-ship-it.github.io/medilog-care/landing.html",
   "termsOfUseUrl": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
   "primaryCategory": "MEDICAL",
+  "initialAvailabilityTerritories": [
+    "DEU"
+  ],
   "reviewNotes": [
     "MediLog ist ein privater Dokumentations- und Erinnerungs-Tracker.",
     "Die App gibt keine Diagnose, keine Therapieempfehlung und keine Dosierungsentscheidung.",
