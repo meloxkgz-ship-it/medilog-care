@@ -12,6 +12,18 @@
   "initialAvailabilityTerritories": [
     "DEU"
   ],
+  "appDownloadPrice": {
+    "baseTerritory": "DEU",
+    "customerPrice": "0.0",
+    "currency": "EUR",
+    "note": "Kostenloser Download als stark begrenzter Testmodus; Premium bleibt ueber StoreKit-Abos."
+  },
+  "appPrivacy": {
+    "published": true,
+    "dataProtections": [
+      "DATA_NOT_COLLECTED"
+    ]
+  },
   "reviewNotes": [
     "MediLog ist ein privater Dokumentations- und Erinnerungs-Tracker.",
     "Die App gibt keine Diagnose, keine Therapieempfehlung und keine Dosierungsentscheidung.",

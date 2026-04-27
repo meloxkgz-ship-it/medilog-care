@@ -37,6 +37,7 @@
 - ASC Preisplan: Download kostenlos als begrenzter Testmodus; Premium bleibt ueber StoreKit-Abos
 - ASC App-Verfuegbarkeit: Deutschland (`DEU`) aktiv, neue Territorien nicht automatisch aktiv
 - ASC Subscription-Verfuegbarkeit: fuer den Deutschland-Start auf `DEU` begrenzt; AUT/CHE koennen spaeter mit passenden Preisen aktiviert werden
+- ASC App Privacy: veroeffentlicht mit `DATA_NOT_COLLECTED`
 - Launch-Seiten fuer GitHub Pages vorbereitet:
   - Marketing: `https://meloxkgz-ship-it.github.io/medilog-care/landing.html`
   - Support: `https://meloxkgz-ship-it.github.io/medilog-care/support.html`
@@ -49,7 +50,7 @@
   - `03-medis.png`: `e92c8413-6099-478b-bd1f-d5c6247b8b31`
   - `04-verlauf.png`: `9598b71f-de2d-4713-b309-076c11b42959`
   - `05-premium.png`: `a732d43b-5f8a-4a8c-ab69-2ccb1f39b83e`
-- ASC Validate: `0` Errors, `0` Blocking Issues. Uebrig sind nur Advisory-Warnungen fuer optionale Subscription-Promobilder und die manuelle App-Privacy-Bestaetigung im App-Store-Connect-Web.
+- ASC Validate: `0` Errors, `0` Blocking Issues. Uebrig sind nur Advisory-Warnungen fuer optionale Subscription-Promobilder.
 
 ## App Review Hinweise
 
@@ -79,6 +80,5 @@ Aktuelle Architektur:
 - Impressum mit echten Anbieterangaben fuellen und veroeffentlichen
 - iPad-Screenshots bei Bedarf erzeugen und hochladen
 - TestFlight-Build auf echtem Geraet mit StoreKit-Produkten testen
-- App Privacy im App-Store-Connect-Web final bestaetigen
 - Medizinische Claims final juristisch pruefen
 - DSGVO-Dokumente finalisieren, inklusive Einwilligung, Loeschung, Auskunft und Risikoanalyse
