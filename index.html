@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="MediLog ist ein lokaler Medikamenten-Tracker fuer Einnahmen, Erinnerungen, Vorrat und sichere Dokumentation."
+    />
+    <meta name="theme-color" content="#eef2ed" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="MediLog" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta property="og:title" content="MediLog Care" />
+    <meta property="og:description" content="Lokaler Medikamenten-, Pflege- und Wasser-Tracker mit Premium-Fokus." />
+    <meta property="og:type" content="website" />
+    <title>MediLog</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/medilog-icon-192.png" type="image/png" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true"></div>
+    <main class="device" aria-label="MediLog Medikamenten-Tracker">
+      <section class="screen">
+        <header class="app-header">
+          <div>
+            <p class="date-label" id="current-date">Heute</p>
+            <h1 id="view-title">MediLog</h1>
+          </div>
+          <div class="header-actions">
+            <button class="icon-button" type="button" id="search-button" aria-label="Suchen">
+              <i data-lucide="search"></i>
+            </button>
+            <button class="icon-button badge-button" type="button" data-view="schutz" aria-label="Einstellungen und Schutz">
+              <i data-lucide="shield-check"></i>
+              <span>DE</span>
+            </button>
+          </div>
+        </header>
+
+        <section class="search-panel hidden" id="search-panel" aria-label="Suche">
+          <label for="search-input">Medikament, Notiz oder Uhrzeit suchen</label>
+          <input id="search-input" type="search" placeholder="z. B. morgens, Ramipril, Vorrat" />
+        </section>
+
+        <section class="view active" id="home-view" data-title="Für dich">
+          <nav class="chips" aria-label="Filter">
+            <button class="chip active" type="button" data-filter="all">Heute <i data-lucide="x"></i></button>
+            <button class="chip" type="button" data-filter="open">Offen</button>
+            <button class="chip" type="button" data-filter="low">Vorrat niedrig</button>
+          </nav>
+
+          <article class="protocol-card">
+            <div class="protocol-copy">
+              <p class="kicker">Aktueller Plan</p>
+              <h2 id="protocol-name">Herz & Blutdruck</h2>
+              <p>Privates Einnahmeprotokoll mit lokalen Erinnerungen. Keine Dosierungsberatung.</p>
+              <div class="status-row">
+                <span class="status good">Aktiv</span>
+                <span class="status" id="adherence-pill">0% diese Woche</span>
+              </div>
+              <button class="primary-pill" type="button" data-view="plaene">
+                Plan ansehen
+                <i data-lucide="chevron-right"></i>
+              </button>
+            </div>
+            <div class="medicine-visual" aria-hidden="true">
+              <div class="glass-bottle">
+                <span>RAMIPRIL<br />5 mg</span>
+              </div>
+              <div class="glass-bottle secondary">
+                <span>VIT D<br />1000 IE</span>
+              </div>
+              <div class="dose-wheel">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+          </article>
+
+          <section class="panel care-panel">
+            <div class="section-heading">
+              <div>
+                <p class="kicker">Pflege-Cockpit</p>
+                <h2>Alle im Blick</h2>
+              </div>
+              <button class="link-action" type="button" data-view="plaene">Profile <i data-lucide="chevron-right"></i></button>
+            </div>
+            <div class="care-dashboard" id="care-dashboard"></div>
+          </section>
+
+          <section class="panel today-panel" aria-labelledby="today-heading">
+            <div class="section-heading">
+              <div>
+                <p class="kicker">Einnahmen</p>
+                <h2 id="today-heading">Heute</h2>
+              </div>
+              <button class="text-action" type="button" data-action="open-dose-form">
+                Eintragen
+                <i data-lucide="plus"></i>
+              </button>
+            </div>
+            <div class="dose-list" id="dose-list"></div>
+            <div class="empty-state hidden" id="dose-empty">
+              <i data-lucide="calendar-plus"></i>
+              <strong>Keine Einnahmen fuer diesen Filter</strong>
+              <span>Neue Medikamente oder Zeiten kannst du ueber den Plus-Button erfassen.</span>
+            </div>
+            <div class="completion-strip">
+              <span id="completion-text">0 von 0 erledigt</span>
+              <div class="completion-track" aria-hidden="true"><span id="completion-bar"></span></div>
+            </div>
+          </section>
+
+          <section class="insight-grid">
+            <article class="metric-tile">
+              <span>Naechste</span>
+              <strong id="next-dose">--:--</strong>
+              <p id="next-dose-name">Keine offene Einnahme</p>
+            </article>
+            <article class="metric-tile warning">
+              <span>Vorrat</span>
+              <strong id="low-stock-count">0</strong>
+              <p>niedrige Bestaende</p>
+            </article>
+          </section>
+
+          <section class="panel hydration-panel">
+            <div class="section-heading">
+              <div>
+                <p class="kicker">Wasser</p>
+                <h2>Trinken heute</h2>
+              </div>
+              <button class="text-action" type="button" id="add-water">
+                250 ml
+                <i data-lucide="droplets"></i>
+              </button>
+            </div>
+            <div class="water-meter">
+              <div class="water-glass" aria-hidden="true"><span id="water-fill"></span></div>
+              <div>
+                <strong id="water-total">0,0 L</strong>
+                <p id="water-goal">von 2,0 L Tagesziel</p>
+                <div class="water-dots" id="water-dots"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel reminder-panel">
+            <div class="section-heading">
+              <div>
+                <p class="kicker">Erinnerungen</p>
+                <h2>Kontrollzentrum</h2>
+              </div>
+              <button class="text-action" type="button" id="enable-reminders">
+                Aktivieren
+                <i data-lucide="bell-ring"></i>
+              </button>
+            </div>
+            <div class="reminder-grid">
+              <div><span>Status</span><strong id="reminder-status">In-App</strong></div>
+              <div><span>Eskaliert nach</span><strong id="reminder-delay">15 min</strong></div>
+              <div><span>Heute offen</span><strong id="open-dose-count">0</strong></div>
+            </div>
+          </section>
+        </section>
+
+        <section class="view" id="plaene-view" data-title="Pläne">
+          <div class="timeline-card">
+            <div>
+              <p class="kicker">Therapieplan</p>
+              <h2>Privat dokumentiert</h2>
+              <p>Alle Angaben beruhen auf deinem eigenen Plan. Die App veraendert keine Dosis und bewertet keine Therapie.</p>
+            </div>
+            <div class="week-ring" id="week-ring"><span>3/12</span></div>
+          </div>
+          <div class="calendar-strip" id="calendar-strip"></div>
+          <section class="panel">
+            <div class="section-heading">
+              <h2>Regeln fuer Erinnerungen</h2>
+              <button class="link-action" type="button" data-view="schutz">Pruefen <i data-lucide="chevron-right"></i></button>
+            </div>
+            <div class="rule-list">
+              <div><i data-lucide="bell-ring"></i><span>Erinnerungen sind lokal und koennen jederzeit deaktiviert werden.</span></div>
+              <div><i data-lucide="file-lock-2"></i><span>Exportdaten enthalten Gesundheitsdaten und sollten geschuetzt geteilt werden.</span></div>
+              <div><i data-lucide="stethoscope"></i><span>Medizinische Entscheidungen bleiben bei Arzt, Apotheke oder Notdienst.</span></div>
+            </div>
+          </section>
+          <section class="panel">
+            <div class="section-heading">
+              <div>
+                <p class="kicker">Familien-/Pflege-Modus</p>
+                <h2>Profile</h2>
+              </div>
+              <button class="text-action" type="button" data-action="open-profile-form">Profil <i data-lucide="plus"></i></button>
+            </div>
+            <div class="profile-list" id="profile-list"></div>
+          </section>
+          <section class="panel scanner-panel">
+            <div class="section-heading">
+              <div>
+                <p class="kicker">Medikationsplan</p>
+              <h2>QR-Import vorbereitet</h2>
+              </div>
+              <button class="text-action" type="button" data-action="open-scan-sheet">Scan <i data-lucide="scan-line"></i></button>
+            </div>
+            <p class="panel-copy">
+              Fuer den bundeseinheitlichen Medikationsplan ist ein Premium-Workflow angelegt. In iOS kann ein QR-Code per Kamera
+              gelesen werden, in der Web-Vorschau per Text oder QR-Bild. Es erfolgt keine automatische Dosierungsbewertung.
+            </p>
+          </section>
+        </section>
+
+        <section class="view" id="bibliothek-view" data-title="Bibliothek">
+          <div class="section-heading library-heading">
+            <div>
+              <p class="kicker">Eigene Liste</p>
+              <h2>Medikamente</h2>
+            </div>
+            <button class="text-action" type="button" data-action="open-medicine-form">
+              Erfassen
+              <i data-lucide="plus"></i>
+            </button>
+          </div>
+          <div class="medicine-grid" id="medicine-grid"></div>
+          <div class="empty-state hidden" id="medicine-empty">
+            <i data-lucide="pill"></i>
+            <strong>Noch keine Medikamente</strong>
+            <span>Erfasse zuerst dein eigenes Medikament und die Einnahmezeit.</span>
+          </div>
+          <section class="panel stock-panel">
+            <div class="section-heading">
+              <div>
+                <p class="kicker">Vorrat & Nachkauf</p>
+                <h2>Einkaufsliste</h2>
+              </div>
+              <button class="link-action" type="button" id="copy-shopping-list">Kopieren <i data-lucide="copy"></i></button>
+            </div>
+            <div class="stock-list" id="stock-list"></div>
+          </section>
+        </section>
+
+        <section class="view" id="verlauf-view" data-title="Verlauf">
+          <section class="history-hero">
+            <p class="kicker">7-Tage-Uebersicht</p>
+            <h2 id="history-score">0%</h2>
+            <span>Dokumentierte Einnahmetreue</span>
+            <div class="bars" id="history-bars"></div>
+          </section>
+          <section class="panel">
+            <div class="section-heading">
+              <h2>Protokoll</h2>
+              <button class="link-action" type="button" id="export-button">Bericht <i data-lucide="file-text"></i></button>
+            </div>
+            <div class="history-list" id="history-list"></div>
+          </section>
+        </section>
+
+        <section class="view" id="schutz-view" data-title="Einstellungen">
+          <article class="compliance-card">
+            <i data-lucide="shield-alert"></i>
+            <h2>Einstellungen, Premium und Schutz.</h2>
+            <p>
+              MediLog ist als lokaler Tracker konzipiert. Keine Diagnose, keine Therapieempfehlung,
+              keine automatische Wechselwirkungspruefung.
+            </p>
+          </article>
+
+          <section class="premium-card">
+            <div>
+              <p class="kicker">Zugang</p>
+              <h2>MediLog Premium</h2>
+              <p>Free ist nur ein kurzer Testmodus: 1 Profil, bis 2 Medikamente, Wasser und Tagescheck. Alltag, Pflege und Schutz sind Premium.</p>
+            </div>
+            <div class="premium-plans" id="premium-plans" role="radiogroup" aria-label="Premium Tarif"></div>
+            <ul>
+              <li><i data-lucide="lock"></i>Free: Basis-Tracking</li>
+              <li><i data-lucide="users-round"></i>Familien-/Pflege-Modus</li>
+              <li><i data-lucide="file-text"></i>Arzt-/Apothekenbericht</li>
+              <li><i data-lucide="lock-keyhole"></i>Vault, QR und Vorrat</li>
+            </ul>
+            <button class="primary-pill" type="button" id="premium-button">
+              <span id="premium-button-label">Premium freischalten</span>
+              <i data-lucide="sparkles"></i>
+            </button>
+            <button class="ghost-on-dark" type="button" id="premium-restore">Kauf wiederherstellen</button>
+            <span class="premium-status" id="premium-status">Free: Basis aktiv</span>
+            <span class="native-status" id="native-status">Web/PWA: Browser-Funktionen</span>
+          </section>
+
+          <section class="panel settings-panel">
+            <div class="section-heading">
+              <div>
+                <p class="kicker">Alltag</p>
+                <h2>Tracking-Einstellungen</h2>
+              </div>
+              <span class="status good">lokal</span>
+            </div>
+            <div class="settings-list">
+              <label class="setting-row">
+                <span><strong>Wasserziel</strong><small>Tagesziel in Millilitern</small></span>
+                <input id="setting-water-goal" type="number" min="500" max="4000" step="250" />
+              </label>
+              <label class="setting-row">
+                <span><strong>Reminder-Abstand</strong><small>Warnung nach geplanter Zeit</small></span>
+                <select id="setting-reminder-delay">
+                  <option value="5">5 min</option>
+                  <option value="15">15 min</option>
+                  <option value="30">30 min</option>
+                  <option value="60">60 min</option>
+                </select>
+              </label>
+              <label class="setting-row">
+                <span><strong>Zuverlaessige Erinnerungen</strong><small>iOS nutzt lokale Notifications, Web nutzt Browser-Erlaubnis</small></span>
+                <input id="setting-reminders-enabled" type="checkbox" />
+              </label>
+              <label class="setting-row">
+                <span><strong>Einfach-Modus</strong><small>Groessere Schrift und Touch-Ziele</small></span>
+                <input id="setting-senior-mode" type="checkbox" />
+              </label>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="section-heading">
+              <div>
+                <p class="kicker">Vorrat</p>
+                <h2>Nachkaufgrenzen</h2>
+              </div>
+              <button class="link-action" type="button" data-view="bibliothek">Medis <i data-lucide="chevron-right"></i></button>
+            </div>
+            <div class="refill-settings-list" id="refill-settings-list"></div>
+          </section>
+
+          <section class="panel">
+            <div class="section-heading">
+              <h2>Datenschutz</h2>
+              <span class="status good">lokal</span>
+            </div>
+            <div class="privacy-list">
+              <label><input type="checkbox" checked disabled /> Gesundheitsdaten bleiben lokal auf diesem Geraet.</label>
+              <label><input type="checkbox" checked disabled /> iOS speichert verschluesselt mit Keychain/AES-GCM, Web optional mit PIN-Vault.</label>
+              <label><input type="checkbox" checked disabled /> Export nur manuell durch dich.</label>
+            </div>
+          </section>
+          <section class="panel">
+            <div class="section-heading">
+              <div>
+                <p class="kicker">DSGVO</p>
+                <h2>Daten & Rechte</h2>
+              </div>
+              <span class="status" id="privacy-consent-status">offen</span>
+            </div>
+            <div class="privacy-rights">
+              <div><i data-lucide="database"></i><span><strong>Datenkategorien</strong><small>Profile, Medikamente, Einnahmen, Wasser, Notizen, Einstellungen.</small></span></div>
+              <div><i data-lucide="target"></i><span><strong>Zweckbindung</strong><small>Nur Tracking, Erinnerung, Pflegeuebersicht und Export. Keine Werbung, kein Verkauf.</small></span></div>
+              <div><i data-lucide="hard-drive"></i><span><strong>Speicherort</strong><small id="privacy-storage-status">Lokal im Browser dieses Geraets. Keine Cloud-Synchronisierung in dieser Version.</small></span></div>
+            </div>
+            <div class="privacy-actions">
+              <button class="ghost-button" type="button" id="privacy-export">DSGVO-Export</button>
+              <button class="ghost-button" type="button" id="privacy-consent">Einwilligung bestaetigen</button>
+            </div>
+            <p class="form-help">Gesundheitsdaten sind besonders schuetzenswert. Fuer eine echte Veroeffentlichung braucht das zusaetzlich juristische Pruefung, Datenschutzerklaerung und ggf. Datenschutz-Folgenabschaetzung.</p>
+          </section>
+          <section class="panel">
+            <div class="section-heading">
+              <div>
+                <p class="kicker">Lokaler Vault</p>
+                <h2>PIN-Schutz</h2>
+              </div>
+              <span class="status" id="vault-status">aus</span>
+            </div>
+            <div class="vault-actions">
+              <input id="vault-pin" type="password" inputmode="numeric" autocomplete="new-password" placeholder="PIN festlegen oder entsperren" />
+              <button class="solid-button" type="button" id="vault-button">Schutz aktivieren</button>
+              <button class="ghost-button" type="button" id="vault-biometric-button">Face ID pruefen</button>
+            </div>
+            <p class="form-help">iOS nutzt lokalen Keychain-Schutz. Im Web kann ein PIN-Vault nicht wiederhergestellt werden. Keine Cloud, kein Passwort-Reset.</p>
+          </section>
+          <section class="emergency-panel">
+            <div>
+              <span>Akute Beschwerden?</span>
+              <strong>112</strong>
+            </div>
+            <div>
+              <span>Aerztlicher Bereitschaftsdienst</span>
+              <strong>116117</strong>
+            </div>
+          </section>
+          <section class="panel install-panel">
+            <div class="section-heading">
+              <div>
+                <p class="kicker">App-Gefuehl</p>
+                <h2>Installierbar</h2>
+              </div>
+              <span class="status good">PWA</span>
+            </div>
+            <p class="panel-copy">MediLog kann ueber den Browser zum Home-Bildschirm hinzugefuegt werden und laedt nach dem ersten Besuch auch offline.</p>
+          </section>
+          <button class="danger-button" type="button" id="reset-button">
+            <i data-lucide="trash-2"></i>
+            Lokale Demo-Daten zuruecksetzen
+          </button>
+        </section>
+      </section>
+
+      <nav class="tabbar" aria-label="Hauptnavigation">
+        <button class="tab active" type="button" data-view="home"><i data-lucide="home"></i><span>Home</span></button>
+        <button class="tab" type="button" data-view="plaene"><i data-lucide="calendar-check"></i><span>Pläne</span></button>
+        <button class="add-tab" type="button" id="quick-add" aria-label="Schnell erfassen"><i data-lucide="plus"></i></button>
+        <button class="tab" type="button" data-view="bibliothek"><i data-lucide="book-open"></i><span>Medis</span></button>
+        <button class="tab" type="button" data-view="verlauf"><i data-lucide="chart-no-axes-column"></i><span>Verlauf</span></button>
+      </nav>
+    </main>
+
+    <dialog class="onboarding" id="onboarding-sheet" aria-labelledby="onboarding-title">
+      <form id="onboarding-form">
+        <div class="onboarding-mark">
+          <i data-lucide="heart-pulse"></i>
+        </div>
+        <p class="kicker">Willkommen bei MediLog</p>
+        <h2 id="onboarding-title">Dein privater Medikationsalltag, ruhig organisiert.</h2>
+        <p>
+          Richte die App in einer Minute ein. Alle Angaben bleiben lokal und dienen nur der Dokumentation.
+        </p>
+        <div class="choice-grid">
+          <label><input type="radio" name="mode" value="self" checked /> <span>Für mich selbst</span></label>
+          <label><input type="radio" name="mode" value="care" /> <span>Für Angehörige</span></label>
+        </div>
+        <div class="form-grid">
+          <label>Profilname<input name="profileName" required value="Ich" /></label>
+          <label>Wasserziel<input name="waterGoal" required type="number" min="500" step="250" value="2000" /></label>
+          <label>Erstes Medikament<input name="medicineName" placeholder="optional" /></label>
+          <label>Uhrzeit<input name="medicineTime" type="time" value="08:00" /></label>
+        </div>
+        <label class="consent-row">
+          <input name="privacyConsent" type="checkbox" required />
+          <span>Ich verstehe, dass ich besondere Gesundheitsdaten lokal auf diesem Geraet speichere und MediLog keine medizinische Beratung ersetzt.</span>
+        </label>
+        <div class="form-actions">
+          <button class="ghost-button" type="button" id="skip-onboarding">Demo ansehen</button>
+          <button class="solid-button" type="submit">App einrichten</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="report-sheet" id="report-sheet" aria-labelledby="report-title">
+      <div class="report-frame">
+        <div class="report-top">
+          <div>
+            <p class="kicker">Arzt-/Apothekenbericht</p>
+            <h2 id="report-title">Bericht vorbereiten</h2>
+          </div>
+          <button class="icon-button" type="button" data-close="report-sheet" aria-label="Bericht schließen">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="report-controls">
+          <label>
+            Zeitraum
+            <select id="report-range">
+              <option value="7">7 Tage</option>
+              <option value="30">30 Tage</option>
+            </select>
+          </label>
+          <button class="ghost-button" type="button" id="download-report">HTML speichern</button>
+          <button class="solid-button" type="button" id="print-report">PDF/Druck</button>
+        </div>
+        <article class="report-document" id="report-preview"></article>
+      </div>
+    </dialog>
+
+    <dialog class="sheet" id="quick-sheet" aria-labelledby="quick-title">
+      <form method="dialog">
+        <div class="sheet-handle"></div>
+        <h2 id="quick-title">Schnell erfassen</h2>
+        <div class="sheet-options">
+          <button value="dose" type="submit"><i data-lucide="check-circle-2"></i>Einnahme als erledigt markieren</button>
+          <button value="water" type="submit"><i data-lucide="droplets"></i>Wasser 250 ml eintragen</button>
+          <button value="medicine" type="submit"><i data-lucide="pill"></i>Eigenes Medikament erfassen</button>
+          <button value="note" type="submit"><i data-lucide="notebook-pen"></i>Notiz im Verlauf speichern</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="sheet" id="medicine-sheet" aria-labelledby="medicine-title">
+      <form id="medicine-form">
+        <div class="sheet-handle"></div>
+        <h2 id="medicine-title">Medikament erfassen</h2>
+        <div class="form-grid">
+          <label>Name<input name="name" required placeholder="z. B. Ramipril" /></label>
+          <label>Angabe laut Plan<input name="dose" required placeholder="z. B. 5 mg" /></label>
+          <label>Uhrzeit<input name="time" required type="time" /></label>
+          <label>Vorrat<input name="stock" required type="number" min="0" value="14" /></label>
+        </div>
+        <p class="form-help">Bitte nur Angaben uebernehmen, die aerztlich oder pharmazeutisch fuer dich vorgesehen sind.</p>
+        <div class="form-actions">
+          <button class="ghost-button" type="button" data-close="medicine-sheet">Abbrechen</button>
+          <button class="solid-button" type="submit">Speichern</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="sheet" id="profile-sheet" aria-labelledby="profile-title">
+      <form id="profile-form">
+        <div class="sheet-handle"></div>
+        <h2 id="profile-title">Profil erfassen</h2>
+        <div class="form-grid">
+          <label>Name<input name="name" required placeholder="z. B. Mama" /></label>
+          <label>Rolle<input name="role" required placeholder="z. B. Pflege, Kind, Selbst" /></label>
+        </div>
+        <p class="form-help">Profile dienen nur der Organisation. Gemeinsame Nutzung oder Cloud-Zugriff ist nicht aktiviert.</p>
+        <div class="form-actions">
+          <button class="ghost-button" type="button" data-close="profile-sheet">Abbrechen</button>
+          <button class="solid-button" type="submit">Speichern</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="sheet" id="scan-sheet" aria-labelledby="scan-title">
+      <form id="scan-form">
+        <div class="sheet-handle"></div>
+        <h2 id="scan-title">Medikationsplan importieren</h2>
+        <button class="solid-button wide-button" type="button" id="native-scan-button">
+          <i data-lucide="scan-line"></i>
+          Kamera-Scan starten
+        </button>
+        <label class="full-label">QR-/Planinhalt<textarea name="plan" required placeholder="Text aus QR-Code oder Medikationsplan einfuegen"></textarea></label>
+        <label class="full-label">QR-Bild optional<input id="qr-file" type="file" accept="image/*" /></label>
+        <p class="form-help">Der Import wird als private Notiz gespeichert. Die App erzeugt daraus keine Dosierungsempfehlung.</p>
+        <div class="form-actions">
+          <button class="ghost-button" type="button" data-close="scan-sheet">Abbrechen</button>
+          <button class="solid-button" type="submit">Importieren</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="sheet" id="note-sheet" aria-labelledby="note-title">
+      <form id="note-form">
+        <div class="sheet-handle"></div>
+        <h2 id="note-title">Notiz speichern</h2>
+        <label class="full-label">Notiz<textarea name="note" required placeholder="z. B. Einnahme nach Ruecksprache verschoben"></textarea></label>
+        <p class="form-help">Notizen sind privat und werden nur lokal gespeichert.</p>
+        <div class="form-actions">
+          <button class="ghost-button" type="button" data-close="note-sheet">Abbrechen</button>
+          <button class="solid-button" type="submit">Speichern</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="vendor/lucide.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

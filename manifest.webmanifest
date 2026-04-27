@@ -1,0 +1,46 @@
+{
+  "name": "MediLog",
+  "short_name": "MediLog",
+  "description": "Lokaler Medikamenten-, Pflege- und Wasser-Tracker ohne Cloud.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f6f2",
+  "theme_color": "#eef2ed",
+  "categories": ["health", "medical", "productivity"],
+  "icons": [
+    {
+      "src": "icons/medilog-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/medilog-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/medilog-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Einnahme eintragen",
+      "short_name": "Einnahme",
+      "url": "./index.html#dose",
+      "icons": [{ "src": "icons/medilog-icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Wasser loggen",
+      "short_name": "Wasser",
+      "url": "./index.html#water",
+      "icons": [{ "src": "icons/medilog-icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
+}

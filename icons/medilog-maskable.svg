@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="paperGlow" cx="23%" cy="12%" r="76%">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.5" stop-color="#F4F7F1"/>
+      <stop offset="1" stop-color="#DDE9DC"/>
+    </radialGradient>
+    <linearGradient id="tile" x1="140" y1="96" x2="380" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1D2320"/>
+      <stop offset="0.46" stop-color="#0E1311"/>
+      <stop offset="1" stop-color="#030504"/>
+    </linearGradient>
+    <linearGradient id="green" x1="182" y1="166" x2="330" y2="350" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B6F3BB"/>
+      <stop offset="0.52" stop-color="#72D487"/>
+      <stop offset="1" stop-color="#3E995F"/>
+    </linearGradient>
+    <linearGradient id="capsule" x1="164" y1="294" x2="282" y2="226" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="0.52" stop-color="#F4F7F5"/>
+      <stop offset="0.53" stop-color="#DDE9E3"/>
+      <stop offset="1" stop-color="#BFD0C8"/>
+    </linearGradient>
+    <linearGradient id="drop" x1="328" y1="290" x2="386" y2="394" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D4F7FB"/>
+      <stop offset="0.5" stop-color="#7CCBD8"/>
+      <stop offset="1" stop-color="#3C8E9C"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#paperGlow)"/>
+  <circle cx="396" cy="102" r="64" fill="#FFFFFF" opacity="0.58"/>
+  <path d="M72 340c96 53 228 61 382 4" stroke="#FFFFFF" stroke-width="44" stroke-linecap="round" opacity="0.42"/>
+  <rect x="112" y="94" width="288" height="322" rx="86" fill="url(#tile)"/>
+  <circle cx="256" cy="256" r="105" fill="#FFFFFF" opacity="0.055"/>
+  <path d="M222 184c0-19 24-27 36-12l31 39 31-39c12-15 36-7 36 12v143c0 23-31 31-42 10l-25-47-25 47c-11 21-42 13-42-10V184Z" fill="url(#green)"/>
+  <g transform="rotate(-28 232 260)">
+    <rect x="161" y="238" width="142" height="48" rx="24" fill="url(#capsule)"/>
+    <path d="M232 238v48" stroke="#BFD1C9" stroke-width="3" opacity="0.7"/>
+  </g>
+  <path d="M360 280c22 31 42 58 42 86 0 31-22 53-54 53s-54-22-54-53c0-28 22-56 44-86 6-8 16-8 22 0Z" fill="url(#drop)"/>
+  <path d="M333 350c0 18 11 31 28 32" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" opacity="0.64"/>
+</svg>

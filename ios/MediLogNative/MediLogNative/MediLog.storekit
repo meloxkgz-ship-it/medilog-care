@@ -1,0 +1,79 @@
+{
+  "identifier": "MEDILOG_STOREKIT",
+  "settings": {
+    "_locale": "de_DE",
+    "_storefront": "DEU",
+    "_timeRate": 60
+  },
+  "subscriptionGroups": [
+    {
+      "id": "MEDILOG_PREMIUM_GROUP",
+      "localizations": [
+        {
+          "customAppName": "MediLog",
+          "locale": "de_DE",
+          "name": "MediLog Premium"
+        }
+      ],
+      "name": "MediLog Premium",
+      "subscriptions": [
+        {
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "3.99",
+          "familyShareable": true,
+          "groupNumber": 2,
+          "internalID": "MEDILOG_PREMIUM_MONTHLY",
+          "introductoryOffer": null,
+          "localizations": [
+            {
+              "description": "Premium-Zugang fuer Familienmodus, Vorrat, Export, Scan, Vault und zuverlaessige Erinnerungen.",
+              "displayName": "MediLog Premium Monatlich",
+              "locale": "de_DE"
+            },
+            {
+              "description": "Premium access for family mode, stock tracking, export, scan, vault and reliable reminders.",
+              "displayName": "MediLog Premium Monthly",
+              "locale": "en_US"
+            }
+          ],
+          "productID": "com.medilog.care.premium.monthly",
+          "recurringSubscriptionPeriod": "P1M",
+          "referenceName": "MediLog Premium Monthly",
+          "subscriptionGroupID": "MEDILOG_PREMIUM_GROUP",
+          "type": "RecurringSubscription"
+        },
+        {
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "29.99",
+          "familyShareable": true,
+          "groupNumber": 1,
+          "internalID": "MEDILOG_PREMIUM_YEARLY",
+          "introductoryOffer": null,
+          "localizations": [
+            {
+              "description": "Premium-Zugang fuer ein Jahr mit Familienmodus, Vorrat, Export, Scan, Vault und zuverlaessigen Erinnerungen.",
+              "displayName": "MediLog Premium Jaehrlich",
+              "locale": "de_DE"
+            },
+            {
+              "description": "One year of premium access for family mode, stock tracking, export, scan, vault and reliable reminders.",
+              "displayName": "MediLog Premium Yearly",
+              "locale": "en_US"
+            }
+          ],
+          "productID": "com.medilog.care.premium.yearly",
+          "recurringSubscriptionPeriod": "P1Y",
+          "referenceName": "MediLog Premium Yearly",
+          "subscriptionGroupID": "MEDILOG_PREMIUM_GROUP",
+          "type": "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version": {
+    "major": 1,
+    "minor": 1
+  }
+}
