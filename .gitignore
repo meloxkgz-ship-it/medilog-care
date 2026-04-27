@@ -3,6 +3,7 @@ node_modules/
 dist/
 build/
 DerivedData/
+.asc/
 *.xcuserstate
 *.xcscmblueprint
 xcuserdata/

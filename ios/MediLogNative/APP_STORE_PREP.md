@@ -20,6 +20,12 @@
 - Lokaler Review-Screenshot: `AppStoreAssets/subscription-review-premium.png` (`1170x2532`)
 - Lokale Xcode-StoreKit-Testdatei: `MediLogNative/MediLog.storekit`
 - Shared Scheme `MediLogNative` verwendet diese StoreKit-Datei beim Debug-Launch
+- App-Store-Export-Konfiguration: `ExportOptions-AppStore.plist`
+- TestFlight/App-Store-Build hochgeladen und an Version `1.0` angehaengt:
+  - Build ID: `65d6f47f-906d-4624-b25c-1bfa7395ac9a`
+  - Build Number: `1`
+  - Processing State: `VALID`
+  - Uses Non-Exempt Encryption: `false`
 - App Paywall holt auf iOS StoreKit-Produkte dynamisch und kauft den ausgewaehlten Tarif
 - ASC App-Info `de-DE`: Name, Subtitle und Datenschutz-URL sind gesetzt
 - ASC App-Version-Metadaten `de-DE`: Beschreibung inklusive Apple-Standard-EULA-Link, Keywords, Promotional Text, Support-URL und Marketing-URL sind gesetzt
@@ -43,7 +49,7 @@
   - `03-medis.png`: `e92c8413-6099-478b-bd1f-d5c6247b8b31`
   - `04-verlauf.png`: `9598b71f-de2d-4713-b309-076c11b42959`
   - `05-premium.png`: `a732d43b-5f8a-4a8c-ab69-2ccb1f39b83e`
-- Offener ASC-Status: Subscriptions zeigen noch `MISSING_METADATA`, bis die restlichen App-Review-Pflichtfelder erledigt sind
+- ASC Validate: `0` Errors, `0` Blocking Issues. Uebrig sind nur Advisory-Warnungen fuer optionale Subscription-Promobilder und die manuelle App-Privacy-Bestaetigung im App-Store-Connect-Web.
 
 ## App Review Hinweise
 
@@ -71,8 +77,8 @@ Aktuelle Architektur:
 ## Noch vor TestFlight
 
 - Impressum mit echten Anbieterangaben fuellen und veroeffentlichen
-- Export-Compliance in App Store Connect finalisieren
 - iPad-Screenshots bei Bedarf erzeugen und hochladen
-- TestFlight-Build hochladen und mit den StoreKit-Produkten testen
+- TestFlight-Build auf echtem Geraet mit StoreKit-Produkten testen
+- App Privacy im App-Store-Connect-Web final bestaetigen
 - Medizinische Claims final juristisch pruefen
 - DSGVO-Dokumente finalisieren, inklusive Einwilligung, Loeschung, Auskunft und Risikoanalyse
