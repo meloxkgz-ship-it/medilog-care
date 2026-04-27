@@ -21,7 +21,10 @@
 - Lokale Xcode-StoreKit-Testdatei: `MediLogNative/MediLog.storekit`
 - Shared Scheme `MediLogNative` verwendet diese StoreKit-Datei beim Debug-Launch
 - App Paywall holt auf iOS StoreKit-Produkte dynamisch und kauft den ausgewaehlten Tarif
-- ASC App-Version-Metadaten `de-DE`: Beschreibung, Keywords und Promotional Text sind gesetzt
+- ASC App-Info `de-DE`: Name, Subtitle und Datenschutz-URL sind gesetzt
+- ASC App-Version-Metadaten `de-DE`: Beschreibung inklusive Apple-Standard-EULA-Link, Keywords, Promotional Text, Support-URL und Marketing-URL sind gesetzt
+- ASC Content Rights: `DOES_NOT_USE_THIRD_PARTY_CONTENT`
+- ASC Kategorie: `MEDICAL`
 - Launch-Seiten fuer GitHub Pages vorbereitet:
   - Marketing: `https://meloxkgz-ship-it.github.io/medilog-care/landing.html`
   - Support: `https://meloxkgz-ship-it.github.io/medilog-care/support.html`
@@ -61,11 +64,12 @@ Aktuelle Architektur:
 
 ## Noch vor TestFlight
 
-- GitHub Pages Deployment pruefen
-- Support-URL und Marketing-URL in App Store Connect eintragen
-- Datenschutzerklaerung in App Store Connect hinterlegen
 - Impressum mit echten Anbieterangaben fuellen und veroeffentlichen
-- App-Kategorie, Altersfreigabe und Export-Compliance in App Store Connect finalisieren
+- App-Review-Kontaktdaten in App Store Connect eintragen
+- Copyright/Inhaber fuer App-Version setzen
+- Altersfreigabe und Export-Compliance in App Store Connect finalisieren
+- App-Verfuegbarkeit/Preisplan finalisieren
+- Subscription-Preisabdeckung fuer AUT/CHE ergaenzen oder Verfuegbarkeit auf DEU begrenzen
 - iPad-Screenshots bei Bedarf erzeugen und hochladen
 - TestFlight-Build hochladen und mit den StoreKit-Produkten testen
 - Medizinische Claims final juristisch pruefen

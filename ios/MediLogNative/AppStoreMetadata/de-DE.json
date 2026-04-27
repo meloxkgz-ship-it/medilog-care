@@ -1,13 +1,14 @@
 {
   "name": "MediLog - care",
   "subtitle": "Medikation lokal dokumentieren",
-  "description": "MediLog hilft dir, Medikamenteneinnahmen, Wasser, Vorrat und Notizen privat zu dokumentieren. Die App arbeitet lokal, nutzt lokale Erinnerungen und erstellt Berichte fuer Arzt oder Apotheke. MediLog ersetzt keine medizinische Beratung, stellt keine Diagnose und gibt keine Dosierungs- oder Therapieempfehlungen.",
+  "description": "MediLog hilft dir, Medikamenteneinnahmen, Wasser, Vorrat und Notizen privat zu dokumentieren. Die App arbeitet lokal, nutzt lokale Erinnerungen und erstellt Berichte fuer Arzt oder Apotheke. MediLog ersetzt keine medizinische Beratung, stellt keine Diagnose und gibt keine Dosierungs- oder Therapieempfehlungen. Nutzungsbedingungen: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
   "keywords": "medikamente,medikationsplan,einnahme,erinnerung,vorrat,pflege,wasser,arzt,apotheke",
   "promotionalText": "Privater Medikamenten-Tracker mit lokalen Erinnerungen, Vorrat, Wasser und Export.",
   "supportUrl": "https://meloxkgz-ship-it.github.io/medilog-care/support.html",
   "privacyPolicyUrl": "https://meloxkgz-ship-it.github.io/medilog-care/privacy.html",
   "marketingUrl": "https://meloxkgz-ship-it.github.io/medilog-care/landing.html",
-  "categorySuggestion": "Medical oder Health & Fitness nach juristischer Pruefung",
+  "termsOfUseUrl": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+  "primaryCategory": "MEDICAL",
   "reviewNotes": [
     "MediLog ist ein privater Dokumentations- und Erinnerungs-Tracker.",
     "Die App gibt keine Diagnose, keine Therapieempfehlung und keine Dosierungsentscheidung.",
@@ -16,6 +17,6 @@
   ],
   "requiredBeforeSubmit": [
     "Impressum mit echten Anbieterangaben fuellen.",
-    "Altersfreigabe, Kategorie, Export-Compliance und App-Privacy-Antworten in App Store Connect finalisieren."
+    "Altersfreigabe, Export-Compliance und App-Privacy-Antworten in App Store Connect finalisieren."
   ]
 }
