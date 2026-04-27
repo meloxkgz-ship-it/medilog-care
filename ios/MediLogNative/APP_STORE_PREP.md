@@ -25,6 +25,11 @@
 - ASC App-Version-Metadaten `de-DE`: Beschreibung inklusive Apple-Standard-EULA-Link, Keywords, Promotional Text, Support-URL und Marketing-URL sind gesetzt
 - ASC Content Rights: `DOES_NOT_USE_THIRD_PARTY_CONTENT`
 - ASC Kategorie: `MEDICAL`
+- ASC Review-Kontakt und Review-Notes sind gesetzt
+- ASC Copyright ist gesetzt
+- ASC Altersfreigabe ist gesetzt: Health/Wellness aktiv, medizinische Informationen `INFREQUENT_OR_MILD`, keine Werbung, kein UGC, kein offenes Web
+- ASC Preisplan: Download kostenlos als begrenzter Testmodus; Premium bleibt ueber StoreKit-Abos
+- ASC App-Verfuegbarkeit: Deutschland (`DEU`) aktiv, neue Territorien nicht automatisch aktiv
 - ASC Subscription-Verfuegbarkeit: fuer den Deutschland-Start auf `DEU` begrenzt; AUT/CHE koennen spaeter mit passenden Preisen aktiviert werden
 - Launch-Seiten fuer GitHub Pages vorbereitet:
   - Marketing: `https://meloxkgz-ship-it.github.io/medilog-care/landing.html`
@@ -66,10 +71,7 @@ Aktuelle Architektur:
 ## Noch vor TestFlight
 
 - Impressum mit echten Anbieterangaben fuellen und veroeffentlichen
-- App-Review-Kontaktdaten in App Store Connect eintragen
-- Copyright/Inhaber fuer App-Version setzen
-- Altersfreigabe und Export-Compliance in App Store Connect finalisieren
-- App-Verfuegbarkeit/Preisplan finalisieren
+- Export-Compliance in App Store Connect finalisieren
 - iPad-Screenshots bei Bedarf erzeugen und hochladen
 - TestFlight-Build hochladen und mit den StoreKit-Produkten testen
 - Medizinische Claims final juristisch pruefen
