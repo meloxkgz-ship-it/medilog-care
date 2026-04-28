@@ -4,6 +4,7 @@ import Foundation
 import LocalAuthentication
 import Security
 import StoreKit
+import SwiftUI
 import UIKit
 import UserNotifications
 import WebKit
@@ -84,7 +85,8 @@ final class NativeBridge: NSObject, WKScriptMessageHandler {
             return try await entitlementStore.productsEnvelope()
 
         case "purchasePremium":
-            return try await entitlementStore.purchase(productId: payload["productId"] as? String)
+            let presenter = await MainActor.run { presentingViewController() }
+            return try await entitlementStore.purchase(productId: payload["productId"] as? String, presenting: presenter)
 
         case "restorePurchases":
             return try await entitlementStore.restore()
@@ -95,6 +97,11 @@ final class NativeBridge: NSObject, WKScriptMessageHandler {
         default:
             throw NativeBridgeError.unknownAction
         }
+    }
+
+    @MainActor
+    private func presentingViewController() -> UIViewController? {
+        topViewController()
     }
 
     @MainActor
@@ -582,7 +589,7 @@ final class SecureStateStore {
     }
 }
 
-final class PremiumEntitlementStore {
+final class PremiumEntitlementStore: NSObject, UIAdaptivePresentationControllerDelegate {
     private let productIds = [
         "com.medilog.care.premium.monthly",
         "com.medilog.care.premium.yearly",
@@ -590,6 +597,8 @@ final class PremiumEntitlementStore {
     private let activeKey = "medilog.premium.active"
     private let sourceKey = "medilog.premium.source"
     private let expiresKey = "medilog.premium.expiresAt"
+    private var storeContinuation: CheckedContinuation<[String: Any], Error>?
+    private weak var storeController: UIViewController?
 
     func status() async -> [String: Any] {
         await refreshFromCurrentEntitlements()
@@ -609,7 +618,15 @@ final class PremiumEntitlementStore {
         return ["products": products.sorted(by: productSort).map(productPayload)]
     }
 
-    func purchase(productId: String?) async throws -> [String: Any] {
+    func purchase(productId: String?, presenting presenter: UIViewController?) async throws -> [String: Any] {
+        if let presenter {
+            return try await presentNativeSubscriptionStore(productId: productId, presenter: presenter)
+        }
+
+        return try await purchaseDirectly(productId: productId)
+    }
+
+    private func purchaseDirectly(productId: String?) async throws -> [String: Any] {
         let products = try await Product.products(for: productIds)
         let product = product(from: products, matching: productId) ?? preferredProduct(from: products)
         guard let product else {
@@ -636,6 +653,81 @@ final class PremiumEntitlementStore {
 
         @unknown default:
             throw NativeBridgeError.storeKitVerificationFailed
+        }
+    }
+
+    @MainActor
+    private func presentNativeSubscriptionStore(productId: String?, presenter: UIViewController) async throws -> [String: Any] {
+        guard storeContinuation == nil else { throw NativeBridgeError.purchaseAlreadyInProgress }
+
+        return try await withCheckedThrowingContinuation { continuation in
+            storeContinuation = continuation
+
+            let storeView = NativePremiumStoreView(
+                productIds: productIds,
+                selectedProductId: productId,
+                onPurchaseCompletion: { [weak self] product, result in
+                    await self?.completeNativeStorePurchase(product: product, result: result)
+                },
+                onClose: { [weak self] in
+                    await self?.completeNativeStoreDismissal()
+                }
+            )
+
+            let controller = UIHostingController(rootView: storeView)
+            controller.modalPresentationStyle = .formSheet
+            controller.presentationController?.delegate = self
+            storeController = controller
+            presenter.present(controller, animated: true)
+        }
+    }
+
+    @MainActor
+    private func completeNativeStorePurchase(product: Product, result: Result<Product.PurchaseResult, Error>) async {
+        guard let continuation = storeContinuation else { return }
+        storeContinuation = nil
+
+        storeController?.dismiss(animated: true)
+        storeController = nil
+
+        do {
+            switch result {
+            case .success(.success(let verification)):
+                let transaction = try verified(verification)
+                saveEntitlement(productId: transaction.productID, expirationDate: transaction.expirationDate)
+                await transaction.finish()
+                continuation.resume(returning: cachedStatus())
+
+            case .success(.pending):
+                continuation.resume(returning: pendingStatus())
+
+            case .success(.userCancelled):
+                continuation.resume(throwing: NativeBridgeError.purchaseCancelled)
+
+            case .failure(let error):
+                continuation.resume(throwing: error)
+
+            @unknown default:
+                continuation.resume(throwing: NativeBridgeError.storeKitVerificationFailed)
+            }
+        } catch {
+            continuation.resume(throwing: error)
+        }
+    }
+
+    @MainActor
+    private func completeNativeStoreDismissal() async {
+        guard let continuation = storeContinuation else { return }
+        storeContinuation = nil
+        storeController = nil
+        await refreshFromCurrentEntitlements()
+        continuation.resume(returning: cachedStatus())
+    }
+
+    @MainActor
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        Task { @MainActor in
+            await completeNativeStoreDismissal()
         }
     }
 
@@ -810,6 +902,59 @@ final class PremiumEntitlementStore {
     #endif
 }
 
+private struct NativePremiumStoreView: View {
+    let productIds: [Product.ID]
+    let selectedProductId: Product.ID?
+    let onPurchaseCompletion: (Product, Result<Product.PurchaseResult, Error>) async -> Void
+    let onClose: () async -> Void
+
+    private let privacyURL = URL(string: "https://meloxkgz-ship-it.github.io/medilog-care/privacy.html")!
+    private let termsURL = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!
+
+    var body: some View {
+        NavigationStack {
+            SubscriptionStoreView(productIDs: orderedProductIds) {
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MediLog Premium")
+                        .font(.largeTitle.bold())
+                    Text("Familienmodus, Vorrat, Export, Vault, QR-Scan und zuverlaessige Erinnerungen.")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                    Label("Lokal, verschluesselt, keine Cloud", systemImage: "lock.shield")
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(.green)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.bottom, 8)
+            }
+            .subscriptionStoreButtonLabel(.multiline)
+            .storeButton(.visible, for: .restorePurchases, .policies)
+            .subscriptionStorePolicyDestination(url: privacyURL, for: .privacyPolicy)
+            .subscriptionStorePolicyDestination(url: termsURL, for: .termsOfService)
+            .onInAppPurchaseCompletion { product, result in
+                await onPurchaseCompletion(product, result)
+            }
+            .navigationTitle("Premium")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Schliessen") {
+                        Task { await onClose() }
+                    }
+                }
+            }
+        }
+    }
+
+    private var orderedProductIds: [Product.ID] {
+        guard let selectedProductId,
+              productIds.contains(selectedProductId)
+        else { return productIds }
+
+        return [selectedProductId] + productIds.filter { $0 != selectedProductId }
+    }
+}
+
 enum NativeBridgeError: LocalizedError {
     case invalidPayload
     case unknownAction
@@ -821,6 +966,7 @@ enum NativeBridgeError: LocalizedError {
     case storeKitProductsUnavailable
     case storeKitVerificationFailed
     case purchaseCancelled
+    case purchaseAlreadyInProgress
 
     var errorDescription: String? {
         switch self {
@@ -844,6 +990,8 @@ enum NativeBridgeError: LocalizedError {
             return "Premium-Kauf konnte nicht verifiziert werden."
         case .purchaseCancelled:
             return "Kauf abgebrochen."
+        case .purchaseAlreadyInProgress:
+            return "Ein Kauf ist bereits geoeffnet."
         }
     }
 }
