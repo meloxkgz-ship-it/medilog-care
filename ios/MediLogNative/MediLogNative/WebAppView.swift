@@ -12,6 +12,13 @@ struct WebAppView: UIViewRepresentable {
         let configuration = WKWebViewConfiguration()
         configuration.defaultWebpagePreferences.allowsContentJavaScript = true
         configuration.websiteDataStore = .default()
+        configuration.userContentController.addUserScript(
+            WKUserScript(
+                source: "document.documentElement.classList.add('native-ios');",
+                injectionTime: .atDocumentStart,
+                forMainFrameOnly: true
+            )
+        )
         configuration.userContentController.add(context.coordinator.nativeBridge, name: "medilogNative")
 
         let webView = WKWebView(frame: .zero, configuration: configuration)
@@ -22,9 +29,11 @@ struct WebAppView: UIViewRepresentable {
         webView.backgroundColor = .clear
         webView.scrollView.backgroundColor = .clear
         webView.scrollView.delegate = context.coordinator
+        webView.scrollView.contentInsetAdjustmentBehavior = .never
         webView.scrollView.minimumZoomScale = 1
         webView.scrollView.maximumZoomScale = 1
         webView.scrollView.bouncesZoom = false
+        webView.scrollView.pinchGestureRecognizer?.isEnabled = false
 
         if let webRoot = Bundle.main.url(forResource: "WebApp", withExtension: nil),
            let indexURL = Bundle.main.url(forResource: "index", withExtension: "html", subdirectory: "WebApp") {

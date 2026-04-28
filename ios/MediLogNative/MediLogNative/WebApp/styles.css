@@ -14,6 +14,11 @@
   --mono: "SF Mono", "Menlo", "Consolas", ui-monospace, monospace;
   --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
   --shadow: 0 22px 56px rgba(27, 37, 31, 0.13);
+  --screen-top-pad: 58px;
+  --screen-side-pad: 20px;
+  --tabbar-offset: 10px;
+  --tabbar-height: 92px;
+  --tabbar-clearance: calc(var(--tabbar-offset) + var(--tabbar-height) + 26px);
   color-scheme: light;
 }
 
@@ -78,6 +83,8 @@ input,
 textarea,
 select {
   font-size: 16px;
+  max-width: 100%;
+  min-width: 0;
 }
 
 button {
@@ -142,11 +149,56 @@ button:active {
   pointer-events: none;
 }
 
+html.native-ios body {
+  display: block;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+html.native-ios .ambient,
+html.native-ios .device::before {
+  display: none;
+}
+
+html.native-ios .device {
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+html.native-ios .screen {
+  --screen-top-pad: max(34px, calc(env(safe-area-inset-top) + 12px));
+  --screen-side-pad: max(16px, calc(env(safe-area-inset-left) + 16px));
+  --tabbar-offset: 0px;
+  --tabbar-height: calc(92px + env(safe-area-inset-bottom));
+  --tabbar-clearance: calc(var(--tabbar-height) + 28px);
+  padding-right: max(16px, calc(env(safe-area-inset-right) + 16px));
+}
+
+html.native-ios .tabbar {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: var(--tabbar-height);
+  padding-bottom: max(18px, calc(env(safe-area-inset-bottom) + 10px));
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
+  border-radius: 0;
+}
+
 .screen {
   flex: 1;
   overflow-y: auto;
-  padding: 58px 20px 112px;
+  padding: var(--screen-top-pad) var(--screen-side-pad) var(--tabbar-clearance);
+  scroll-padding-top: var(--screen-top-pad);
+  scroll-padding-bottom: var(--tabbar-clearance);
   scrollbar-width: none;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .screen::-webkit-scrollbar {
@@ -274,6 +326,7 @@ label {
 .search-panel label,
 .form-grid label,
 .full-label {
+  min-width: 0;
   display: grid;
   gap: 7px;
   color: #3e4741;
@@ -284,6 +337,7 @@ label {
 input,
 textarea {
   width: 100%;
+  min-width: 0;
   border: 1px solid rgba(35, 47, 40, 0.14);
   border-radius: 14px;
   background: #f8faf7;
@@ -1542,10 +1596,10 @@ textarea:focus {
 }
 
 .tabbar {
-  height: 92px;
+  min-height: var(--tabbar-height);
   position: absolute;
   right: 12px;
-  bottom: 10px;
+  bottom: var(--tabbar-offset);
   left: 12px;
   justify-content: space-around;
   gap: 2px;
@@ -1952,6 +2006,7 @@ textarea:focus {
 
 .sheet-options,
 .form-grid {
+  min-width: 0;
   display: grid;
   gap: 9px;
 }
@@ -1981,6 +2036,7 @@ textarea:focus {
 }
 
 .form-actions {
+  flex-wrap: wrap;
   justify-content: flex-end;
   gap: 9px;
   margin-top: 16px;
@@ -2085,17 +2141,20 @@ textarea:focus {
   }
 
   .screen {
-    padding-top: max(24px, env(safe-area-inset-top));
-    padding-right: 16px;
-    padding-left: 16px;
-    padding-bottom: max(102px, calc(env(safe-area-inset-bottom) + 88px));
+    --screen-top-pad: max(34px, calc(env(safe-area-inset-top) + 12px));
+    --screen-side-pad: max(16px, env(safe-area-inset-left));
+    --tabbar-offset: 0px;
+    --tabbar-height: calc(92px + env(safe-area-inset-bottom));
+    --tabbar-clearance: calc(var(--tabbar-height) + 28px);
+    padding-right: max(16px, env(safe-area-inset-right));
   }
 
   .tabbar {
     right: 0;
     bottom: 0;
     left: 0;
-    padding-bottom: env(safe-area-inset-bottom);
+    min-height: var(--tabbar-height);
+    padding-bottom: max(18px, calc(env(safe-area-inset-bottom) + 10px));
     border-right: 0;
     border-bottom: 0;
     border-left: 0;
@@ -2116,11 +2175,22 @@ textarea:focus {
 
   .onboarding form {
     max-height: calc(100dvh - 24px);
-    padding: 20px 18px 18px;
+    padding: 20px 18px max(18px, env(safe-area-inset-bottom));
   }
 
   .onboarding h2 {
     font-size: 1.34rem;
+  }
+
+  .onboarding .form-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+  }
+
+  .onboarding .form-actions button {
+    width: 100%;
+    min-width: 0;
   }
 
   .report-frame {
@@ -2141,5 +2211,29 @@ textarea:focus {
 
   .report-section {
     overflow-x: auto;
+  }
+}
+
+@media (min-width: 700px) {
+  html.native-ios .screen {
+    width: min(100%, 860px);
+    margin: 0 auto;
+    --screen-top-pad: max(46px, calc(env(safe-area-inset-top) + 26px));
+    --screen-side-pad: max(28px, env(safe-area-inset-left));
+    --tabbar-height: 88px;
+    --tabbar-clearance: 146px;
+    padding-right: max(28px, env(safe-area-inset-right));
+  }
+
+  html.native-ios .tabbar {
+    width: min(560px, calc(100vw - 48px));
+    right: auto;
+    bottom: max(18px, env(safe-area-inset-bottom));
+    left: 50%;
+    min-height: var(--tabbar-height);
+    padding-bottom: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 30px;
+    transform: translateX(-50%);
   }
 }

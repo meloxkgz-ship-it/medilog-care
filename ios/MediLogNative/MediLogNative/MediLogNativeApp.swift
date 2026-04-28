@@ -10,7 +10,6 @@ struct MediLogNativeApp: App {
         WindowGroup {
             ZStack {
                 WebAppView(isLoaded: $webAppLoaded)
-                    .ignoresSafeArea()
 
                 if showLaunchScreen {
                     LaunchScreenView()
