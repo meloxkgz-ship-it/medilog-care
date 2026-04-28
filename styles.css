@@ -926,6 +926,7 @@ textarea:focus {
   position: absolute;
   right: -72px;
   bottom: -82px;
+  pointer-events: none;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.06);
 }
@@ -1071,6 +1072,42 @@ textarea:focus {
   color: rgba(255, 255, 255, 0.86);
   font-size: 0.78rem;
   font-weight: 900;
+}
+
+.premium-legal {
+  display: grid;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+  padding-top: 2px;
+}
+
+.premium-legal p {
+  max-width: none;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.68rem;
+  line-height: 1.35;
+}
+
+.premium-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.premium-links a {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 11px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.7rem;
+  font-weight: 900;
+  text-decoration: none;
 }
 
 .native-status {
