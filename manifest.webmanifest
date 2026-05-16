@@ -7,7 +7,7 @@
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#f4f6f2",
-  "theme_color": "#eef2ed",
+  "theme_color": "#0b100d",
   "categories": ["health", "medical", "productivity"],
   "icons": [
     {
