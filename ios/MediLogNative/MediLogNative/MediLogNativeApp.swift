@@ -5,19 +5,27 @@ struct MediLogNativeApp: App {
     @State private var webAppLoaded = false
     @State private var showLaunchScreen = true
     private let launchStartedAt = Date()
+    private let appBackground = Color(red: 0.03, green: 0.04, blue: 0.035)
 
     var body: some Scene {
         WindowGroup {
             ZStack {
+                appBackground
+                    .ignoresSafeArea(.all)
+
                 WebAppView(isLoaded: $webAppLoaded)
-                    .ignoresSafeArea()
+                    .ignoresSafeArea(.all)
 
                 if showLaunchScreen {
                     LaunchScreenView()
                         .transition(.opacity)
+                        .ignoresSafeArea(.all)
                 }
             }
-            .background(Color(red: 0.03, green: 0.04, blue: 0.035).ignoresSafeArea())
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(appBackground.ignoresSafeArea(.all))
+            .preferredColorScheme(.dark)
+            .statusBarHidden(false)
             .onChange(of: webAppLoaded) { _, loaded in
                 guard loaded else {
                     showLaunchScreen = true

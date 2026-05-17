@@ -33,6 +33,7 @@ struct WebAppView: UIViewRepresentable {
         context.coordinator.nativeBridge.webView = webView
         webView.navigationDelegate = context.coordinator
         webView.allowsBackForwardNavigationGestures = true
+        webView.overrideUserInterfaceStyle = .dark
         webView.isOpaque = false
         webView.backgroundColor = .clear
         webView.scrollView.backgroundColor = .clear

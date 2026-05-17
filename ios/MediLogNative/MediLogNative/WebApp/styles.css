@@ -162,6 +162,24 @@ html.native-ios body {
   background: var(--bg);
 }
 
+html.native-ios {
+  --bg: #080b0a;
+  --surface: rgba(19, 26, 22, 0.92);
+  --surface-solid: #111813;
+  --ink: #f5f8f4;
+  --muted: #a8b5ad;
+  --line: rgba(232, 245, 234, 0.1);
+  --accent: #86d79a;
+  --accent-strong: #b8efc0;
+  --accent-soft: rgba(134, 215, 154, 0.16);
+  --amber: #f3bb65;
+  --danger: #ff9c91;
+  --shadow: 0 22px 58px rgba(0, 0, 0, 0.34);
+  min-height: 100%;
+  background: var(--bg);
+  color-scheme: dark;
+}
+
 html.native-ios .ambient,
 html.native-ios .device::before {
   display: none;
@@ -169,20 +187,27 @@ html.native-ios .device::before {
 
 html.native-ios .device {
   width: 100vw;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100vh;
   height: 100dvh;
   max-width: none;
   border: 0;
   border-radius: 0;
+  background:
+    linear-gradient(180deg, rgba(16, 23, 19, 0.96), rgba(8, 12, 10, 0.98)),
+    var(--bg);
   box-shadow: none;
 }
 
 html.native-ios .screen {
-  --screen-top-pad: max(42px, calc(env(safe-area-inset-top) + 18px));
+  --screen-top-pad: max(44px, calc(env(safe-area-inset-top) + 18px));
   --screen-side-pad: max(16px, calc(env(safe-area-inset-left) + 16px));
   --tabbar-offset: 0px;
-  --tabbar-height: calc(92px + env(safe-area-inset-bottom));
+  --tabbar-height: calc(96px + env(safe-area-inset-bottom));
   --tabbar-clearance: calc(var(--tabbar-height) + 28px);
   padding-right: max(16px, calc(env(safe-area-inset-right) + 16px));
+  background: var(--bg);
 }
 
 html.native-ios .tabbar {
@@ -190,7 +215,7 @@ html.native-ios .tabbar {
   bottom: 0;
   left: 0;
   min-height: var(--tabbar-height);
-  padding-bottom: max(18px, calc(env(safe-area-inset-bottom) + 10px));
+  padding-bottom: max(22px, calc(env(safe-area-inset-bottom) + 12px));
   border-right: 0;
   border-bottom: 0;
   border-left: 0;

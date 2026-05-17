@@ -4,7 +4,7 @@
   "description": "MediLog hilft dir, Medikamenteneinnahmen, Wasser, Vorrat und Notizen privat zu dokumentieren. Die App arbeitet lokal, nutzt lokale Erinnerungen und erstellt Berichte fuer Arzt oder Apotheke. Der neue Dark Mode verbessert Lesbarkeit am Abend und die Oberflaeche bleibt auch auf iPad und iPhone ruhig bedienbar. MediLog ersetzt keine medizinische Beratung, stellt keine Diagnose und gibt keine Dosierungs- oder Therapieempfehlungen. Nutzungsbedingungen: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
   "keywords": "medikamente,medikationsplan,einnahme,tabletten,erinnerung,vorrat,pflege,wasser,arzt",
   "promotionalText": "Neu: besseres Onboarding, stabilere iPhone-Ansicht und weniger Layoutfehler.",
-  "whatsNew": "MediLog 1.2 behebt Zoom- und Anpassungsprobleme auf iPhone und iPad, verbessert das Onboarding mit klareren Datenschutz- und Free/Premium-Hinweisen und stabilisiert Schnellaktionen fuer Einnahmen, Wasser, Scan und aktive Profile. Deine Gesundheitsdaten bleiben lokal; MediLog ersetzt weiterhin keine medizinische Beratung.",
+  "whatsNew": "MediLog 1.2 behebt Zoom- und Safe-Area-Probleme auf iPhone und iPad, entfernt helle Systemraender oben und unten, verbessert das Onboarding mit klareren Datenschutz- und Free/Premium-Hinweisen und stabilisiert Schnellaktionen fuer Einnahmen, Wasser, Scan und aktive Profile. Deine Gesundheitsdaten bleiben lokal; MediLog ersetzt weiterhin keine medizinische Beratung.",
   "supportUrl": "https://meloxkgz-ship-it.github.io/medilog-care/support.html",
   "privacyPolicyUrl": "https://meloxkgz-ship-it.github.io/medilog-care/privacy.html",
   "marketingUrl": "https://meloxkgz-ship-it.github.io/medilog-care/landing.html",
