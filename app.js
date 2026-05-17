@@ -111,6 +111,23 @@ let activeVaultPin = null;
 let premiumProducts = DEFAULT_PREMIUM_PRODUCTS.map((product) => ({ ...product }));
 let selectedPremiumProductId = YEARLY_PREMIUM_PRODUCT_ID;
 
+function createFreshState() {
+  const nextState = structuredClone(seedState);
+  nextState.activeFilter = "all";
+  nextState.activeProfileId = "profile-self";
+  nextState.profiles = [];
+  nextState.medicines = [];
+  nextState.completedToday = {};
+  nextState.hydration = {};
+  nextState.history = [];
+  nextState.settings = {
+    ...seedState.settings,
+    onboarded: true,
+    privacyConsentAt: new Date().toISOString(),
+  };
+  return nextState;
+}
+
 const elements = {
   title: document.querySelector("#view-title"),
   date: document.querySelector("#current-date"),
@@ -1069,7 +1086,10 @@ document.addEventListener("click", (event) => {
   }
 
   const viewButton = event.target.closest("[data-view]");
-  if (viewButton) switchView(viewButton.dataset.view);
+  if (viewButton) {
+    switchView(viewButton.dataset.view);
+    return;
+  }
 
   const actionButton = event.target.closest("[data-action]");
   if (actionButton?.dataset.action === "open-medicine-form") {
@@ -1182,7 +1202,9 @@ document.querySelector("#quick-sheet form").addEventListener("submit", (event) =
   }
 
   if (!requirePrivacyConsent("Einnahme dokumentieren")) return;
-  const next = state.medicines.find((medicine) => !isDone(medicine.id));
+  const next = getProfileMedicines()
+    .filter((medicine) => !isDone(medicine.id))
+    .sort((a, b) => a.time.localeCompare(b.time))[0];
   if (!next) {
     showToast("Heute ist bereits alles dokumentiert");
     return;
@@ -1238,19 +1260,17 @@ elements.onboardingForm.addEventListener("submit", (event) => {
   const mode = data.get("mode");
   const profileName = data.get("profileName").trim();
   const profileId = mode === "care" ? "profile-care-primary" : "profile-self";
-  const existingProfile = state.profiles.find((profile) => profile.id === profileId);
-
-  if (existingProfile) {
-    existingProfile.name = profileName;
-    existingProfile.role = mode === "care" ? "Pflege" : "Selbst";
-  } else {
-    state.profiles.unshift({ id: profileId, name: profileName, role: mode === "care" ? "Pflege" : "Selbst" });
-  }
-
+  const premiumSnapshot = {
+    premiumActive: Boolean(state.settings.premiumActive),
+    premiumPreview: Boolean(state.settings.premiumPreview),
+    premiumSource: state.settings.premiumSource || "none",
+    premiumUntil: state.settings.premiumUntil || null,
+  };
+  state = createFreshState();
+  Object.assign(state.settings, premiumSnapshot);
+  state.profiles.push({ id: profileId, name: profileName, role: mode === "care" ? "Pflege" : "Selbst" });
   state.activeProfileId = profileId;
   state.settings.waterGoal = Number(data.get("waterGoal")) || 2000;
-  state.settings.onboarded = true;
-  state.settings.privacyConsentAt = new Date().toISOString();
 
   const medicineName = data.get("medicineName").trim();
   if (medicineName) {
@@ -1258,9 +1278,9 @@ elements.onboardingForm.addEventListener("submit", (event) => {
       id: createId(),
       profileId,
       name: medicineName,
-      dose: "laut eigenem Plan",
+      dose: data.get("medicineDose").trim() || "laut eigenem Plan",
       time: data.get("medicineTime") || "08:00",
-      stock: 14,
+      stock: Number(data.get("medicineStock")) || 14,
       refillAt: 7,
     });
   }
@@ -1312,6 +1332,7 @@ elements.profileForm.addEventListener("submit", (event) => {
 
 elements.scanForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  if (!requirePremium("Medikationsplan-Import")) return;
   if (!requirePrivacyConsent("Medikationsplan speichern")) {
     elements.scanSheet.close();
     return;

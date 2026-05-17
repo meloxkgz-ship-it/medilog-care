@@ -15,7 +15,14 @@ struct WebAppView: UIViewRepresentable {
         configuration.websiteDataStore = .default()
         configuration.userContentController.addUserScript(
             WKUserScript(
-                source: "document.documentElement.classList.add('native-ios');",
+                source: """
+                    document.documentElement.classList.add('native-ios');
+                    const viewport = document.querySelector('meta[name="viewport"]') || document.createElement('meta');
+                    viewport.name = 'viewport';
+                    viewport.content = 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover';
+                    if (!viewport.parentNode) document.head.appendChild(viewport);
+                    document.documentElement.style.touchAction = 'manipulation';
+                """,
                 injectionTime: .atDocumentStart,
                 forMainFrameOnly: true
             )
@@ -33,8 +40,12 @@ struct WebAppView: UIViewRepresentable {
         webView.scrollView.contentInsetAdjustmentBehavior = .never
         webView.scrollView.minimumZoomScale = 1
         webView.scrollView.maximumZoomScale = 1
+        webView.scrollView.zoomScale = 1
         webView.scrollView.bouncesZoom = false
+        webView.scrollView.alwaysBounceHorizontal = false
+        webView.scrollView.showsHorizontalScrollIndicator = false
         webView.scrollView.pinchGestureRecognizer?.isEnabled = false
+        webView.isMultipleTouchEnabled = false
 
         if let webRoot = Bundle.main.url(forResource: "WebApp", withExtension: nil),
            let indexURL = Bundle.main.url(forResource: "index", withExtension: "html", subdirectory: "WebApp") {
@@ -56,6 +67,18 @@ struct WebAppView: UIViewRepresentable {
 
         func viewForZooming(in scrollView: UIScrollView) -> UIView? {
             nil
+        }
+
+        func scrollViewDidZoom(_ scrollView: UIScrollView) {
+            if scrollView.zoomScale != 1 {
+                scrollView.setZoomScale(1, animated: false)
+            }
+        }
+
+        func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            if scrollView.contentOffset.x != 0 {
+                scrollView.contentOffset.x = 0
+            }
         }
 
         func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
@@ -81,6 +104,9 @@ struct WebAppView: UIViewRepresentable {
         }
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+            webView.scrollView.setZoomScale(1, animated: false)
+            webView.scrollView.contentOffset.x = 0
+            webView.evaluateJavaScript("document.scrollingElement && (document.scrollingElement.scrollLeft = 0);") { _, _ in }
             setLoaded(true)
         }
 

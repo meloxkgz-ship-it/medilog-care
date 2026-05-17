@@ -2,7 +2,10 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
     <meta
       name="description"
       content="MediLog ist ein lokaler Medikamenten-Tracker fuer Einnahmen, Erinnerungen, Vorrat und sichere Dokumentation."
@@ -11,7 +14,7 @@
     <meta name="theme-color" content="#0b100d" media="(prefers-color-scheme: dark)" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="MediLog" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <link rel="canonical" href="https://meloxkgz-ship-it.github.io/medilog-care/index.html" />
     <meta property="og:title" content="MediLog Care" />
     <meta property="og:description" content="Lokaler Medikamenten-, Pflege- und Wasser-Tracker mit Premium-Fokus." />
@@ -47,7 +50,7 @@
         </header>
 
         <section class="search-panel hidden" id="search-panel" aria-label="Suche">
-          <label for="search-input">Medikament, Notiz oder Uhrzeit suchen</label>
+          <label for="search-input">Medikament, Angabe oder Uhrzeit suchen</label>
           <input id="search-input" type="search" placeholder="z. B. morgens, Ramipril, Vorrat" />
         </section>
 
@@ -438,8 +441,14 @@
         <p class="kicker">Willkommen bei MediLog</p>
         <h2 id="onboarding-title">Dein privater Medikationsalltag, ruhig organisiert.</h2>
         <p>
-          Richte die App in einer Minute ein. Alle Angaben bleiben lokal und dienen nur der Dokumentation.
+          Richte die App in einer Minute mit echten Basisdaten ein. MediLog dokumentiert, erinnert und exportiert, gibt aber keine
+          medizinische Empfehlung.
         </p>
+        <div class="onboarding-points" aria-label="Wichtige Hinweise">
+          <span><i data-lucide="hard-drive"></i>Lokal auf diesem Geraet</span>
+          <span><i data-lucide="shield-check"></i>Keine Cloud, kein Tracking</span>
+          <span><i data-lucide="pill"></i>Free: 1 Profil, 2 Medis</span>
+        </div>
         <div class="choice-grid">
           <label><input type="radio" name="mode" value="self" checked /> <span>Für mich selbst</span></label>
           <label><input type="radio" name="mode" value="care" /> <span>Für Angehörige</span></label>
@@ -447,15 +456,17 @@
         <div class="form-grid">
           <label>Profilname<input name="profileName" required value="Ich" /></label>
           <label>Wasserziel<input name="waterGoal" required type="number" min="500" step="250" value="2000" /></label>
-          <label>Erstes Medikament<input name="medicineName" placeholder="optional" /></label>
+          <label>Erstes Medikament<input name="medicineName" placeholder="optional, z. B. Ramipril" /></label>
+          <label>Angabe laut Plan<input name="medicineDose" placeholder="z. B. 5 mg" /></label>
           <label>Uhrzeit<input name="medicineTime" type="time" value="08:00" /></label>
+          <label>Vorrat<input name="medicineStock" type="number" min="0" value="14" /></label>
         </div>
         <label class="consent-row">
           <input name="privacyConsent" type="checkbox" required />
           <span>Ich verstehe, dass ich besondere Gesundheitsdaten lokal auf diesem Geraet speichere und MediLog keine medizinische Beratung ersetzt.</span>
         </label>
         <div class="form-actions">
-          <button class="ghost-button" type="button" id="skip-onboarding">Demo ansehen</button>
+          <button class="ghost-button" type="button" id="skip-onboarding">Demo mit Beispielen</button>
           <button class="solid-button" type="submit">App einrichten</button>
         </div>
       </form>

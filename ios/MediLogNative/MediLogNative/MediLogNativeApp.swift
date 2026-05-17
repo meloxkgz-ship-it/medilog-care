@@ -10,13 +10,14 @@ struct MediLogNativeApp: App {
         WindowGroup {
             ZStack {
                 WebAppView(isLoaded: $webAppLoaded)
+                    .ignoresSafeArea()
 
                 if showLaunchScreen {
                     LaunchScreenView()
                         .transition(.opacity)
                 }
             }
-            .background(Color(red: 0.97, green: 0.98, blue: 0.95))
+            .background(Color(red: 0.03, green: 0.04, blue: 0.035).ignoresSafeArea())
             .onChange(of: webAppLoaded) { _, loaded in
                 guard loaded else {
                     showLaunchScreen = true
@@ -38,7 +39,7 @@ struct MediLogNativeApp: App {
 struct LaunchScreenView: View {
     var body: some View {
         ZStack {
-            Color(red: 0.97, green: 0.98, blue: 0.95)
+            Color(red: 0.03, green: 0.04, blue: 0.035)
                 .ignoresSafeArea()
 
             VStack(spacing: 18) {
@@ -74,11 +75,11 @@ struct LaunchScreenView: View {
                 VStack(spacing: 6) {
                     Text("MediLog")
                         .font(.system(size: 28, weight: .bold, design: .rounded))
-                        .foregroundStyle(Color(red: 0.08, green: 0.11, blue: 0.10))
+                        .foregroundStyle(Color(red: 0.96, green: 0.98, blue: 0.95))
 
                     Text("Lokal. Verschluesselt. Privat.")
                         .font(.system(size: 14, weight: .semibold, design: .rounded))
-                        .foregroundStyle(Color(red: 0.36, green: 0.42, blue: 0.38))
+                        .foregroundStyle(Color(red: 0.68, green: 0.76, blue: 0.70))
                 }
 
                 ProgressView()

@@ -28,8 +28,12 @@
 
 html,
 body {
+  width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+  overscroll-behavior-x: none;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -46,6 +50,7 @@ body {
   color: var(--ink);
   font-family: var(--sans);
   letter-spacing: 0;
+  touch-action: manipulation;
 }
 
 body::after {
@@ -150,6 +155,8 @@ button:active {
 }
 
 html.native-ios body {
+  width: 100vw;
+  min-height: 100dvh;
   display: block;
   overflow: hidden;
   background: var(--bg);
@@ -170,7 +177,7 @@ html.native-ios .device {
 }
 
 html.native-ios .screen {
-  --screen-top-pad: max(34px, calc(env(safe-area-inset-top) + 12px));
+  --screen-top-pad: max(42px, calc(env(safe-area-inset-top) + 18px));
   --screen-side-pad: max(16px, calc(env(safe-area-inset-left) + 16px));
   --tabbar-offset: 0px;
   --tabbar-height: calc(92px + env(safe-area-inset-bottom));
@@ -191,8 +198,11 @@ html.native-ios .tabbar {
 }
 
 .screen {
+  width: 100%;
+  max-width: 100%;
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: var(--screen-top-pad) var(--screen-side-pad) var(--tabbar-clearance);
   scroll-padding-top: var(--screen-top-pad);
   scroll-padding-bottom: var(--tabbar-clearance);
@@ -228,6 +238,7 @@ html.native-ios .tabbar {
 
 .app-header > div:first-child,
 .view,
+.screen > section,
 .panel,
 .protocol-card,
 .timeline-card,
@@ -501,15 +512,21 @@ textarea:focus {
   color: white;
   font-size: 0.86rem;
   font-weight: 900;
+  white-space: nowrap;
   box-shadow: 0 13px 24px rgba(5, 7, 6, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .primary-pill svg {
   width: 31px;
   height: 31px;
+  flex: 0 0 31px;
   padding: 7px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.12);
+}
+
+.protocol-card .primary-pill {
+  font-size: 0.8rem;
 }
 
 .medicine-visual {
@@ -625,6 +642,12 @@ textarea:focus {
   margin-bottom: 14px;
 }
 
+.section-heading > div,
+.text-action span,
+.link-action span {
+  min-width: 0;
+}
+
 .section-heading h2 {
   font-size: 1.1rem;
 }
@@ -671,6 +694,20 @@ textarea:focus {
   text-align: left;
 }
 
+.dose-main,
+.history-row div,
+.care-card > span:not(.care-avatar),
+.profile-card span,
+.stock-row span,
+.setting-row span,
+.refill-row span,
+.plan-option > span:first-child,
+.water-meter > div,
+.metric-tile,
+.reminder-grid div {
+  min-width: 0;
+}
+
 .dose-item:last-child {
   border-bottom: 0;
 }
@@ -695,6 +732,34 @@ textarea:focus {
 .med-card h3 {
   display: block;
   font-size: 0.92rem;
+}
+
+.dose-main strong,
+.dose-main span,
+.history-row strong,
+.history-row span,
+.care-card strong,
+.care-card small,
+.profile-card strong,
+.profile-card small,
+.stock-row strong,
+.stock-row small,
+.metric-tile p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dose-main strong,
+.dose-main span,
+.history-row strong,
+.history-row span,
+.care-card strong,
+.care-card small,
+.profile-card strong,
+.profile-card small,
+.stock-row strong,
+.stock-row small {
+  white-space: nowrap;
 }
 
 .dose-main span,
@@ -776,7 +841,7 @@ textarea:focus {
 
 .insight-grid {
   display: grid;
-  grid-template-columns: 1.35fr 0.9fr;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr);
   gap: 10px;
 }
 
@@ -798,7 +863,7 @@ textarea:focus {
   display: block;
   margin: 8px 0 4px;
   font-size: 1.75rem;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 
 .metric-tile.warning {
@@ -807,7 +872,7 @@ textarea:focus {
 
 .water-meter {
   display: grid;
-  grid-template-columns: 74px 1fr;
+  grid-template-columns: 68px minmax(0, 1fr);
   gap: 16px;
   align-items: center;
 }
@@ -851,10 +916,13 @@ textarea:focus {
   flex-wrap: wrap;
   gap: 6px;
   margin-top: 12px;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .water-dots span {
   width: 16px;
+  flex: 0 0 16px;
   height: 16px;
   border-radius: 50%;
   background: #dde8e2;
@@ -1502,6 +1570,11 @@ textarea:focus {
   font: 700 0.7rem var(--mono);
 }
 
+.history-row strong,
+.history-row span {
+  display: block;
+}
+
 .compliance-card svg {
   width: 32px;
   color: #a7d7b0;
@@ -1956,12 +2029,9 @@ textarea:focus {
 }
 
 .onboarding .form-actions {
-  position: sticky;
-  bottom: -20px;
-  margin-right: -20px;
-  margin-left: -20px;
-  padding: 12px 20px 2px;
-  background: linear-gradient(180deg, rgba(246, 248, 244, 0), #f4f7f2 24%);
+  margin-top: 14px;
+  padding-top: 2px;
+  background: transparent;
 }
 
 .onboarding-mark {
@@ -1992,6 +2062,32 @@ textarea:focus {
   line-height: 1.45;
 }
 
+.onboarding-points {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.onboarding-points span {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 12px;
+  border: 1px solid rgba(24, 31, 27, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #425047;
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+
+.onboarding-points svg {
+  width: 16px;
+  flex: 0 0 16px;
+  color: var(--accent-strong);
+}
+
 .choice-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2012,6 +2108,9 @@ textarea:focus {
 
 .choice-grid input {
   position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
   opacity: 0;
   pointer-events: none;
 }
@@ -2115,7 +2214,7 @@ textarea:focus {
 .toast {
   position: fixed;
   left: 50%;
-  bottom: 28px;
+  bottom: calc(var(--tabbar-offset) + var(--tabbar-height) + max(14px, env(safe-area-inset-bottom)));
   z-index: 4;
   max-width: min(360px, calc(100vw - 30px));
   padding: 12px 15px;
@@ -2200,9 +2299,10 @@ textarea:focus {
   .tabbar,
   .report-controls,
   .report-document,
-  .report-events div,
-  .choice-grid label,
-  .sheet-options button,
+    .report-events div,
+    .choice-grid label,
+    .onboarding-points span,
+    .sheet-options button,
   .ghost-button {
     border-color: rgba(232, 245, 234, 0.08);
     background: rgba(18, 25, 21, 0.9);
@@ -2371,10 +2471,6 @@ textarea:focus {
     background: rgba(0, 0, 0, 0.62);
   }
 
-  .onboarding .form-actions {
-    background: linear-gradient(180deg, rgba(13, 19, 15, 0), #0d130f 28%);
-  }
-
   .report-section th,
   .report-section td,
   .report-doc-header,
@@ -2440,12 +2536,12 @@ textarea:focus {
   }
 
   .screen {
-    --screen-top-pad: max(34px, calc(env(safe-area-inset-top) + 12px));
-    --screen-side-pad: max(16px, env(safe-area-inset-left));
+    --screen-top-pad: max(42px, calc(env(safe-area-inset-top) + 18px));
+    --screen-side-pad: max(16px, calc(env(safe-area-inset-left) + 16px));
     --tabbar-offset: 0px;
     --tabbar-height: calc(92px + env(safe-area-inset-bottom));
     --tabbar-clearance: calc(var(--tabbar-height) + 28px);
-    padding-right: max(16px, env(safe-area-inset-right));
+    padding-right: max(16px, calc(env(safe-area-inset-right) + 16px));
   }
 
   .tabbar {
@@ -2468,13 +2564,15 @@ textarea:focus {
 
   .onboarding {
     width: min(390px, calc(100vw - 24px));
-    max-height: calc(100dvh - 24px);
+    max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 24px);
+    margin-top: max(12px, env(safe-area-inset-top));
+    margin-bottom: max(12px, env(safe-area-inset-bottom));
     border-radius: 28px;
   }
 
   .onboarding form {
-    max-height: calc(100dvh - 24px);
-    padding: 20px 18px max(18px, env(safe-area-inset-bottom));
+    max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 24px);
+    padding: 20px 18px max(22px, calc(env(safe-area-inset-bottom) + 14px));
   }
 
   .onboarding h2 {
@@ -2484,7 +2582,6 @@ textarea:focus {
   .onboarding .form-actions {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    padding-bottom: max(10px, env(safe-area-inset-bottom));
   }
 
   .onboarding .form-actions button {
@@ -2510,6 +2607,85 @@ textarea:focus {
 
   .report-section {
     overflow-x: auto;
+  }
+}
+
+@media (max-width: 380px) {
+  .screen,
+  html.native-ios .screen {
+    --screen-side-pad: max(14px, calc(env(safe-area-inset-left) + 14px));
+    padding-right: max(14px, calc(env(safe-area-inset-right) + 14px));
+  }
+
+  h1 {
+    font-size: 1.78rem;
+  }
+
+  .protocol-card {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: auto;
+    padding: 22px 16px;
+  }
+
+  .protocol-card h2,
+  .protocol-card p:not(.kicker) {
+    max-width: 100%;
+  }
+
+  .medicine-visual {
+    min-height: 162px;
+    margin-top: 8px;
+  }
+
+  .glass-bottle {
+    right: 96px;
+    bottom: 8px;
+    transform: scale(0.88);
+    transform-origin: bottom right;
+  }
+
+  .glass-bottle.secondary {
+    right: 42px;
+    transform: scale(0.84);
+  }
+
+  .dose-wheel {
+    right: 10px;
+    bottom: 28px;
+    transform: scale(0.88) rotate(-10deg);
+    transform-origin: bottom right;
+  }
+
+  .insight-grid,
+  .reminder-grid,
+  .emergency-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .water-meter {
+    grid-template-columns: 62px minmax(0, 1fr);
+    gap: 13px;
+  }
+
+  .water-meter strong {
+    font-size: 1.55rem;
+  }
+
+  .setting-row,
+  .refill-row,
+  .plan-option,
+  .vault-actions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .plan-price {
+    text-align: left;
+  }
+
+  .completion-strip {
+    border-radius: 18px;
+    flex-wrap: wrap;
+    padding: 12px 14px;
   }
 }
 
