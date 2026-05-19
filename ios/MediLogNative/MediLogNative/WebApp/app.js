@@ -7,20 +7,26 @@ const DEFAULT_PREMIUM_PRODUCTS = [
   {
     id: YEARLY_PREMIUM_PRODUCT_ID,
     displayName: "Jaehrlich",
-    description: "Bester Wert fuer Alltag, Pflege und Export.",
+    storeTitle: "MediLog Premium Jaehrlich",
+    description: "Ein Jahr Premium fuer Alltag, Pflege, Export, Scan, Vault und Vorrat.",
     displayPrice: "29,99 €",
     period: "pro Jahr",
     featured: true,
     badge: "Bester Wert",
+    conversionNote: "Spart gegenueber monatlicher Zahlung",
+    cta: "Jaehrlich starten",
   },
   {
     id: MONTHLY_PREMIUM_PRODUCT_ID,
     displayName: "Monatlich",
-    description: "Flexibel starten und jederzeit kuendbar.",
+    storeTitle: "MediLog Premium Monatlich",
+    description: "Premium monatlich flexibel nutzen.",
     displayPrice: "3,99 €",
     period: "pro Monat",
     featured: false,
     badge: "Flexibel",
+    conversionNote: "Monatlich kuendbar",
+    cta: "Monatlich starten",
   },
 ];
 
@@ -163,6 +169,7 @@ const elements = {
   premiumPlans: document.querySelector("#premium-plans"),
   premiumButton: document.querySelector("#premium-button"),
   premiumButtonLabel: document.querySelector("#premium-button-label"),
+  premiumLegalSelected: document.querySelector("#premium-legal-selected"),
   privacyConsentStatus: document.querySelector("#privacy-consent-status"),
   waterFill: document.querySelector("#water-fill"),
   waterTotal: document.querySelector("#water-total"),
@@ -300,9 +307,15 @@ function setPremiumProducts(products) {
     .filter((product) => product?.id && defaultsById.has(product.id))
     .map((product) => {
       const fallback = defaultsById.get(product.id);
-      return { ...fallback, ...product, displayName: fallback.displayName, storeDisplayName: product.displayName || fallback.displayName };
+      return {
+        ...fallback,
+        ...product,
+        displayName: fallback.displayName,
+        storeDisplayName: product.displayName || fallback.storeTitle || fallback.displayName,
+        storeTitle: product.displayName || fallback.storeTitle || fallback.displayName,
+      };
     })
-    .sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)));
+    .sort((a, b) => productRank(a.id) - productRank(b.id));
 
   if (!premiumProducts.some((product) => product.id === selectedPremiumProductId)) {
     selectedPremiumProductId = premiumProducts[0]?.id || YEARLY_PREMIUM_PRODUCT_ID;
@@ -311,6 +324,19 @@ function setPremiumProducts(products) {
 
 function getSelectedPremiumProduct() {
   return premiumProducts.find((product) => product.id === selectedPremiumProductId) || premiumProducts[0] || DEFAULT_PREMIUM_PRODUCTS[0];
+}
+
+function productRank(productId) {
+  if (productId === YEARLY_PREMIUM_PRODUCT_ID) return 0;
+  if (productId === MONTHLY_PREMIUM_PRODUCT_ID) return 1;
+  return 9;
+}
+
+function selectedPremiumLegalText(product = getSelectedPremiumProduct()) {
+  const title = product.storeTitle || product.storeDisplayName || product.displayName || "MediLog Premium";
+  const price = product.displayPrice || "Preis laut App Store";
+  const period = product.period || "Abo-Laufzeit laut App Store";
+  return `Ausgewaehlter Tarif: ${title}, ${price} ${period}. Das Abo verlaengert sich automatisch, sofern es nicht mindestens 24 Stunden vor Ablauf gekuendigt wird.`;
 }
 
 function requirePremium(feature) {
@@ -533,9 +559,10 @@ function renderPremiumPlans() {
       const active = product.id === selected.id;
       return `
         <button class="plan-option ${active ? "active" : ""}" type="button" role="radio" aria-checked="${active}" data-premium-product-id="${escapeHtml(product.id)}">
+          <span class="plan-check" aria-hidden="true"><i data-lucide="${active ? "check" : "circle"}"></i></span>
           <span>
-            <strong>${escapeHtml(product.displayName)}</strong>
-            <small>${escapeHtml(product.badge || product.description || "")}</small>
+            <strong>${escapeHtml(product.storeTitle || product.storeDisplayName || product.displayName)}</strong>
+            <small>${escapeHtml(product.conversionNote || product.badge || product.description || "")}</small>
           </span>
           <span class="plan-price">
             <b>${escapeHtml(product.displayPrice)}</b>
@@ -559,8 +586,9 @@ function renderSettings() {
   elements.premiumButtonLabel.textContent = isPremium()
     ? "Premium aktiv"
     : nativeCapabilities.platform === "ios"
-    ? `${getSelectedPremiumProduct().displayName} kaufen`
+    ? getSelectedPremiumProduct().cta || `${getSelectedPremiumProduct().displayName} kaufen`
     : `${getSelectedPremiumProduct().displayName} Webvorschau`;
+  elements.premiumLegalSelected.textContent = selectedPremiumLegalText();
   elements.privacyConsentStatus.textContent = state.settings.privacyConsentAt ? "bestaetigt" : "offen";
   document.querySelector("#native-status").textContent =
     nativeCapabilities.platform === "ios" ? "iOS: Keychain, lokale Notifications, QR-Scan" : "Web/PWA: Browser-Funktionen";

@@ -35,6 +35,16 @@
               "description": "Premium access for family mode, stock tracking, export, scan, vault and reliable reminders.",
               "displayName": "MediLog Premium Monthly",
               "locale": "en_US"
+            },
+            {
+              "description": "Acceso premium para modo familiar, inventario, exportacion, escaneo, caja fuerte y recordatorios fiables.",
+              "displayName": "MediLog Premium Mensual",
+              "locale": "es_ES"
+            },
+            {
+              "description": "Acces Premium pour le mode familial, le stock, l'export, le scan, le coffre et les rappels fiables.",
+              "displayName": "MediLog Premium Mensuel",
+              "locale": "fr_FR"
             }
           ],
           "productID": "com.medilog.care.premium.monthly",
@@ -61,6 +71,16 @@
               "description": "One year of premium access for family mode, stock tracking, export, scan, vault and reliable reminders.",
               "displayName": "MediLog Premium Yearly",
               "locale": "en_US"
+            },
+            {
+              "description": "Un ano de acceso premium para modo familiar, inventario, exportacion, escaneo, caja fuerte y recordatorios fiables.",
+              "displayName": "MediLog Premium Anual",
+              "locale": "es_ES"
+            },
+            {
+              "description": "Un an d'acces Premium pour le mode familial, le stock, l'export, le scan, le coffre et les rappels fiables.",
+              "displayName": "MediLog Premium Annuel",
+              "locale": "fr_FR"
             }
           ],
           "productID": "com.medilog.care.premium.yearly",
@@ -74,6 +94,6 @@
   ],
   "version": {
     "major": 1,
-    "minor": 2
+    "minor": 3
   }
 }

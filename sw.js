@@ -1,4 +1,4 @@
-const CACHE_NAME = "medilog-premium-v9";
+const CACHE_NAME = "medilog-premium-v10";
 const APP_SHELL = [
   "./",
   "./index.html",

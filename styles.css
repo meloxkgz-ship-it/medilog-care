@@ -1002,6 +1002,7 @@ textarea:focus {
   gap: 16px;
   margin-top: 20px;
   padding: 22px;
+  max-width: 100%;
   overflow: hidden;
   position: relative;
   border-radius: 30px;
@@ -1027,10 +1028,11 @@ textarea:focus {
 .premium-card h2 {
   margin-bottom: 8px;
   font-size: 1.55rem;
+  overflow-wrap: anywhere;
 }
 
 .premium-card p {
-  max-width: 280px;
+  max-width: 100%;
   color: rgba(255, 255, 255, 0.72);
   font-size: 0.84rem;
   line-height: 1.42;
@@ -1041,13 +1043,87 @@ textarea:focus {
 .premium-plans {
   display: grid;
   gap: 10px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.premium-proof,
+.premium-compare {
+  display: grid;
+  position: relative;
+  z-index: 1;
+  gap: 8px;
+}
+
+.premium-proof {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.premium-proof span,
+.premium-compare div {
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.premium-proof span {
+  display: grid;
+  gap: 2px;
+  min-height: 60px;
+  align-content: center;
+  padding: 10px;
+  border-radius: 18px;
+}
+
+.premium-proof strong,
+.premium-proof small,
+.premium-compare span,
+.premium-compare strong {
+  display: block;
+  min-width: 0;
+}
+
+.premium-proof strong {
+  color: #f8fff8;
+  font-size: 0.78rem;
+  font-weight: 950;
+  overflow-wrap: anywhere;
+}
+
+.premium-proof small,
+.premium-compare span {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.62rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.premium-compare {
+  gap: 9px;
+}
+
+.premium-compare div {
+  display: grid;
+  gap: 5px;
+  padding: 12px 13px;
+  border-radius: 18px;
+}
+
+.premium-compare strong {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.76rem;
+  line-height: 1.28;
 }
 
 .plan-option {
+  min-width: 0;
+  max-width: 100%;
   min-height: 76px;
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 14px;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 12px;
   align-items: center;
   padding: 14px;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1058,9 +1134,30 @@ textarea:focus {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
+.plan-check {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.plan-check svg {
+  width: 15px;
+  height: 15px;
+}
+
 .plan-option.active {
   border-color: rgba(156, 232, 167, 0.7);
   background: rgba(232, 245, 234, 0.14);
+}
+
+.plan-option.active .plan-check {
+  background: #b8efc0;
+  color: #07100b;
 }
 
 .plan-option strong,
@@ -1083,15 +1180,16 @@ textarea:focus {
 }
 
 .plan-price {
-  text-align: right;
+  grid-column: 2;
+  text-align: left;
 }
 
 .plan-price b {
   font-family: var(--sans);
   font-size: 1.05rem;
   letter-spacing: 0;
-  white-space: nowrap;
   font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
 }
 
 .premium-price {
@@ -1184,6 +1282,7 @@ textarea:focus {
   color: rgba(255, 255, 255, 0.62);
   font-size: 0.68rem;
   line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
 .premium-links {
@@ -2703,8 +2802,16 @@ textarea:focus {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .plan-check {
+    display: none;
+  }
+
   .plan-price {
     text-align: left;
+  }
+
+  .premium-proof {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .completion-strip {

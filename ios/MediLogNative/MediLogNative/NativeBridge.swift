@@ -910,17 +910,20 @@ private struct NativePremiumStoreView: View {
 
     private let privacyURL = URL(string: "https://meloxkgz-ship-it.github.io/medilog-care/privacy.html")!
     private let termsURL = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!
+    private var storeCopy: PremiumStoreCopy {
+        PremiumStoreCopy.current
+    }
 
     var body: some View {
         NavigationStack {
             SubscriptionStoreView(productIDs: orderedProductIds) {
                 VStack(alignment: .leading, spacing: 12) {
-                    Text("MediLog Premium")
+                    Text(storeCopy.title)
                         .font(.largeTitle.bold())
-                    Text("Familienmodus, Vorrat, Export, Vault, QR-Scan und zuverlaessige Erinnerungen.")
+                    Text(storeCopy.subtitle)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
-                    Label("Lokal, verschluesselt, keine Cloud", systemImage: "lock.shield")
+                    Label(storeCopy.privacyLine, systemImage: "lock.shield")
                         .font(.footnote.weight(.semibold))
                         .foregroundStyle(.green)
                 }
@@ -934,11 +937,11 @@ private struct NativePremiumStoreView: View {
             .onInAppPurchaseCompletion { product, result in
                 await onPurchaseCompletion(product, result)
             }
-            .navigationTitle("Premium")
+            .navigationTitle(storeCopy.navigationTitle)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Schliessen") {
+                    Button(storeCopy.closeTitle) {
                         Task { await onClose() }
                     }
                 }
@@ -952,6 +955,52 @@ private struct NativePremiumStoreView: View {
         else { return productIds }
 
         return [selectedProductId] + productIds.filter { $0 != selectedProductId }
+    }
+}
+
+private struct PremiumStoreCopy {
+    let title: String
+    let subtitle: String
+    let privacyLine: String
+    let navigationTitle: String
+    let closeTitle: String
+
+    static var current: PremiumStoreCopy {
+        let language = Locale.current.language.languageCode?.identifier ?? "de"
+        switch language {
+        case "en":
+            return PremiumStoreCopy(
+                title: "MediLog Premium",
+                subtitle: "Family mode, stock tracking, export, vault, QR scan and reliable reminders.",
+                privacyLine: "Local, encrypted, no cloud",
+                navigationTitle: "Premium",
+                closeTitle: "Close"
+            )
+        case "es":
+            return PremiumStoreCopy(
+                title: "MediLog Premium",
+                subtitle: "Modo familiar, inventario, exportacion, caja fuerte, QR y recordatorios fiables.",
+                privacyLine: "Local, cifrado, sin nube",
+                navigationTitle: "Premium",
+                closeTitle: "Cerrar"
+            )
+        case "fr":
+            return PremiumStoreCopy(
+                title: "MediLog Premium",
+                subtitle: "Mode famille, stock, export, coffre, scan QR et rappels fiables.",
+                privacyLine: "Local, chiffre, sans cloud",
+                navigationTitle: "Premium",
+                closeTitle: "Fermer"
+            )
+        default:
+            return PremiumStoreCopy(
+                title: "MediLog Premium",
+                subtitle: "Familienmodus, Vorrat, Export, Vault, QR-Scan und zuverlaessige Erinnerungen.",
+                privacyLine: "Lokal, verschluesselt, keine Cloud",
+                navigationTitle: "Premium",
+                closeTitle: "Schliessen"
+            )
+        }
     }
 }
 
