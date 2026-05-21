@@ -4,7 +4,7 @@
   "description": "MediLog te ayuda a documentar de forma privada la toma de medicamentos, agua, inventario y notas. Free es un pequeno modo de prueba; Premium anade perfiles familiares y de cuidado, gestion de inventario y reposicion, informes de exportacion, preparacion para importar QR/plan de medicacion, caja fuerte y recordatorios locales fiables. La app guarda los datos localmente, sin nube y sin seguimiento. Las suscripciones StoreKit son gestionadas por Apple y se pueden cancelar en cualquier momento en los ajustes de cuenta del App Store. MediLog no sustituye el consejo medico, no diagnostica y no ofrece recomendaciones de dosis ni tratamiento. Terminos de uso: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
   "keywords": "medicacion,pastillas,recordatorio,control,reposicion,cuidado,agua,medico",
   "promotionalText": "Premium mas claro: familia, inventario, exportacion, caja fuerte y recordatorios locales.",
-  "whatsNew": "MediLog 1.3 mejora la vista Premium, aclara los limites de Free y Premium, anade detalles de suscripcion en la zona de compra y estabiliza el diseno en iPhone. Tus datos de salud permanecen locales; MediLog no sustituye el consejo medico.",
+  "whatsNew": "MediLog 1.4 anade una guia inicial mas clara, convierte tarjetas de medicacion, calendario, metricas y estados vacios en acciones directas, y mejora la vista Premium con limites Free/Premium mas claros. Tus datos permanecen locales; MediLog no sustituye el consejo medico.",
   "supportUrl": "https://meloxkgz-ship-it.github.io/medilog-care/support.html",
   "privacyPolicyUrl": "https://meloxkgz-ship-it.github.io/medilog-care/privacy.html",
   "marketingUrl": "https://meloxkgz-ship-it.github.io/medilog-care/landing.html",

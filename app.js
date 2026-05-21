@@ -116,6 +116,7 @@ let state = loadState();
 let activeVaultPin = null;
 let premiumProducts = DEFAULT_PREMIUM_PRODUCTS.map((product) => ({ ...product }));
 let selectedPremiumProductId = YEARLY_PREMIUM_PRODUCT_ID;
+let selectedMedicineId = null;
 
 function createFreshState() {
   const nextState = structuredClone(seedState);
@@ -183,6 +184,8 @@ const elements = {
   reportPreview: document.querySelector("#report-preview"),
   reportRange: document.querySelector("#report-range"),
   medicineSheet: document.querySelector("#medicine-sheet"),
+  medicineDetailSheet: document.querySelector("#medicine-detail-sheet"),
+  medicineDetailContent: document.querySelector("#medicine-detail-content"),
   noteSheet: document.querySelector("#note-sheet"),
   profileSheet: document.querySelector("#profile-sheet"),
   scanSheet: document.querySelector("#scan-sheet"),
@@ -495,14 +498,14 @@ function renderMedicines() {
     .map((medicine) => {
       const low = Number(medicine.stock) <= Number(medicine.refillAt || 7);
       return `
-        <article class="med-card">
+        <button class="med-card" type="button" data-medicine-id="${medicine.id}" aria-label="${escapeHtml(medicine.name)} anzeigen">
           <div class="med-visual" aria-hidden="true"></div>
           <div>
             <h3>${escapeHtml(medicine.name)}</h3>
             <p>${escapeHtml(medicine.dose)} · ${medicine.time}</p>
           </div>
           <span class="stock-pill ${low ? "low" : ""}">${medicine.stock} Einheiten</span>
-        </article>
+        </button>
       `;
     })
     .join("");
@@ -531,7 +534,7 @@ function renderProfiles() {
 
 function renderStock() {
   if (!isPremium()) {
-    elements.stockList.innerHTML = `<div class="stock-row locked" data-premium-feature="Vorratsmanagement"><i data-lucide="lock"></i><span><strong>Vorratsmanagement</strong><small>Nachkauf, Grenzen und Liste sind Premium.</small></span></div>`;
+    elements.stockList.innerHTML = `<button class="stock-row locked" type="button" data-premium-feature="Vorratsmanagement"><i data-lucide="lock"></i><span><strong>Vorratsmanagement</strong><small>Nachkauf, Grenzen und Liste sind Premium.</small></span></button>`;
     return;
   }
 
@@ -550,6 +553,31 @@ function renderStock() {
           )
           .join("")
       : `<div class="stock-row calm"><i data-lucide="circle-check"></i><span><strong>Alles im gruenen Bereich</strong><small>Keine Nachkauf-Erinnerung fuer dieses Profil.</small></span></div>`;
+}
+
+function openMedicineDetail(medicineId) {
+  const medicine = state.medicines.find((item) => item.id === medicineId);
+  if (!medicine) return;
+  selectedMedicineId = medicineId;
+  const low = Number(medicine.stock) <= Number(medicine.refillAt || 7);
+  elements.medicineDetailContent.innerHTML = `
+    <div class="detail-hero">
+      <div class="med-visual" aria-hidden="true"></div>
+      <div>
+        <p class="kicker">Eigene Angabe</p>
+        <h3>${escapeHtml(medicine.name)}</h3>
+        <span>${escapeHtml(medicine.dose)} · ${medicine.time}</span>
+      </div>
+    </div>
+    <div class="detail-grid">
+      <div><span>Status</span><strong>${isDone(medicine.id) ? "Heute erledigt" : "Heute offen"}</strong></div>
+      <div><span>Vorrat</span><strong>${medicine.stock} Einheiten</strong></div>
+      <div><span>Nachkauf ab</span><strong>${medicine.refillAt || 7}</strong></div>
+      <div><span>Hinweis</span><strong>${low ? "Vorrat niedrig" : "ausreichend"}</strong></div>
+    </div>
+  `;
+  elements.medicineDetailSheet.showModal();
+  refreshIcons();
 }
 
 function renderPremiumPlans() {
@@ -697,11 +725,12 @@ function renderCalendar() {
     const doneCount = Object.entries(state.completedToday[key] || {}).filter(
       ([medicineId, done]) => profileMedicineIds.has(medicineId) && done,
     ).length;
+    const total = Math.max(1, getProfileMedicines().length);
     return `
-      <div class="day-pill ${doneCount > 0 ? "done" : ""}">
+      <button class="day-pill ${doneCount > 0 ? "done" : ""}" type="button" data-day-key="${key}" aria-label="${doneCount} von ${total} Einnahmen am ${day.toLocaleDateString("de-DE")} erledigt">
         <span>${formatter.format(day)}</span>
         <strong>${String(day.getDate()).padStart(2, "0")}</strong>
-      </div>
+      </button>
     `;
   }).join("");
 }
@@ -1128,8 +1157,24 @@ document.addEventListener("click", (event) => {
     }
   }
   if (actionButton?.dataset.action === "open-dose-form") elements.quickSheet.showModal();
+  if (actionButton?.dataset.action === "open-reminder-settings") {
+    switchView("schutz");
+    document.querySelector(".settings-panel")?.scrollIntoView({ behavior: "smooth", block: "center" });
+    showToast("Reminder findest du in den Tracking-Einstellungen");
+  }
+  if (actionButton?.dataset.action === "open-report") {
+    if (!requirePremium("Arzt-/Apothekenbericht")) return;
+    renderReport();
+    elements.reportSheet.showModal();
+  }
   if (actionButton?.dataset.action === "open-profile-form" && requirePremium("mehrere Pflegeprofile")) elements.profileSheet.showModal();
   if (actionButton?.dataset.action === "open-scan-sheet" && requirePremium("Medikationsplan-QR-Import")) elements.scanSheet.showModal();
+
+  const medicineCard = event.target.closest("[data-medicine-id]");
+  if (medicineCard) {
+    openMedicineDetail(medicineCard.dataset.medicineId);
+    return;
+  }
 
   const doseButton = event.target.closest("[data-dose-id]");
   if (doseButton) {
@@ -1165,6 +1210,15 @@ document.addEventListener("click", (event) => {
     saveState();
     render();
     showToast("Vorrat aktualisiert");
+  }
+
+  const dayButton = event.target.closest("[data-day-key]");
+  if (dayButton) {
+    const entries = state.completedToday[dayButton.dataset.dayKey] || {};
+    const ids = new Set(getProfileMedicines().map((medicine) => medicine.id));
+    const done = Object.entries(entries).filter(([medicineId, value]) => ids.has(medicineId) && value).length;
+    showToast(`${done} Einnahmen an diesem Tag dokumentiert`);
+    return;
   }
 
   const closeButton = event.target.closest("[data-close]");
@@ -1245,6 +1299,39 @@ document.querySelector("#quick-sheet form").addEventListener("submit", (event) =
   void syncNativeReminders({ silent: true });
   render();
   showToast("Naechste offene Einnahme dokumentiert");
+});
+
+document.querySelector("#medicine-detail-sheet form").addEventListener("submit", (event) => {
+  const medicine = state.medicines.find((item) => item.id === selectedMedicineId);
+  if (!medicine) return;
+  const action = event.submitter?.value;
+
+  if (action === "done") {
+    if (!requirePrivacyConsent("Einnahme dokumentieren")) return;
+    const nextState = !isDone(medicine.id);
+    setDone(medicine.id, nextState);
+    medicine.stock = Math.max(0, Number(medicine.stock) + (nextState ? -1 : 1));
+    addHistory(nextState ? "done" : "note", medicine.name, nextState ? `${medicine.time} dokumentiert` : "Markierung entfernt");
+    saveState();
+    void syncNativeReminders({ silent: true });
+    render();
+    showToast(nextState ? "Einnahme dokumentiert" : "Einnahme wieder offen");
+  }
+
+  if (action === "restock") {
+    if (!requirePremium("Vorratsmanagement")) return;
+    if (!requirePrivacyConsent("Vorrat aktualisieren")) return;
+    medicine.stock = Number(medicine.stock) + 14;
+    addHistory("note", `${medicine.name} Vorrat aktualisiert`, `${medicine.stock} Einheiten`);
+    saveState();
+    render();
+    showToast("Vorrat aktualisiert");
+  }
+
+  if (action === "note") {
+    if (!requirePrivacyConsent("Notiz erfassen")) return;
+    window.setTimeout(() => elements.noteSheet.showModal(), 80);
+  }
 });
 
 elements.medicineForm.addEventListener("submit", (event) => {

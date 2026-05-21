@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
     <meta
       name="description"
@@ -89,6 +89,30 @@
             </div>
           </article>
 
+          <section class="panel guide-panel" aria-labelledby="guide-title">
+            <div class="section-heading">
+              <div>
+                <p class="kicker">Erste Schritte</p>
+                <h2 id="guide-title">In 2 Minuten startklar</h2>
+              </div>
+              <span class="status good">Guide</span>
+            </div>
+            <div class="guide-actions">
+              <button type="button" data-action="open-medicine-form">
+                <i data-lucide="pill"></i>
+                <span><strong>1. Medikament erfassen</strong><small>Name, Angabe laut Plan, Uhrzeit und Vorrat.</small></span>
+              </button>
+              <button type="button" data-action="open-reminder-settings">
+                <i data-lucide="bell-ring"></i>
+                <span><strong>2. Erinnerung pruefen</strong><small>Lokale Reminder aktivieren und Abstand setzen.</small></span>
+              </button>
+              <button type="button" data-action="open-report">
+                <i data-lucide="file-text"></i>
+                <span><strong>3. Bericht vorbereiten</strong><small>Export fuer Arzt oder Apotheke testen.</small></span>
+              </button>
+            </div>
+          </section>
+
           <section class="panel care-panel">
             <div class="section-heading">
               <div>
@@ -116,6 +140,7 @@
               <i data-lucide="calendar-plus"></i>
               <strong>Keine Einnahmen fuer diesen Filter</strong>
               <span>Neue Medikamente oder Zeiten kannst du ueber den Plus-Button erfassen.</span>
+              <button class="ghost-button" type="button" data-action="open-medicine-form">Medikament Erfassen</button>
             </div>
             <div class="completion-strip">
               <span id="completion-text">0 von 0 erledigt</span>
@@ -124,16 +149,16 @@
           </section>
 
           <section class="insight-grid">
-            <article class="metric-tile">
+            <button class="metric-tile" type="button" data-action="open-dose-form">
               <span>Naechste</span>
               <strong id="next-dose">--:--</strong>
               <p id="next-dose-name">Keine offene Einnahme</p>
-            </article>
-            <article class="metric-tile warning">
+            </button>
+            <button class="metric-tile warning" type="button" data-view="bibliothek">
               <span>Vorrat</span>
               <strong id="low-stock-count">0</strong>
               <p>niedrige Bestaende</p>
-            </article>
+            </button>
           </section>
 
           <section class="panel hydration-panel">
@@ -238,6 +263,7 @@
             <i data-lucide="pill"></i>
             <strong>Noch keine Medikamente</strong>
             <span>Erfasse zuerst dein eigenes Medikament und die Einnahmezeit.</span>
+            <button class="ghost-button" type="button" data-action="open-medicine-form">Medikament Erfassen</button>
           </div>
           <section class="panel stock-panel">
             <div class="section-heading">
@@ -369,9 +395,9 @@
               <span class="status good">lokal</span>
             </div>
             <div class="privacy-list">
-              <label><input type="checkbox" checked disabled /> Gesundheitsdaten bleiben lokal auf diesem Geraet.</label>
-              <label><input type="checkbox" checked disabled /> iOS speichert verschluesselt mit Keychain/AES-GCM, Web optional mit PIN-Vault.</label>
-              <label><input type="checkbox" checked disabled /> Export nur manuell durch dich.</label>
+              <div><i data-lucide="check"></i><span>Gesundheitsdaten bleiben lokal auf diesem Geraet.</span></div>
+              <div><i data-lucide="check"></i><span>iOS speichert verschluesselt mit Keychain/AES-GCM, Web optional mit PIN-Vault.</span></div>
+              <div><i data-lucide="check"></i><span>Export nur manuell durch dich.</span></div>
             </div>
           </section>
           <section class="panel">
@@ -525,7 +551,7 @@
     <dialog class="sheet" id="medicine-sheet" aria-labelledby="medicine-title">
       <form id="medicine-form">
         <div class="sheet-handle"></div>
-        <h2 id="medicine-title">Medikament erfassen</h2>
+            <h2 id="medicine-title">Medikament erfassen</h2>
         <div class="form-grid">
           <label>Name<input name="name" required placeholder="z. B. Ramipril" /></label>
           <label>Angabe laut Plan<input name="dose" required placeholder="z. B. 5 mg" /></label>
@@ -536,6 +562,19 @@
         <div class="form-actions">
           <button class="ghost-button" type="button" data-close="medicine-sheet">Abbrechen</button>
           <button class="solid-button" type="submit">Speichern</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="sheet" id="medicine-detail-sheet" aria-labelledby="medicine-detail-title">
+      <form method="dialog">
+        <div class="sheet-handle"></div>
+        <h2 id="medicine-detail-title">Medikament</h2>
+        <div class="medicine-detail" id="medicine-detail-content"></div>
+        <div class="sheet-options compact">
+          <button value="done" type="submit"><i data-lucide="check-circle-2"></i>Einnahme Heute Markieren</button>
+          <button value="restock" type="submit"><i data-lucide="shopping-bag"></i>Vorrat +14</button>
+          <button value="note" type="submit"><i data-lucide="notebook-pen"></i>Notiz Speichern</button>
         </div>
       </form>
     </dialog>
