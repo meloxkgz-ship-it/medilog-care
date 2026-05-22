@@ -67,6 +67,26 @@ body.senior {
   font-size: 112%;
 }
 
+html[dir="rtl"] .app-header,
+html[dir="rtl"] .section-heading,
+html[dir="rtl"] .dose-item,
+html[dir="rtl"] .care-card,
+html[dir="rtl"] .profile-card,
+html[dir="rtl"] .stock-row,
+html[dir="rtl"] .setting-row,
+html[dir="rtl"] .history-row,
+html[dir="rtl"] .premium-compare div,
+html[dir="rtl"] .privacy-rights div,
+html[dir="rtl"] .guide-actions button {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] .dose-chevron,
+html[dir="rtl"] [data-lucide="chevron-right"] {
+  transform: scaleX(-1);
+}
+
 body.senior .dose-item,
 body.senior .sheet-options button,
 body.senior .profile-card,

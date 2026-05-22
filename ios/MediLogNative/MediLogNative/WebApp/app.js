@@ -30,6 +30,269 @@ const DEFAULT_PREMIUM_PRODUCTS = [
   },
 ];
 
+const SUPPORTED_LOCALES = [
+  { code: "de-DE", short: "DE", label: "Deutsch", dir: "ltr" },
+  { code: "en-US", short: "EN", label: "English", dir: "ltr" },
+  { code: "es-ES", short: "ES", label: "Espanol", dir: "ltr" },
+  { code: "fr-FR", short: "FR", label: "Francais", dir: "ltr" },
+  { code: "it-IT", short: "IT", label: "Italiano", dir: "ltr" },
+  { code: "pt-BR", short: "PT", label: "Portugues (Brasil)", dir: "ltr" },
+  { code: "nl-NL", short: "NL", label: "Nederlands", dir: "ltr" },
+  { code: "pl-PL", short: "PL", label: "Polski", dir: "ltr" },
+  { code: "tr-TR", short: "TR", label: "Turkce", dir: "ltr" },
+  { code: "ar-SA", short: "AR", label: "العربية", dir: "rtl" },
+  { code: "ja-JP", short: "JA", label: "日本語", dir: "ltr" },
+  { code: "ko-KR", short: "KO", label: "한국어", dir: "ltr" },
+  { code: "zh-Hans", short: "ZH", label: "简体中文", dir: "ltr" },
+];
+
+const I18N = {
+  "en-US": {
+    "Heute": "Today",
+    "Für dich": "For You",
+    "Pläne": "Plans",
+    "Bibliothek": "Meds",
+    "Verlauf": "History",
+    "Einstellungen": "Settings",
+    "Suchen": "Search",
+    "Einstellungen und Schutz": "Settings and protection",
+    "Medikament, Angabe oder Uhrzeit suchen": "Search medication, dose or time",
+    "z. B. morgens, Ramipril, Vorrat": "e.g. morning, Ramipril, stock",
+    "Offen": "Open",
+    "Vorrat niedrig": "Low stock",
+    "Aktueller Plan": "Current Plan",
+    "Herz & Blutdruck": "Heart & Blood Pressure",
+    "Privates Einnahmeprotokoll mit lokalen Erinnerungen. Keine Dosierungsberatung.": "Private medication log with local reminders. No dosage advice.",
+    "Aktiv": "Active",
+    "Plan ansehen": "View Plan",
+    "Erste Schritte": "First Steps",
+    "In 2 Minuten startklar": "Ready in 2 Minutes",
+    "Guide": "Guide",
+    "1. Medikament erfassen": "1. Add Medication",
+    "Name, Angabe laut Plan, Uhrzeit und Vorrat.": "Name, planned dose, time and stock.",
+    "2. Erinnerung pruefen": "2. Check Reminder",
+    "Lokale Reminder aktivieren und Abstand setzen.": "Enable local reminders and set delay.",
+    "3. Bericht vorbereiten": "3. Prepare Report",
+    "Export fuer Arzt oder Apotheke testen.": "Test export for doctor or pharmacy.",
+    "Pflege-Cockpit": "Care Cockpit",
+    "Alle im Blick": "Everything in View",
+    "Profile": "Profiles",
+    "Einnahmen": "Doses",
+    "Eintragen": "Log",
+    "Keine Einnahmen fuer diesen Filter": "No doses for this filter",
+    "Neue Medikamente oder Zeiten kannst du ueber den Plus-Button erfassen.": "Use the plus button to add medications or times.",
+    "Medikament Erfassen": "Add Medication",
+    "Naechste": "Next",
+    "Keine offene Einnahme": "No open dose",
+    "Vorrat": "Stock",
+    "niedrige Bestaende": "low items",
+    "Wasser": "Water",
+    "Trinken heute": "Water today",
+    "von 2,0 L Tagesziel": "of 2.0 L daily goal",
+    "Erinnerungen": "Reminders",
+    "Kontrollzentrum": "Control Center",
+    "Aktivieren": "Enable",
+    "Status": "Status",
+    "Eskaliert nach": "Delay after",
+    "Heute offen": "Open today",
+    "Therapieplan": "Treatment Plan",
+    "Privat dokumentiert": "Privately documented",
+    "Alle Angaben beruhen auf deinem eigenen Plan. Die App veraendert keine Dosis und bewertet keine Therapie.": "All entries are based on your own plan. The app does not change doses or evaluate therapy.",
+    "Regeln fuer Erinnerungen": "Reminder Rules",
+    "Pruefen": "Check",
+    "Erinnerungen sind lokal und koennen jederzeit deaktiviert werden.": "Reminders are local and can be disabled anytime.",
+    "Exportdaten enthalten Gesundheitsdaten und sollten geschuetzt geteilt werden.": "Exports contain health data and should be shared carefully.",
+    "Medizinische Entscheidungen bleiben bei Arzt, Apotheke oder Notdienst.": "Medical decisions stay with your doctor, pharmacy or emergency services.",
+    "Familien-/Pflege-Modus": "Family/Care Mode",
+    "Profil": "Profile",
+    "Medikationsplan": "Medication Plan",
+    "QR-Import vorbereitet": "QR Import Ready",
+    "Scan": "Scan",
+    "Fuer den bundeseinheitlichen Medikationsplan ist ein Premium-Workflow angelegt. In iOS kann ein QR-Code per Kamera gelesen werden, in der Web-Vorschau per Text oder QR-Bild. Es erfolgt keine automatische Dosierungsbewertung.": "A Premium workflow is prepared for medication-plan QR import. On iOS, a QR code can be scanned with the camera; in web preview, use text or a QR image. No automatic dosage evaluation is performed.",
+    "Eigene Liste": "Own List",
+    "Medikamente": "Medications",
+    "Erfassen": "Add",
+    "Noch keine Medikamente": "No medications yet",
+    "Erfasse zuerst dein eigenes Medikament und die Einnahmezeit.": "Add your medication and dose time first.",
+    "Vorrat & Nachkauf": "Stock & Refill",
+    "Einkaufsliste": "Shopping List",
+    "Kopieren": "Copy",
+    "7-Tage-Uebersicht": "7-Day Overview",
+    "Dokumentierte Einnahmetreue": "Documented adherence",
+    "Protokoll": "Log",
+    "Bericht": "Report",
+    "Einstellungen, Premium und Schutz.": "Settings, Premium and Protection.",
+    "MediLog ist als lokaler Tracker konzipiert. Keine Diagnose, keine Therapieempfehlung, keine automatische Wechselwirkungspruefung.": "MediLog is designed as a local tracker. No diagnosis, no treatment recommendation, no automatic interaction check.",
+    "Zugang": "Access",
+    "Premium fuer echte Routine.": "Premium for real routines.",
+    "Free bleibt bewusst klein. Premium ist fuer Alltag, Pflege, Export und Vorrat ohne kuenstliche Reibung.": "Free stays intentionally small. Premium is for everyday use, care, export and stock without artificial friction.",
+    "Unbegrenzt": "Unlimited",
+    "Lokal": "Local",
+    "Keine Cloud": "No Cloud",
+    "Premium Tarif": "Premium Plan",
+    "Free und Premium Vergleich": "Free and Premium comparison",
+    "1 Profil, 2 Medikamente, Wasser, Tagescheck": "1 profile, 2 medications, water, daily check",
+    "Familie, Vorrat, Export, Scan, Vault, Reminder-Regeln": "Family, stock, export, scan, vault, reminder rules",
+    "Zuverlaessige lokale Erinnerungen": "Reliable local reminders",
+    "Familien-/Pflege-Modus": "Family/Care Mode",
+    "Arzt-/Apothekenbericht": "Doctor/pharmacy report",
+    "Vault, QR, Vorrat und Nachkauf": "Vault, QR, stock and refill",
+    "Premium freischalten": "Unlock Premium",
+    "Kauf wiederherstellen": "Restore Purchase",
+    "Abo Bedingungen": "Subscription terms",
+    "Auto-verlaengerbares Abo. Preis und Laufzeit werden vor dem Kauf von Apple angezeigt. Kuendigung jederzeit in den App Store Account-Einstellungen.": "Auto-renewable subscription. Apple shows price and duration before purchase. Cancel anytime in App Store account settings.",
+    "Ausgewaehlter Tarif: MediLog Premium.": "Selected plan: MediLog Premium.",
+    "Datenschutz": "Privacy",
+    "Nutzungsbedingungen (EULA)": "Terms of Use (EULA)",
+    "Free: Basis aktiv": "Free: Basic active",
+    "Web/PWA: Browser-Funktionen": "Web/PWA: Browser features",
+    "Alltag": "Daily Life",
+    "Tracking-Einstellungen": "Tracking Settings",
+    "lokal": "local",
+    "Wasserziel": "Water goal",
+    "Tagesziel in Millilitern": "Daily goal in milliliters",
+    "Sprache": "Language",
+    "App-Sprache und regionale Formate": "App language and regional formats",
+    "Reminder-Abstand": "Reminder delay",
+    "Warnung nach geplanter Zeit": "Warning after scheduled time",
+    "Zuverlaessige Erinnerungen": "Reliable reminders",
+    "iOS nutzt lokale Notifications, Web nutzt Browser-Erlaubnis": "iOS uses local notifications, web uses browser permission",
+    "Einfach-Modus": "Simple Mode",
+    "Groessere Schrift und Touch-Ziele": "Larger text and touch targets",
+    "Nachkaufgrenzen": "Refill thresholds",
+    "Medis": "Meds",
+    "Gesundheitsdaten bleiben lokal auf diesem Geraet.": "Health data stays local on this device.",
+    "iOS speichert verschluesselt mit Keychain/AES-GCM, Web optional mit PIN-Vault.": "iOS stores encrypted with Keychain/AES-GCM; web optionally uses PIN vault.",
+    "Export nur manuell durch dich.": "Export only manually by you.",
+    "DSGVO": "GDPR",
+    "Daten & Rechte": "Data & Rights",
+    "offen": "open",
+    "Datenkategorien": "Data categories",
+    "Profile, Medikamente, Einnahmen, Wasser, Notizen, Einstellungen.": "Profiles, medications, doses, water, notes, settings.",
+    "Zweckbindung": "Purpose limitation",
+    "Nur Tracking, Erinnerung, Pflegeuebersicht und Export. Keine Werbung, kein Verkauf.": "Only tracking, reminders, care overview and export. No ads, no sale.",
+    "Speicherort": "Storage location",
+    "Lokal im Browser dieses Geraets. Keine Cloud-Synchronisierung in dieser Version.": "Local in this device browser. No cloud sync in this version.",
+    "DSGVO-Export": "GDPR Export",
+    "Einwilligung bestaetigen": "Confirm consent",
+    "Lokaler Vault": "Local Vault",
+    "PIN-Schutz": "PIN Protection",
+    "aus": "off",
+    "PIN festlegen oder entsperren": "Set or unlock PIN",
+    "Schutz aktivieren": "Enable Protection",
+    "Face ID pruefen": "Check Face ID",
+    "Akute Beschwerden?": "Acute symptoms?",
+    "Aerztlicher Bereitschaftsdienst": "Medical on-call service",
+    "App-Gefuehl": "App Feel",
+    "Installierbar": "Installable",
+    "MediLog kann ueber den Browser zum Home-Bildschirm hinzugefuegt werden und laedt nach dem ersten Besuch auch offline.": "MediLog can be added to the Home Screen and loads offline after the first visit.",
+    "Lokale Demo-Daten zuruecksetzen": "Reset local demo data",
+    "Hauptnavigation": "Main navigation",
+    "Schnell erfassen": "Quick Add",
+    "Willkommen bei MediLog": "Welcome to MediLog",
+    "Dein privater Medikationsalltag, ruhig organisiert.": "Your private medication routine, calmly organized.",
+    "Richte die App in einer Minute mit echten Basisdaten ein. MediLog dokumentiert, erinnert und exportiert, gibt aber keine medizinische Empfehlung.": "Set up the app in one minute with real basics. MediLog documents, reminds and exports, but gives no medical advice.",
+    "Wichtige Hinweise": "Important notes",
+    "Lokal auf diesem Geraet": "Local on this device",
+    "Keine Cloud, kein Tracking": "No cloud, no tracking",
+    "Free: 1 Profil, 2 Medis": "Free: 1 profile, 2 meds",
+    "Für mich selbst": "For myself",
+    "Für Angehörige": "For relatives",
+    "Profilname": "Profile name",
+    "Erstes Medikament": "First medication",
+    "Angabe laut Plan": "Planned dose",
+    "Uhrzeit": "Time",
+    "Ich verstehe, dass ich besondere Gesundheitsdaten lokal auf diesem Geraet speichere und MediLog keine medizinische Beratung ersetzt.": "I understand that I store sensitive health data locally on this device and that MediLog does not replace medical advice.",
+    "Demo mit Beispielen": "Demo with examples",
+    "App einrichten": "Set up app",
+    "Arzt-/Apothekenbericht": "Doctor/pharmacy report",
+    "Bericht vorbereiten": "Prepare report",
+    "Bericht schließen": "Close report",
+    "Zeitraum": "Period",
+    "7 Tage": "7 days",
+    "30 Tage": "30 days",
+    "HTML speichern": "Save HTML",
+    "PDF/Druck": "PDF/Print",
+    "Einnahme als erledigt markieren": "Mark dose as done",
+    "Wasser 250 ml eintragen": "Log 250 ml water",
+    "Eigenes Medikament erfassen": "Add own medication",
+    "Notiz im Verlauf speichern": "Save note in history",
+    "Medikament erfassen": "Add Medication",
+    "Bitte nur Angaben uebernehmen, die aerztlich oder pharmazeutisch fuer dich vorgesehen sind.": "Only enter information intended for you by a doctor or pharmacist.",
+    "Abbrechen": "Cancel",
+    "Speichern": "Save",
+    "Medikament": "Medication",
+    "Einnahme Heute Markieren": "Mark Today's Dose",
+    "Vorrat +14": "Stock +14",
+    "Notiz Speichern": "Save Note",
+    "Profil erfassen": "Add Profile",
+    "Rolle": "Role",
+    "Medikationsplan importieren": "Import medication plan",
+    "Kamera-Scan starten": "Start camera scan",
+    "QR-/Planinhalt": "QR/plan content",
+    "QR-Bild optional": "QR image optional",
+    "Importieren": "Import",
+    "Notiz speichern": "Save note",
+    "Notiz": "Note"
+  },
+};
+
+const LOCALE_FALLBACKS = {
+  "es-ES": "en-US",
+  "fr-FR": "en-US",
+  "it-IT": "en-US",
+  "pt-BR": "en-US",
+  "nl-NL": "en-US",
+  "pl-PL": "en-US",
+  "tr-TR": "en-US",
+  "ar-SA": "en-US",
+  "ja-JP": "en-US",
+  "ko-KR": "en-US",
+  "zh-Hans": "en-US",
+};
+
+const LOCALE_OVERRIDES = {
+  "es-ES": {
+    "Heute": "Hoy", "Für dich": "Para ti", "Pläne": "Planes", "Bibliothek": "Medicamentos", "Verlauf": "Historial", "Einstellungen": "Ajustes", "Sprache": "Idioma", "Premium freischalten": "Activar Premium", "Schnell erfassen": "Registro rapido", "Medikament erfassen": "Anadir medicamento", "Wasser": "Agua", "Datenschutz": "Privacidad", "Speichern": "Guardar", "Abbrechen": "Cancelar"
+  },
+  "fr-FR": {
+    "Heute": "Aujourd'hui", "Für dich": "Pour vous", "Pläne": "Plans", "Bibliothek": "Medicaments", "Verlauf": "Historique", "Einstellungen": "Reglages", "Sprache": "Langue", "Premium freischalten": "Activer Premium", "Schnell erfassen": "Ajout rapide", "Medikament erfassen": "Ajouter un medicament", "Wasser": "Eau", "Datenschutz": "Confidentialite", "Speichern": "Enregistrer", "Abbrechen": "Annuler"
+  },
+  "it-IT": {
+    "Heute": "Oggi", "Für dich": "Per te", "Pläne": "Piani", "Bibliothek": "Farmaci", "Verlauf": "Storico", "Einstellungen": "Impostazioni", "Sprache": "Lingua", "Premium freischalten": "Attiva Premium", "Schnell erfassen": "Aggiunta rapida", "Medikament erfassen": "Aggiungi farmaco", "Wasser": "Acqua", "Datenschutz": "Privacy", "Speichern": "Salva", "Abbrechen": "Annulla"
+  },
+  "pt-BR": {
+    "Heute": "Hoje", "Für dich": "Para voce", "Pläne": "Planos", "Bibliothek": "Medicamentos", "Verlauf": "Historico", "Einstellungen": "Ajustes", "Sprache": "Idioma", "Premium freischalten": "Ativar Premium", "Schnell erfassen": "Adicionar rapido", "Medikament erfassen": "Adicionar medicamento", "Wasser": "Agua", "Datenschutz": "Privacidade", "Speichern": "Salvar", "Abbrechen": "Cancelar"
+  },
+  "nl-NL": {
+    "Heute": "Vandaag", "Für dich": "Voor jou", "Pläne": "Plannen", "Bibliothek": "Medicijnen", "Verlauf": "Geschiedenis", "Einstellungen": "Instellingen", "Sprache": "Taal", "Premium freischalten": "Premium activeren", "Schnell erfassen": "Snel toevoegen", "Medikament erfassen": "Medicijn toevoegen", "Wasser": "Water", "Datenschutz": "Privacy", "Speichern": "Opslaan", "Abbrechen": "Annuleren"
+  },
+  "pl-PL": {
+    "Heute": "Dzisiaj", "Für dich": "Dla Ciebie", "Pläne": "Plany", "Bibliothek": "Leki", "Verlauf": "Historia", "Einstellungen": "Ustawienia", "Sprache": "Jezyk", "Premium freischalten": "Aktywuj Premium", "Schnell erfassen": "Szybki wpis", "Medikament erfassen": "Dodaj lek", "Wasser": "Woda", "Datenschutz": "Prywatnosc", "Speichern": "Zapisz", "Abbrechen": "Anuluj"
+  },
+  "tr-TR": {
+    "Heute": "Bugun", "Für dich": "Senin icin", "Pläne": "Planlar", "Bibliothek": "Ilaclar", "Verlauf": "Gecmis", "Einstellungen": "Ayarlar", "Sprache": "Dil", "Premium freischalten": "Premium'u ac", "Schnell erfassen": "Hizli ekle", "Medikament erfassen": "Ilac ekle", "Wasser": "Su", "Datenschutz": "Gizlilik", "Speichern": "Kaydet", "Abbrechen": "Iptal"
+  },
+  "ar-SA": {
+    "Heute": "اليوم", "Für dich": "لك", "Pläne": "الخطط", "Bibliothek": "الأدوية", "Verlauf": "السجل", "Einstellungen": "الإعدادات", "Sprache": "اللغة", "Premium freischalten": "تفعيل Premium", "Schnell erfassen": "إضافة سريعة", "Medikament erfassen": "إضافة دواء", "Wasser": "الماء", "Datenschutz": "الخصوصية", "Speichern": "حفظ", "Abbrechen": "إلغاء"
+  },
+  "ja-JP": {
+    "Heute": "今日", "Für dich": "おすすめ", "Pläne": "プラン", "Bibliothek": "薬", "Verlauf": "履歴", "Einstellungen": "設定", "Sprache": "言語", "Premium freischalten": "Premiumを有効化", "Schnell erfassen": "クイック追加", "Medikament erfassen": "薬を追加", "Wasser": "水分", "Datenschutz": "プライバシー", "Speichern": "保存", "Abbrechen": "キャンセル"
+  },
+  "ko-KR": {
+    "Heute": "오늘", "Für dich": "추천", "Pläne": "계획", "Bibliothek": "약", "Verlauf": "기록", "Einstellungen": "설정", "Sprache": "언어", "Premium freischalten": "Premium 활성화", "Schnell erfassen": "빠른 추가", "Medikament erfassen": "약 추가", "Wasser": "물", "Datenschutz": "개인정보", "Speichern": "저장", "Abbrechen": "취소"
+  },
+  "zh-Hans": {
+    "Heute": "今天", "Für dich": "为你推荐", "Pläne": "计划", "Bibliothek": "药品", "Verlauf": "记录", "Einstellungen": "设置", "Sprache": "语言", "Premium freischalten": "开启 Premium", "Schnell erfassen": "快速添加", "Medikament erfassen": "添加药品", "Wasser": "饮水", "Datenschutz": "隐私", "Speichern": "保存", "Abbrechen": "取消"
+  },
+};
+
+for (const [locale, overrides] of Object.entries(LOCALE_OVERRIDES)) {
+  I18N[locale] = { ...I18N[LOCALE_FALLBACKS[locale]], ...overrides };
+}
+
+const textNodeOriginals = new WeakMap();
+
 const medilogNative = (() => {
   const callbacks = new Map();
   let sequence = 0;
@@ -88,6 +351,7 @@ const seedState = {
     premiumSource: "none",
     premiumUntil: null,
     privacyConsentAt: null,
+    locale: detectPreferredLocale(),
   },
   profiles: [
     { id: "profile-self", name: "Ich", role: "Selbst" },
@@ -172,6 +436,7 @@ const elements = {
   premiumButtonLabel: document.querySelector("#premium-button-label"),
   premiumLegalSelected: document.querySelector("#premium-legal-selected"),
   privacyConsentStatus: document.querySelector("#privacy-consent-status"),
+  settingLanguage: document.querySelector("#setting-language"),
   waterFill: document.querySelector("#water-fill"),
   waterTotal: document.querySelector("#water-total"),
   waterGoal: document.querySelector("#water-goal"),
@@ -228,6 +493,7 @@ function saveState() {
 function hydrateState(incoming) {
   const merged = { ...structuredClone(seedState), ...incoming };
   merged.settings = { ...seedState.settings, ...incoming.settings };
+  merged.settings.locale = normalizeLocale(incoming.settings?.locale || merged.settings.locale);
   merged.settings.premiumActive = Boolean(incoming.settings?.premiumActive || incoming.settings?.premiumPreview);
   merged.settings.premiumSource = incoming.settings?.premiumSource || (merged.settings.premiumActive ? "legacy" : "none");
   merged.settings.premiumUntil = incoming.settings?.premiumUntil || null;
@@ -238,6 +504,74 @@ function hydrateState(incoming) {
     ...medicine,
   }));
   return merged;
+}
+
+function normalizeLocale(value) {
+  const supported = new Set(SUPPORTED_LOCALES.map((locale) => locale.code));
+  if (supported.has(value)) return value;
+  const language = String(value || "").split("-")[0];
+  return SUPPORTED_LOCALES.find((locale) => locale.code.split("-")[0] === language)?.code || "de-DE";
+}
+
+function detectPreferredLocale() {
+  return normalizeLocale(navigator.languages?.[0] || navigator.language || "de-DE");
+}
+
+function getLocaleConfig() {
+  return SUPPORTED_LOCALES.find((locale) => locale.code === normalizeLocale(state?.settings?.locale)) || SUPPORTED_LOCALES[0];
+}
+
+function t(value, replacements = {}) {
+  const original = String(value ?? "");
+  const locale = normalizeLocale(state?.settings?.locale || "de-DE");
+  const translated = I18N[locale]?.[original] || original;
+  return Object.entries(replacements).reduce((text, [key, replacement]) => text.replaceAll(`{${key}}`, replacement), translated);
+}
+
+function formatNumber(value, options = {}) {
+  return new Intl.NumberFormat(getLocaleConfig().code, options).format(value);
+}
+
+function applyLocale() {
+  const locale = getLocaleConfig();
+  document.documentElement.lang = locale.code;
+  document.documentElement.dir = locale.dir;
+  document.querySelector(".badge-button span").textContent = locale.short;
+  document.title = "MediLog";
+  translateDocument();
+  if (elements.settingLanguage) elements.settingLanguage.value = locale.code;
+}
+
+function translateDocument(root = document.body) {
+  const locale = normalizeLocale(state?.settings?.locale || "de-DE");
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      const parent = node.parentElement;
+      if (!parent || ["SCRIPT", "STYLE", "TEXTAREA", "OPTION"].includes(parent.tagName)) return NodeFilter.FILTER_REJECT;
+      if (!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    },
+  });
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach((node) => {
+    if (!textNodeOriginals.has(node)) textNodeOriginals.set(node, node.nodeValue);
+    const original = textNodeOriginals.get(node);
+    const leading = original.match(/^\s*/)?.[0] || "";
+    const trailing = original.match(/\s*$/)?.[0] || "";
+    const key = original.trim();
+    node.nodeValue = `${leading}${locale === "de-DE" ? key : t(key)}${trailing}`;
+  });
+
+  root.querySelectorAll("[aria-label], [placeholder]").forEach((element) => {
+    ["aria-label", "placeholder"].forEach((attribute) => {
+      if (!element.hasAttribute(attribute)) return;
+      const dataKey = `i18n${attribute.replace(/(^|-)([a-z])/g, (_, __, letter) => letter.toUpperCase())}`;
+      if (!element.dataset[dataKey]) element.dataset[dataKey] = element.getAttribute(attribute);
+      const original = element.dataset[dataKey];
+      element.setAttribute(attribute, locale === "de-DE" ? original : t(original));
+    });
+  });
 }
 
 function scheduleNativeStateSave() {
@@ -417,6 +751,7 @@ function getProfileMedicines() {
 }
 
 function render() {
+  renderLanguageOptions();
   renderDate();
   renderDoses();
   renderMedicines();
@@ -429,7 +764,15 @@ function render() {
   renderHydration();
   updateMetrics();
   document.body.classList.toggle("senior", Boolean(state.settings.seniorMode));
+  applyLocale();
   refreshIcons();
+}
+
+function renderLanguageOptions() {
+  if (!elements.settingLanguage || elements.settingLanguage.options.length === SUPPORTED_LOCALES.length) return;
+  elements.settingLanguage.innerHTML = SUPPORTED_LOCALES
+    .map((locale) => `<option value="${locale.code}">${locale.short} - ${locale.label}</option>`)
+    .join("");
 }
 
 function renderCareDashboard() {
@@ -463,7 +806,7 @@ function renderCareDashboard() {
 }
 
 function renderDate() {
-  elements.date.textContent = new Intl.DateTimeFormat("de-DE", {
+  elements.date.textContent = new Intl.DateTimeFormat(getLocaleConfig().code, {
     weekday: "long",
     day: "2-digit",
     month: "long",
@@ -606,6 +949,7 @@ function renderSettings() {
   renderPremiumPlans();
   elements.settingWaterGoal.value = Number(state.settings.waterGoal || 2000);
   elements.settingReminderDelay.value = String(state.settings.reminderDelayMinutes || 15);
+  if (elements.settingLanguage) elements.settingLanguage.value = getLocaleConfig().code;
   elements.settingRemindersEnabled.checked = Boolean(state.settings.remindersEnabled);
   elements.settingSeniorMode.checked = Boolean(state.settings.seniorMode);
   elements.premiumStatus.textContent = isPremium()
@@ -646,14 +990,15 @@ function renderHydration() {
   const entry = getHydrationEntry();
   const percent = Math.min(100, Math.round((entry.amount / entry.goal) * 100));
   elements.waterFill.style.height = `${percent}%`;
-  elements.waterTotal.textContent = `${(entry.amount / 1000).toLocaleString("de-DE", {
+  elements.waterTotal.textContent = `${formatNumber(entry.amount / 1000, {
     minimumFractionDigits: 1,
     maximumFractionDigits: 1,
   })} L`;
-  elements.waterGoal.textContent = `von ${(entry.goal / 1000).toLocaleString("de-DE", {
+  const goalLiters = formatNumber(entry.goal / 1000, {
     minimumFractionDigits: 1,
     maximumFractionDigits: 1,
-  })} L Tagesziel`;
+  });
+  elements.waterGoal.textContent = state.settings.locale === "de-DE" ? `von ${goalLiters} L Tagesziel` : `${goalLiters} L daily goal`;
   const glasses = Math.round(entry.goal / 250);
   const done = Math.min(glasses, Math.floor(entry.amount / 250));
   elements.waterDots.innerHTML = Array.from({ length: glasses }, (_, index) => `<span class="${index < done ? "done" : ""}"></span>`).join("");
@@ -694,7 +1039,7 @@ function renderHistory() {
     .slice(0, 10)
     .map((entry) => {
       const icon = entry.type === "note" ? "notebook-pen" : "check";
-      const time = new Intl.DateTimeFormat("de-DE", {
+      const time = new Intl.DateTimeFormat(getLocaleConfig().code, {
         day: "2-digit",
         month: "2-digit",
         hour: "2-digit",
@@ -715,7 +1060,7 @@ function renderHistory() {
 }
 
 function renderCalendar() {
-  const formatter = new Intl.DateTimeFormat("de-DE", { weekday: "short" });
+  const formatter = new Intl.DateTimeFormat(getLocaleConfig().code, { weekday: "short" });
   const now = new Date();
   elements.calendarStrip.innerHTML = Array.from({ length: 7 }, (_, offset) => {
     const day = new Date(now);
@@ -727,7 +1072,7 @@ function renderCalendar() {
     ).length;
     const total = Math.max(1, getProfileMedicines().length);
     return `
-      <button class="day-pill ${doneCount > 0 ? "done" : ""}" type="button" data-day-key="${key}" aria-label="${doneCount} von ${total} Einnahmen am ${day.toLocaleDateString("de-DE")} erledigt">
+      <button class="day-pill ${doneCount > 0 ? "done" : ""}" type="button" data-day-key="${key}" aria-label="${doneCount} von ${total} Einnahmen am ${day.toLocaleDateString(getLocaleConfig().code)} erledigt">
         <span>${formatter.format(day)}</span>
         <strong>${String(day.getDate()).padStart(2, "0")}</strong>
       </button>
@@ -973,7 +1318,7 @@ function addHistory(type, title, detail) {
 }
 
 function showToast(message) {
-  elements.toast.textContent = message;
+  elements.toast.textContent = t(message);
   elements.toast.classList.add("show");
   window.clearTimeout(showToast.timer);
   showToast.timer = window.setTimeout(() => elements.toast.classList.remove("show"), 2400);
@@ -994,6 +1339,7 @@ function switchView(viewName, options = {}) {
     history.replaceState(null, "", `#${viewName}`);
   }
   document.querySelector(".screen").scrollTo({ top: 0, behavior: "smooth" });
+  applyLocale();
 }
 
 function openMedicineForm() {
@@ -1627,6 +1973,13 @@ elements.settingWaterGoal.addEventListener("change", () => {
   saveState();
   render();
   showToast("Wasserziel gespeichert");
+});
+
+elements.settingLanguage?.addEventListener("change", () => {
+  state.settings.locale = normalizeLocale(elements.settingLanguage.value);
+  saveState();
+  render();
+  showToast("Sprache gespeichert");
 });
 
 elements.settingReminderDelay.addEventListener("change", () => {

@@ -1,0 +1,12 @@
+{
+  "name": "MediLog - care",
+  "subtitle": "Medicijnen en water prive",
+  "description": "MediLog helpt je medicijninname, water, voorraad en notities prive vast te leggen. Free is een kleine testmodus; Premium voegt familie-/zorgprofielen, voorraad- en refillbeheer, exportrapporten, QR-/medicatieplan-importvoorbereiding, vault en betrouwbare lokale herinneringen toe. Gegevens blijven lokaal, zonder cloud en zonder tracking. StoreKit-abonnementen worden door Apple beheerd en kunnen altijd worden opgezegd in de App Store-accountinstellingen. MediLog vervangt geen medisch advies, stelt geen diagnose en geeft geen dosis- of behandeladvies. Voorwaarden: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+  "keywords": "medicijnen,pillen,herinnering,tracker,voorraad,zorg,water,arts",
+  "promotionalText": "Premium duidelijker: familie, voorraad, export, vault en lokale herinneringen.",
+  "whatsNew": "MediLog 1.5 voegt veel meer talen, een taalkiezer, regionale datum-/getalnotatie en RTL voor Arabisch toe. Ook gecontroleerd: onboarding, medicijnen, water, voorraad, rapport, Premium en privacy.",
+  "supportUrl": "https://meloxkgz-ship-it.github.io/medilog-care/support.html",
+  "privacyPolicyUrl": "https://meloxkgz-ship-it.github.io/medilog-care/privacy.html",
+  "marketingUrl": "https://meloxkgz-ship-it.github.io/medilog-care/landing.html",
+  "termsOfUseUrl": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+}

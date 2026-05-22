@@ -1,0 +1,12 @@
+{
+  "name": "MediLog - care",
+  "subtitle": "Ilac ve su takibi",
+  "description": "MediLog ilac alimi, su, stok ve notlari gizli sekilde belgelemeye yardim eder. Free kucuk bir deneme modudur; Premium aile/bakim profilleri, stok ve yeniden alma yonetimi, disari aktarma raporlari, QR/ilac plani ice aktarma hazirligi, kasa ve guvenilir yerel hatirlaticilar ekler. Veriler yerelde kalir; bulut ve takip yoktur. StoreKit abonelikleri Apple tarafindan yonetilir ve App Store hesap ayarlarindan her zaman iptal edilebilir. MediLog tibbi tavsiyenin yerine gecmez, tani koymaz ve doz veya tedavi onerisi vermez. Kosullar: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+  "keywords": "ilac,hap,hatirlatici,takip,stok,bakim,su,doktor,eczane",
+  "promotionalText": "Premium daha net: aile, stok, disari aktarma, kasa ve yerel hatirlaticilar.",
+  "whatsNew": "MediLog 1.5 daha fazla dil, ayarlarda dil secimi, bolgesel tarih/sayi formatlari ve Arapca icin RTL destegi ekler. Onboarding, ilac, su, stok, rapor, Premium ve gizlilik tekrar kontrol edildi.",
+  "supportUrl": "https://meloxkgz-ship-it.github.io/medilog-care/support.html",
+  "privacyPolicyUrl": "https://meloxkgz-ship-it.github.io/medilog-care/privacy.html",
+  "marketingUrl": "https://meloxkgz-ship-it.github.io/medilog-care/landing.html",
+  "termsOfUseUrl": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+}

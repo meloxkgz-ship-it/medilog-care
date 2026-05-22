@@ -1,0 +1,12 @@
+{
+  "name": "MediLog - care",
+  "subtitle": "Remedios e agua privados",
+  "description": "MediLog ajuda voce a documentar em privado medicamentos, agua, estoque e notas. Free e um pequeno modo de teste; Premium adiciona perfis de familia/cuidado, estoque e reposicao, relatorios de exportacao, preparacao para importacao QR/plano de medicamentos, cofre e lembretes locais confiaveis. Os dados ficam locais, sem nuvem e sem rastreamento. Assinaturas StoreKit sao gerenciadas pela Apple e podem ser canceladas a qualquer momento nos ajustes da conta App Store. MediLog nao substitui orientacao medica, nao diagnostica e nao recomenda dose ou tratamento. Termos: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+  "keywords": "remedio,medicamento,lembrete,controle,estoque,cuidado,agua,medico",
+  "promotionalText": "Premium mais claro: familia, estoque, exportacao, cofre e lembretes locais.",
+  "whatsNew": "MediLog 1.5 adiciona muito mais idiomas, seletor de idioma, formatos regionais e suporte RTL para arabe. Tambem revisamos onboarding, medicamentos, agua, estoque, relatorio, Premium e privacidade.",
+  "supportUrl": "https://meloxkgz-ship-it.github.io/medilog-care/support.html",
+  "privacyPolicyUrl": "https://meloxkgz-ship-it.github.io/medilog-care/privacy.html",
+  "marketingUrl": "https://meloxkgz-ship-it.github.io/medilog-care/landing.html",
+  "termsOfUseUrl": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+}
