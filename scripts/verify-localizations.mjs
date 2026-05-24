@@ -5,17 +5,36 @@ const root = process.cwd();
 const expectedLocales = [
   "de-DE",
   "en-US",
+  "en-GB",
+  "en-AU",
+  "en-CA",
   "es-ES",
+  "es-MX",
   "fr-FR",
+  "fr-CA",
   "it-IT",
   "pt-BR",
+  "pt-PT",
   "nl-NL",
   "pl-PL",
   "tr-TR",
+  "da",
+  "sv",
+  "no",
+  "fi",
+  "cs",
+  "el",
+  "ru",
+  "uk",
+  "hi",
+  "id",
+  "vi",
+  "he",
   "ar-SA",
   "ja-JP",
   "ko-KR",
   "zh-Hans",
+  "zh-Hant",
 ];
 
 const appJs = fs.readFileSync(path.join(root, "app.js"), "utf8");
@@ -42,7 +61,7 @@ for (const locale of expectedLocales) {
   if ([...data.name].length > 30) throw new Error(`${locale}: name too long`);
   if ([...data.subtitle].length > 30) throw new Error(`${locale}: subtitle too long`);
   if ([...data.keywords].length > 100) throw new Error(`${locale}: keywords too long`);
-  if (!data.whatsNew.includes("1.5")) throw new Error(`${locale}: release notes do not mention 1.5`);
+  if (!data.whatsNew.includes("1.6")) throw new Error(`${locale}: release notes do not mention 1.6`);
   for (const urlField of ["supportUrl", "privacyPolicyUrl", "marketingUrl", "termsOfUseUrl"]) {
     if (!data[urlField].startsWith("https://")) throw new Error(`${locale}: ${urlField} is not https`);
   }

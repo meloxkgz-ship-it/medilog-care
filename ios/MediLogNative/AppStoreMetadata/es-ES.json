@@ -1,10 +1,10 @@
 {
   "name": "MediLog - care",
   "subtitle": "Medicacion y agua privadas",
-  "description": "MediLog te ayuda a documentar de forma privada la toma de medicamentos, agua, inventario y notas. Free es un pequeno modo de prueba; Premium anade perfiles familiares y de cuidado, gestion de inventario y reposicion, informes de exportacion, preparacion para importar QR/plan de medicacion, caja fuerte y recordatorios locales fiables. La app guarda los datos localmente, sin nube y sin seguimiento. Las suscripciones StoreKit son gestionadas por Apple y se pueden cancelar en cualquier momento en los ajustes de cuenta del App Store. MediLog no sustituye el consejo medico, no diagnostica y no ofrece recomendaciones de dosis ni tratamiento. Terminos de uso: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+  "description": "MediLog le ayuda a documentar de forma privada medicacion, agua, inventario y notas. Free sigue siendo un modo de prueba pequeno; Premium anade perfiles familiares y de cuidado, gestion de inventario y reposicion, informes para medico o farmacia, preparacion de importacion QR/plan, caja fuerte local y recordatorios locales fiables. La app guarda datos localmente, sin nube y sin seguimiento. Las suscripciones StoreKit son gestionadas por Apple y pueden cancelarse en los ajustes de la cuenta del App Store. MediLog no sustituye el consejo medico, no diagnostica y no ofrece recomendaciones de dosis ni tratamiento. Terminos: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
   "keywords": "medicacion,pastillas,recordatorio,control,reposicion,cuidado,agua,medico",
-  "promotionalText": "Premium mas claro: familia, inventario, exportacion, caja fuerte y recordatorios locales.",
-  "whatsNew": "MediLog 1.5 anade muchas mas lenguas, selector de idioma en ajustes, formatos regionales de fecha/numero y soporte RTL para arabe. Tambien se revisaron los flujos clave: onboarding, medicacion, agua, inventario, informe, Premium y privacidad.",
+  "promotionalText": "Nuevo en 1.6: revision diaria mas clara, mejor onboarding, mas idiomas y Premium.",
+  "whatsNew": "MediLog 1.6 mejora la experiencia Premium con una revision diaria mas clara, una guia de onboarding mas solida, mejor contexto en informes y controles de diseno movil mas estrictos. Tambien amplie la localizacion de la app y del App Store a mas regiones.",
   "supportUrl": "https://meloxkgz-ship-it.github.io/medilog-care/support.html",
   "privacyPolicyUrl": "https://meloxkgz-ship-it.github.io/medilog-care/privacy.html",
   "marketingUrl": "https://meloxkgz-ship-it.github.io/medilog-care/landing.html",

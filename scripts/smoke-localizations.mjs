@@ -10,17 +10,36 @@ const { chromium } = require(path.join(root, ".asc/test-runner/node_modules/play
 const locales = [
   ["de-DE", "DE", "ltr"],
   ["en-US", "EN", "ltr"],
+  ["en-GB", "GB", "ltr"],
+  ["en-AU", "AU", "ltr"],
+  ["en-CA", "CA", "ltr"],
   ["es-ES", "ES", "ltr"],
+  ["es-MX", "MX", "ltr"],
   ["fr-FR", "FR", "ltr"],
+  ["fr-CA", "QC", "ltr"],
   ["it-IT", "IT", "ltr"],
   ["pt-BR", "PT", "ltr"],
+  ["pt-PT", "PT", "ltr"],
   ["nl-NL", "NL", "ltr"],
   ["pl-PL", "PL", "ltr"],
   ["tr-TR", "TR", "ltr"],
+  ["da", "DA", "ltr"],
+  ["sv", "SV", "ltr"],
+  ["no", "NO", "ltr"],
+  ["fi", "FI", "ltr"],
+  ["cs", "CS", "ltr"],
+  ["el", "EL", "ltr"],
+  ["ru", "RU", "ltr"],
+  ["uk", "UK", "ltr"],
+  ["hi", "HI", "ltr"],
+  ["id", "ID", "ltr"],
+  ["vi", "VI", "ltr"],
+  ["he", "HE", "rtl"],
   ["ar-SA", "AR", "rtl"],
   ["ja-JP", "JA", "ltr"],
   ["ko-KR", "KO", "ltr"],
   ["zh-Hans", "ZH", "ltr"],
+  ["zh-Hant", "TW", "ltr"],
 ];
 
 const mime = new Map([
@@ -62,10 +81,30 @@ page.on("console", (message) => {
   if (message.type() === "error") issues.push(`console: ${message.text()}`);
 });
 
+async function assertNoHorizontalOverflow(label) {
+  const overflow = await page.evaluate(() => {
+    const width = document.documentElement.clientWidth;
+    const bodyOverflow = Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) - width;
+    const offenders = [...document.querySelectorAll("body *")]
+      .map((element) => {
+        const rect = element.getBoundingClientRect();
+        return { tag: element.tagName, className: element.className, id: element.id, left: rect.left, right: rect.right, width: rect.width };
+      })
+      .filter((item) => item.width > 0 && (item.left < -1 || item.right > width + 1))
+      .slice(0, 8);
+    return { width, bodyOverflow, offenders };
+  });
+  if (overflow.bodyOverflow > 2 || overflow.offenders.length) {
+    throw new Error(`${label}: horizontal overflow ${JSON.stringify(overflow)}`);
+  }
+}
+
 try {
   await page.goto(url, { waitUntil: "networkidle" });
   await page.locator("#skip-onboarding").click();
+  await assertNoHorizontalOverflow("home");
   await page.locator('.badge-button[data-view="schutz"]').click();
+  await assertNoHorizontalOverflow("settings");
   await page.locator("#privacy-consent").click();
   await page.locator("#premium-button").click();
   await page.locator('.tab[data-view="home"]').click();
@@ -79,6 +118,7 @@ try {
   await page.locator('#note-form button[type="submit"]').click();
 
   await page.locator('.tab[data-view="bibliothek"]').click();
+  await assertNoHorizontalOverflow("library");
   await page.locator('#bibliothek-view.active [data-action="open-medicine-form"]').first().click();
   await page.locator('#medicine-form input[name="name"]').fill("Smoke Med");
   await page.locator('#medicine-form input[name="dose"]').fill("1 mg");
@@ -89,6 +129,7 @@ try {
   await page.locator('#medicine-detail-sheet button[value="done"]').click();
 
   await page.locator('.tab[data-view="plaene"]').click();
+  await assertNoHorizontalOverflow("plans");
   await page.locator('[data-action="open-profile-form"]').first().click();
   await page.locator('#profile-form input[name="name"]').fill("Care Smoke");
   await page.locator('#profile-form input[name="role"]').fill("Care");
@@ -98,6 +139,7 @@ try {
   await page.locator('#scan-form button[type="submit"]').click();
 
   await page.locator('.tab[data-view="verlauf"]').click();
+  await assertNoHorizontalOverflow("history");
   await page.locator("#export-button").click();
   if (!(await page.locator("#report-sheet[open]").count())) throw new Error("Report sheet did not open");
   await page.locator('[data-close="report-sheet"]').click();
@@ -122,7 +164,8 @@ try {
     if (!state.visibleText.includes("MediLog") && !state.visibleText.includes("Premium")) {
       throw new Error(`${locale}: unexpected empty translated UI`);
     }
-    if (locale === "ar-SA" && state.dir !== "rtl") throw new Error("Arabic did not switch to RTL");
+    if ((locale === "ar-SA" || locale === "he") && state.dir !== "rtl") throw new Error(`${locale} did not switch to RTL`);
+    await assertNoHorizontalOverflow(locale);
   }
 
   fs.mkdirSync(path.join(root, ".asc/audit"), { recursive: true });

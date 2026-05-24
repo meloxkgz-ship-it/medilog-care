@@ -1,0 +1,12 @@
+{
+  "name": "MediLog - care",
+  "subtitle": "Laakkeet ja vesi yksityisesti",
+  "description": "MediLog auttaa dokumentoimaan laakkeet, veden, varaston ja muistiinpanot yksityisesti. Free on pieni kokeilutila; Premium lisaa perhe- ja hoivaprofiilit, varaston ja taydennysten hallinnan, raportit laakarille tai apteekille, QR-/laakityssuunnitelman tuonnin, paikallisen holvin ja luotettavat paikalliset muistutukset. Sovellus tallentaa tiedot paikallisesti, ilman pilvea ja ilman seurantaa. StoreKit-tilauksia hallinnoi Apple, ja ne voi peruuttaa App Store -tilin asetuksissa. MediLog ei korvaa laakarin neuvoja, ei diagnosoi eika anna annos- tai hoitosuosituksia. Ehdot: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+  "keywords": "laake,pilleri,muistutus,seuranta,taydennys,hoiva,vesi,laakari",
+  "promotionalText": "Uutta 1.6:ssa: selkeampi paivatarkistus, parempi onboarding ja kielet.",
+  "whatsNew": "MediLog 1.6 parantaa Premium-rutiinia selkeammalla paivatarkistuksella, paremmalla kayttoonotolla, raporttikontekstilla ja tiukemmilla mobiiliasettelun tarkistuksilla. Lokalisointi laajenee useammille alueille.",
+  "supportUrl": "https://meloxkgz-ship-it.github.io/medilog-care/support.html",
+  "privacyPolicyUrl": "https://meloxkgz-ship-it.github.io/medilog-care/privacy.html",
+  "marketingUrl": "https://meloxkgz-ship-it.github.io/medilog-care/landing.html",
+  "termsOfUseUrl": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+}

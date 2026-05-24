@@ -1,0 +1,12 @@
+{
+  "name": "MediLog - care",
+  "subtitle": "Φάρμακα και νερό ιδιωτικά",
+  "description": "Το MediLog σας βοηθά να καταγράφετε ιδιωτικά φάρμακα, νερό, απόθεμα και σημειώσεις. Το Free παραμένει μικρή δοκιμαστική λειτουργία· το Premium προσθέτει προφίλ οικογένειας/φροντίδας, διαχείριση αποθέματος, αναφορές για γιατρό ή φαρμακείο, προετοιμασία εισαγωγής QR/πλάνου, τοπικό vault και αξιόπιστες τοπικές υπενθυμίσεις. Η εφαρμογή αποθηκεύει δεδομένα τοπικά, χωρίς cloud και χωρίς tracking. Οι συνδρομές StoreKit διαχειρίζονται από την Apple και ακυρώνονται στις ρυθμίσεις λογαριασμού App Store. Το MediLog δεν αντικαθιστά ιατρική συμβουλή, δεν διαγιγνώσκει και δεν προτείνει δόσεις ή θεραπείες. Όροι: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+  "keywords": "φαρμακα,χαπια,υπενθυμιση,παρακολουθηση,νερο,γιατρος",
+  "promotionalText": "Νεο στο 1.6: σαφεστερος ημερησιος ελεγχος, καλυτερο onboarding.",
+  "whatsNew": "Το MediLog 1.6 βελτιώνει την Premium ρουτίνα με σαφέστερο ημερήσιο έλεγχο, καλύτερο onboarding, καλύτερο πλαίσιο αναφορών και αυστηρότερους ελέγχους διάταξης σε κινητό. Προστέθηκαν περισσότερες τοπικοποιήσεις.",
+  "supportUrl": "https://meloxkgz-ship-it.github.io/medilog-care/support.html",
+  "privacyPolicyUrl": "https://meloxkgz-ship-it.github.io/medilog-care/privacy.html",
+  "marketingUrl": "https://meloxkgz-ship-it.github.io/medilog-care/landing.html",
+  "termsOfUseUrl": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+}

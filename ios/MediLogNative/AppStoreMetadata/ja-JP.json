@@ -1,10 +1,10 @@
 {
   "name": "MediLog - care",
   "subtitle": "薬と水分を非公開で記録",
-  "description": "MediLog は服薬、水分、在庫、メモをプライベートに記録するためのアプリです。Free は小さな試用モードです。Premium では家族/介護プロフィール、在庫と再購入管理、エクスポートレポート、QR/服薬計画インポート準備、Vault、信頼できるローカル通知を追加できます。データは端末内に保存され、クラウド同期やトラッキングはありません。StoreKit サブスクリプションは Apple が管理し、App Store アカウント設定からいつでも解約できます。MediLog は医療アドバイス、診断、用量や治療の推奨を行いません。利用規約: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+  "description": "MediLogは、服薬、水分、在庫、メモをプライベートに記録するためのアプリです。Freeは小さな試用モードのまま、Premiumでは家族・ケア用プロフィール、在庫と再購入管理、医師や薬局向けレポート、QR/服薬計画インポート準備、ローカルVault、信頼性の高いローカル通知を追加できます。データは端末内に保存され、クラウド同期やトラッキングはありません。StoreKitサブスクリプションはAppleが管理し、App Storeアカウント設定からいつでも解約できます。MediLogは医療助言、診断、用量や治療の推奨を行いません。利用規約: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
   "keywords": "薬,服薬,リマインダー,記録,在庫,介護,水分,医師,薬局",
-  "promotionalText": "Premium がより明確に: 家族、在庫、エクスポート、Vault、ローカル通知。",
-  "whatsNew": "MediLog 1.5 は対応言語、設定内の言語選択、地域別の日付/数値形式、アラビア語 RTL 対応を追加します。オンボーディング、薬、水分、在庫、レポート、Premium、プライバシーも再確認しました。",
+  "promotionalText": "1.6: デイリーチェック、オンボーディング、多言語、Premiumを改善。",
+  "whatsNew": "MediLog 1.6では、より分かりやすいデイリーチェック、改善されたオンボーディング、レポート文脈の強化、より厳格なモバイルレイアウト確認によりPremium体験を改善しました。AppとApp Storeのローカライズ対象も拡大しました。",
   "supportUrl": "https://meloxkgz-ship-it.github.io/medilog-care/support.html",
   "privacyPolicyUrl": "https://meloxkgz-ship-it.github.io/medilog-care/privacy.html",
   "marketingUrl": "https://meloxkgz-ship-it.github.io/medilog-care/landing.html",
