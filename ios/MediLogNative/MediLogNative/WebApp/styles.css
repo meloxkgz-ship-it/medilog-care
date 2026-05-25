@@ -74,6 +74,8 @@ html[dir="rtl"] .care-card,
 html[dir="rtl"] .profile-card,
 html[dir="rtl"] .stock-row,
 html[dir="rtl"] .setting-row,
+html[dir="rtl"] .language-card,
+html[dir="rtl"] .language-chip,
 html[dir="rtl"] .history-row,
 html[dir="rtl"] .premium-compare div,
 html[dir="rtl"] .privacy-rights div,
@@ -1481,6 +1483,86 @@ textarea:focus {
   background: #f4f7f2;
 }
 
+.language-card {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid rgba(35, 47, 40, 0.1);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(232, 241, 233, 0.8)),
+    #f4f7f2;
+}
+
+.language-card > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: end;
+}
+
+.language-card strong {
+  font-size: 0.86rem;
+}
+
+.language-card small {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.language-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  max-height: 210px;
+  overflow: auto;
+  padding-right: 2px;
+  scrollbar-width: thin;
+}
+
+.language-chip {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+  min-height: 44px;
+  padding: 7px 9px;
+  border: 1px solid rgba(35, 47, 40, 0.1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+  text-align: left;
+  box-shadow: none;
+}
+
+.language-chip span {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 30px;
+  border-radius: 10px;
+  background: rgba(52, 112, 68, 0.1);
+  color: #2b5f38;
+  font-size: 0.68rem;
+  font-weight: 950;
+}
+
+.language-chip strong {
+  overflow: hidden;
+  font-size: 0.75rem;
+  font-weight: 900;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.language-chip.active {
+  border-color: rgba(91, 197, 115, 0.58);
+  background: linear-gradient(135deg, rgba(91, 197, 115, 0.23), rgba(255, 255, 255, 0.84));
+}
+
 .setting-row span,
 .refill-row span {
   display: grid;
@@ -2694,6 +2776,8 @@ textarea:focus {
   .stock-row,
   .setting-row,
   .refill-row,
+  .language-card,
+  .language-chip,
   .privacy-rights div,
   .reminder-grid div,
   .tabbar,
@@ -3090,6 +3174,7 @@ textarea:focus {
 
   .setting-row,
   .refill-row,
+  .language-card > span,
   .plan-option,
   .routine-card,
   .vault-actions {

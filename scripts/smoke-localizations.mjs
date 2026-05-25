@@ -23,6 +23,14 @@ const locales = [
   ["nl-NL", "NL", "ltr"],
   ["pl-PL", "PL", "ltr"],
   ["tr-TR", "TR", "ltr"],
+  ["ca", "CA", "ltr"],
+  ["hr", "HR", "ltr"],
+  ["hu", "HU", "ltr"],
+  ["ro", "RO", "ltr"],
+  ["sk", "SK", "ltr"],
+  ["sl", "SL", "ltr"],
+  ["bg", "BG", "ltr"],
+  ["sr", "SR", "ltr"],
   ["da", "DA", "ltr"],
   ["sv", "SV", "ltr"],
   ["no", "NO", "ltr"],
@@ -33,6 +41,8 @@ const locales = [
   ["uk", "UK", "ltr"],
   ["hi", "HI", "ltr"],
   ["id", "ID", "ltr"],
+  ["ms", "MS", "ltr"],
+  ["th", "TH", "ltr"],
   ["vi", "VI", "ltr"],
   ["he", "HE", "rtl"],
   ["ar-SA", "AR", "rtl"],
@@ -145,6 +155,8 @@ try {
   await page.locator('[data-close="report-sheet"]').click();
 
   await page.locator('.badge-button[data-view="schutz"]').click();
+  const languageChipCount = await page.locator("#language-grid .language-chip").count();
+  if (languageChipCount !== locales.length) throw new Error(`Language grid has ${languageChipCount} chips, expected ${locales.length}`);
   for (const [locale, short, dir] of locales) {
     await page.locator("#setting-language").selectOption(locale);
     await page.waitForTimeout(60);
@@ -166,6 +178,15 @@ try {
     }
     if ((locale === "ar-SA" || locale === "he") && state.dir !== "rtl") throw new Error(`${locale} did not switch to RTL`);
     await assertNoHorizontalOverflow(locale);
+  }
+  await page.locator('#language-grid [data-locale="th"]').click();
+  const chipState = await page.evaluate(() => ({
+    lang: document.documentElement.lang,
+    value: document.querySelector("#setting-language")?.value,
+    active: document.querySelector("#language-grid .language-chip.active")?.dataset?.locale,
+  }));
+  if (chipState.lang !== "th" || chipState.value !== "th" || chipState.active !== "th") {
+    throw new Error(`Language chip selection failed: ${JSON.stringify(chipState)}`);
   }
 
   fs.mkdirSync(path.join(root, ".asc/audit"), { recursive: true });

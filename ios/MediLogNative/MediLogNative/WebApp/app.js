@@ -46,6 +46,14 @@ const SUPPORTED_LOCALES = [
   { code: "nl-NL", short: "NL", label: "Nederlands", dir: "ltr" },
   { code: "pl-PL", short: "PL", label: "Polski", dir: "ltr" },
   { code: "tr-TR", short: "TR", label: "Turkce", dir: "ltr" },
+  { code: "ca", short: "CA", label: "Catala", dir: "ltr" },
+  { code: "hr", short: "HR", label: "Hrvatski", dir: "ltr" },
+  { code: "hu", short: "HU", label: "Magyar", dir: "ltr" },
+  { code: "ro", short: "RO", label: "Romana", dir: "ltr" },
+  { code: "sk", short: "SK", label: "Slovencina", dir: "ltr" },
+  { code: "sl", short: "SL", label: "Slovenscina", dir: "ltr" },
+  { code: "bg", short: "BG", label: "Български", dir: "ltr" },
+  { code: "sr", short: "SR", label: "Srpski", dir: "ltr" },
   { code: "da", short: "DA", label: "Dansk", dir: "ltr" },
   { code: "sv", short: "SV", label: "Svenska", dir: "ltr" },
   { code: "no", short: "NO", label: "Norsk", dir: "ltr" },
@@ -56,6 +64,8 @@ const SUPPORTED_LOCALES = [
   { code: "uk", short: "UK", label: "Українська", dir: "ltr" },
   { code: "hi", short: "HI", label: "हिन्दी", dir: "ltr" },
   { code: "id", short: "ID", label: "Bahasa Indonesia", dir: "ltr" },
+  { code: "ms", short: "MS", label: "Bahasa Melayu", dir: "ltr" },
+  { code: "th", short: "TH", label: "ไทย", dir: "ltr" },
   { code: "vi", short: "VI", label: "Tiếng Việt", dir: "ltr" },
   { code: "he", short: "HE", label: "עברית", dir: "rtl" },
   { code: "ar-SA", short: "AR", label: "العربية", dir: "rtl" },
@@ -303,6 +313,14 @@ const LOCALE_FALLBACKS = {
   "nl-NL": "en-US",
   "pl-PL": "en-US",
   "tr-TR": "en-US",
+  "ca": "en-US",
+  "hr": "en-US",
+  "hu": "en-US",
+  "ro": "en-US",
+  "sk": "en-US",
+  "sl": "en-US",
+  "bg": "en-US",
+  "sr": "en-US",
   "da": "en-US",
   "sv": "en-US",
   "no": "en-US",
@@ -313,6 +331,8 @@ const LOCALE_FALLBACKS = {
   "uk": "en-US",
   "hi": "en-US",
   "id": "en-US",
+  "ms": "id",
+  "th": "en-US",
   "vi": "en-US",
   "he": "en-US",
   "ar-SA": "en-US",
@@ -362,6 +382,30 @@ const LOCALE_OVERRIDES = {
   "tr-TR": {
     "Heute": "Bugun", "Für dich": "Senin icin", "Pläne": "Planlar", "Bibliothek": "Ilaclar", "Verlauf": "Gecmis", "Einstellungen": "Ayarlar", "Sprache": "Dil", "Premium freischalten": "Premium'u ac", "Schnell erfassen": "Hizli ekle", "Medikament erfassen": "Ilac ekle", "Wasser": "Su", "Datenschutz": "Gizlilik", "Speichern": "Kaydet", "Abbrechen": "Iptal"
   },
+  "ca": {
+    "Heute": "Avui", "Für dich": "Per a tu", "Pläne": "Plans", "Bibliothek": "Medicaments", "Verlauf": "Historial", "Einstellungen": "Configuracio", "Sprache": "Idioma", "Premium freischalten": "Activar Premium", "Schnell erfassen": "Afegir rapid", "Medikament erfassen": "Afegir medicament", "Wasser": "Aigua", "Datenschutz": "Privadesa", "Speichern": "Desar", "Abbrechen": "Cancel-lar", "Tagescheck": "Revisio diaria", "Einnahmen pruefen": "Revisar preses", "Oeffnen": "Obrir", "Sprache gespeichert": "Idioma desat"
+  },
+  "hr": {
+    "Heute": "Danas", "Für dich": "Za tebe", "Pläne": "Planovi", "Bibliothek": "Lijekovi", "Verlauf": "Povijest", "Einstellungen": "Postavke", "Sprache": "Jezik", "Premium freischalten": "Aktiviraj Premium", "Schnell erfassen": "Brzi unos", "Medikament erfassen": "Dodaj lijek", "Wasser": "Voda", "Datenschutz": "Privatnost", "Speichern": "Spremi", "Abbrechen": "Odustani", "Tagescheck": "Dnevna provjera", "Einnahmen pruefen": "Provjeri doze", "Oeffnen": "Otvori", "Sprache gespeichert": "Jezik spremljen"
+  },
+  "hu": {
+    "Heute": "Ma", "Für dich": "Neked", "Pläne": "Tervek", "Bibliothek": "Gyogyszerek", "Verlauf": "Elozmenyek", "Einstellungen": "Beallitasok", "Sprache": "Nyelv", "Premium freischalten": "Premium bekapcsolasa", "Schnell erfassen": "Gyors hozzaadas", "Medikament erfassen": "Gyogyszer hozzaadasa", "Wasser": "Viz", "Datenschutz": "Adatvedelem", "Speichern": "Mentes", "Abbrechen": "Megse", "Tagescheck": "Napi ellenorzes", "Einnahmen pruefen": "Adagok ellenorzese", "Oeffnen": "Megnyitas", "Sprache gespeichert": "Nyelv mentve"
+  },
+  "ro": {
+    "Heute": "Astazi", "Für dich": "Pentru tine", "Pläne": "Planuri", "Bibliothek": "Medicamente", "Verlauf": "Istoric", "Einstellungen": "Setari", "Sprache": "Limba", "Premium freischalten": "Activeaza Premium", "Schnell erfassen": "Adaugare rapida", "Medikament erfassen": "Adauga medicament", "Wasser": "Apa", "Datenschutz": "Confidentialitate", "Speichern": "Salveaza", "Abbrechen": "Anuleaza", "Tagescheck": "Verificare zilnica", "Einnahmen pruefen": "Verifica dozele", "Oeffnen": "Deschide", "Sprache gespeichert": "Limba salvata"
+  },
+  "sk": {
+    "Heute": "Dnes", "Für dich": "Pre vas", "Pläne": "Plany", "Bibliothek": "Lieky", "Verlauf": "Historia", "Einstellungen": "Nastavenia", "Sprache": "Jazyk", "Premium freischalten": "Aktivovat Premium", "Schnell erfassen": "Rychle pridat", "Medikament erfassen": "Pridat liek", "Wasser": "Voda", "Datenschutz": "Sukromie", "Speichern": "Ulozit", "Abbrechen": "Zrusit", "Tagescheck": "Denna kontrola", "Einnahmen pruefen": "Skontrolovat davky", "Oeffnen": "Otvorit", "Sprache gespeichert": "Jazyk ulozeny"
+  },
+  "sl": {
+    "Heute": "Danes", "Für dich": "Za vas", "Pläne": "Nacrti", "Bibliothek": "Zdravila", "Verlauf": "Zgodovina", "Einstellungen": "Nastavitve", "Sprache": "Jezik", "Premium freischalten": "Aktiviraj Premium", "Schnell erfassen": "Hitro dodaj", "Medikament erfassen": "Dodaj zdravilo", "Wasser": "Voda", "Datenschutz": "Zasebnost", "Speichern": "Shrani", "Abbrechen": "Preklici", "Tagescheck": "Dnevni pregled", "Einnahmen pruefen": "Preveri odmerke", "Oeffnen": "Odpri", "Sprache gespeichert": "Jezik shranjen"
+  },
+  "bg": {
+    "Heute": "Днес", "Für dich": "За вас", "Pläne": "Планове", "Bibliothek": "Лекарства", "Verlauf": "История", "Einstellungen": "Настройки", "Sprache": "Език", "Premium freischalten": "Активирай Premium", "Schnell erfassen": "Бързо добавяне", "Medikament erfassen": "Добави лекарство", "Wasser": "Вода", "Datenschutz": "Поверителност", "Speichern": "Запази", "Abbrechen": "Отказ", "Tagescheck": "Дневна проверка", "Einnahmen pruefen": "Провери приемите", "Oeffnen": "Отвори", "Sprache gespeichert": "Езикът е запазен"
+  },
+  "sr": {
+    "Heute": "Danas", "Für dich": "Za vas", "Pläne": "Planovi", "Bibliothek": "Lekovi", "Verlauf": "Istorija", "Einstellungen": "Podesavanja", "Sprache": "Jezik", "Premium freischalten": "Aktiviraj Premium", "Schnell erfassen": "Brzo dodaj", "Medikament erfassen": "Dodaj lek", "Wasser": "Voda", "Datenschutz": "Privatnost", "Speichern": "Sacuvaj", "Abbrechen": "Otkazi", "Tagescheck": "Dnevna provera", "Einnahmen pruefen": "Proveri doze", "Oeffnen": "Otvori", "Sprache gespeichert": "Jezik sacuvan"
+  },
   "da": {
     "Heute": "I dag", "Für dich": "Til dig", "Pläne": "Planer", "Bibliothek": "Medicin", "Verlauf": "Historik", "Einstellungen": "Indstillinger", "Sprache": "Sprog", "Premium freischalten": "Aktiver Premium", "Schnell erfassen": "Hurtig tilfoejelse", "Medikament erfassen": "Tilfoej medicin", "Wasser": "Vand", "Datenschutz": "Privatliv", "Speichern": "Gem", "Abbrechen": "Annuller", "Tagescheck": "Dagens tjek", "Einnahmen pruefen": "Tjek doser", "Oeffnen": "Aabn"
   },
@@ -391,6 +435,12 @@ const LOCALE_OVERRIDES = {
   },
   "id": {
     "Heute": "Hari ini", "Für dich": "Untuk Anda", "Pläne": "Rencana", "Bibliothek": "Obat", "Verlauf": "Riwayat", "Einstellungen": "Pengaturan", "Sprache": "Bahasa", "Premium freischalten": "Aktifkan Premium", "Schnell erfassen": "Tambah cepat", "Medikament erfassen": "Tambah obat", "Wasser": "Air", "Datenschutz": "Privasi", "Speichern": "Simpan", "Abbrechen": "Batal", "Tagescheck": "Cek harian", "Einnahmen pruefen": "Periksa dosis", "Oeffnen": "Buka"
+  },
+  "ms": {
+    "Heute": "Hari ini", "Für dich": "Untuk anda", "Pläne": "Pelan", "Bibliothek": "Ubat", "Verlauf": "Sejarah", "Einstellungen": "Tetapan", "Sprache": "Bahasa", "Premium freischalten": "Aktifkan Premium", "Schnell erfassen": "Tambah cepat", "Medikament erfassen": "Tambah ubat", "Wasser": "Air", "Datenschutz": "Privasi", "Speichern": "Simpan", "Abbrechen": "Batal", "Tagescheck": "Semakan harian", "Einnahmen pruefen": "Semak dos", "Oeffnen": "Buka", "Sprache gespeichert": "Bahasa disimpan"
+  },
+  "th": {
+    "Heute": "วันนี้", "Für dich": "สำหรับคุณ", "Pläne": "แผน", "Bibliothek": "ยา", "Verlauf": "ประวัติ", "Einstellungen": "การตั้งค่า", "Sprache": "ภาษา", "Premium freischalten": "เปิดใช้ Premium", "Schnell erfassen": "เพิ่มด่วน", "Medikament erfassen": "เพิ่มยา", "Wasser": "น้ำ", "Datenschutz": "ความเป็นส่วนตัว", "Speichern": "บันทึก", "Abbrechen": "ยกเลิก", "Tagescheck": "ตรวจประจำวัน", "Einnahmen pruefen": "ตรวจการใช้ยา", "Oeffnen": "เปิด", "Sprache gespeichert": "บันทึกภาษาแล้ว"
   },
   "vi": {
     "Heute": "Hom nay", "Für dich": "Cho ban", "Pläne": "Ke hoach", "Bibliothek": "Thuoc", "Verlauf": "Lich su", "Einstellungen": "Cai dat", "Sprache": "Ngon ngu", "Premium freischalten": "Mo Premium", "Schnell erfassen": "Them nhanh", "Medikament erfassen": "Them thuoc", "Wasser": "Nuoc", "Datenschutz": "Quyen rieng tu", "Speichern": "Luu", "Abbrechen": "Huy", "Tagescheck": "Kiem tra ngay", "Einnahmen pruefen": "Kiem tra lieu", "Oeffnen": "Mo"
@@ -566,6 +616,7 @@ const elements = {
   premiumLegalSelected: document.querySelector("#premium-legal-selected"),
   privacyConsentStatus: document.querySelector("#privacy-consent-status"),
   settingLanguage: document.querySelector("#setting-language"),
+  languageGrid: document.querySelector("#language-grid"),
   waterFill: document.querySelector("#water-fill"),
   waterTotal: document.querySelector("#water-total"),
   waterGoal: document.querySelector("#water-goal"),
@@ -903,10 +954,23 @@ function render() {
 }
 
 function renderLanguageOptions() {
-  if (!elements.settingLanguage || elements.settingLanguage.options.length === SUPPORTED_LOCALES.length) return;
-  elements.settingLanguage.innerHTML = SUPPORTED_LOCALES
-    .map((locale) => `<option value="${locale.code}">${locale.short} - ${locale.label}</option>`)
-    .join("");
+  const activeLocale = getLocaleConfig().code;
+  if (elements.settingLanguage && elements.settingLanguage.options.length !== SUPPORTED_LOCALES.length) {
+    elements.settingLanguage.innerHTML = SUPPORTED_LOCALES
+      .map((locale) => `<option value="${locale.code}">${locale.short} - ${locale.label}</option>`)
+      .join("");
+  }
+
+  if (elements.languageGrid) {
+    elements.languageGrid.innerHTML = SUPPORTED_LOCALES
+      .map((locale) => `
+        <button class="language-chip ${locale.code === activeLocale ? "active" : ""}" type="button" data-locale="${locale.code}" dir="${locale.dir}">
+          <span>${escapeHtml(locale.short)}</span>
+          <strong>${escapeHtml(locale.label)}</strong>
+        </button>
+      `)
+      .join("");
+  }
 }
 
 function renderCareDashboard() {
@@ -2243,6 +2307,15 @@ elements.settingWaterGoal.addEventListener("change", () => {
 
 elements.settingLanguage?.addEventListener("change", () => {
   state.settings.locale = normalizeLocale(elements.settingLanguage.value);
+  saveState();
+  render();
+  showToast("Sprache gespeichert");
+});
+
+elements.languageGrid?.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-locale]");
+  if (!button) return;
+  state.settings.locale = normalizeLocale(button.dataset.locale);
   saveState();
   render();
   showToast("Sprache gespeichert");
