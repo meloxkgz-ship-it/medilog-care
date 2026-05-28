@@ -17,13 +17,15 @@
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
-    <string>1.7</string>
+    <string>1.8</string>
 	<key>CFBundleVersion</key>
-	<string>14</string>
+	<string>16</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+    <key>RevenueCatAPIKey</key>
+    <string>$(REVENUECAT_API_KEY)</string>
     <key>NSCameraUsageDescription</key>
     <string>MediLog nutzt die Kamera nur, um einen Medikationsplan-QR-Code lokal einzulesen.</string>
     <key>NSFaceIDUsageDescription</key>

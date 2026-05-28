@@ -2,6 +2,7 @@ import AVFoundation
 import CryptoKit
 import Foundation
 import LocalAuthentication
+import RevenueCat
 import Security
 import StoreKit
 import SwiftUI
@@ -49,6 +50,7 @@ final class NativeBridge: NSObject, WKScriptMessageHandler {
                 "notifications": "native",
                 "cameraScan": UIImagePickerController.isSourceTypeAvailable(.camera),
                 "biometrics": canEvaluateBiometrics(),
+                "revenueCat": entitlementStore.isRevenueCatReady,
             ]
 
         case "loadSecureState":
@@ -594,18 +596,37 @@ final class PremiumEntitlementStore: NSObject, UIAdaptivePresentationControllerD
         "com.medilog.care.premium.monthly",
         "com.medilog.care.premium.yearly",
     ]
+    private let revenueCatEntitlementIds = ["premium", "plus"]
     private let activeKey = "medilog.premium.active"
     private let sourceKey = "medilog.premium.source"
     private let expiresKey = "medilog.premium.expiresAt"
     private var storeContinuation: CheckedContinuation<[String: Any], Error>?
     private weak var storeController: UIViewController?
+    private static var revenueCatConfigured = false
+
+    override init() {
+        super.init()
+        configureRevenueCatIfPossible()
+    }
+
+    var isRevenueCatReady: Bool {
+        Self.revenueCatConfigured
+    }
 
     func status() async -> [String: Any] {
+        if let status = await revenueCatStatus() {
+            return status
+        }
+
         await refreshFromCurrentEntitlements()
         return cachedStatus()
     }
 
     func productsEnvelope() async throws -> [String: Any] {
+        if let packages = try? await revenueCatPackages(), !packages.isEmpty {
+            return ["products": packages.sorted(by: packageSort).map(revenueCatProductPayload)]
+        }
+
         let products = try await Product.products(for: productIds)
         if products.isEmpty {
             #if DEBUG
@@ -619,6 +640,11 @@ final class PremiumEntitlementStore: NSObject, UIAdaptivePresentationControllerD
     }
 
     func purchase(productId: String?, presenting presenter: UIViewController?) async throws -> [String: Any] {
+        if Self.revenueCatConfigured,
+           let package = try? await revenueCatPackage(matching: productId) {
+            return try await purchaseRevenueCatPackage(package)
+        }
+
         if let presenter {
             return try await presentNativeSubscriptionStore(productId: productId, presenter: presenter)
         }
@@ -732,6 +758,10 @@ final class PremiumEntitlementStore: NSObject, UIAdaptivePresentationControllerD
     }
 
     func restore() async throws -> [String: Any] {
+        if Self.revenueCatConfigured {
+            return try await restoreRevenueCatPurchases()
+        }
+
         try await AppStore.sync()
         await refreshFromCurrentEntitlements()
         return cachedStatus()
@@ -756,6 +786,144 @@ final class PremiumEntitlementStore: NSObject, UIAdaptivePresentationControllerD
         case "com.medilog.care.premium.monthly": return 1
         default: return 9
         }
+    }
+
+    private func configureRevenueCatIfPossible() {
+        guard !Self.revenueCatConfigured else { return }
+        let rawKey = Bundle.main.object(forInfoDictionaryKey: "RevenueCatAPIKey") as? String ?? ""
+        let apiKey = rawKey.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard apiKey.hasPrefix("appl_") else { return }
+
+        Purchases.logLevel = .warn
+        Purchases.configure(withAPIKey: apiKey)
+        Self.revenueCatConfigured = true
+    }
+
+    private func revenueCatPackages() async throws -> [Package] {
+        guard Self.revenueCatConfigured else { throw NativeBridgeError.revenueCatNotConfigured }
+
+        return try await withCheckedThrowingContinuation { continuation in
+            Purchases.shared.getOfferings { offerings, error in
+                if let error {
+                    continuation.resume(throwing: error)
+                    return
+                }
+
+                let packages = offerings?.current?.availablePackages ?? []
+                if packages.isEmpty {
+                    continuation.resume(throwing: NativeBridgeError.revenueCatProductsUnavailable)
+                } else {
+                    continuation.resume(returning: packages)
+                }
+            }
+        }
+    }
+
+    private func revenueCatPackage(matching productId: String?) async throws -> Package? {
+        let packages = try await revenueCatPackages()
+        if let productId,
+           productIds.contains(productId),
+           let package = packages.first(where: { $0.storeProduct.productIdentifier == productId }) {
+            return package
+        }
+
+        return packages.first { $0.storeProduct.productIdentifier == "com.medilog.care.premium.yearly" } ?? packages.first
+    }
+
+    private func packageSort(_ lhs: Package, _ rhs: Package) -> Bool {
+        productRank(lhs.storeProduct.productIdentifier) < productRank(rhs.storeProduct.productIdentifier)
+    }
+
+    private func revenueCatProductPayload(_ package: Package) -> [String: Any] {
+        let productId = package.storeProduct.productIdentifier
+        return [
+            "id": productId,
+            "displayName": package.storeProduct.localizedTitle,
+            "description": package.storeProduct.localizedDescription,
+            "displayPrice": package.storeProduct.localizedPriceString,
+            "period": fallbackPeriodLabel(for: productId),
+            "level": productRank(productId) + 1,
+            "featured": productId == "com.medilog.care.premium.yearly",
+        ]
+    }
+
+    private func fallbackPeriodLabel(for productId: String) -> String {
+        switch productId {
+        case "com.medilog.care.premium.yearly": return "pro Jahr"
+        case "com.medilog.care.premium.monthly": return "pro Monat"
+        default: return "laut App Store"
+        }
+    }
+
+    private func purchaseRevenueCatPackage(_ package: Package) async throws -> [String: Any] {
+        try await withCheckedThrowingContinuation { continuation in
+            Purchases.shared.purchase(package: package) { _, customerInfo, error, userCancelled in
+                if userCancelled {
+                    continuation.resume(throwing: NativeBridgeError.purchaseCancelled)
+                    return
+                }
+
+                if let error {
+                    continuation.resume(throwing: error)
+                    return
+                }
+
+                guard let status = self.revenueCatStatus(from: customerInfo) else {
+                    continuation.resume(throwing: NativeBridgeError.storeKitVerificationFailed)
+                    return
+                }
+
+                continuation.resume(returning: status)
+            }
+        }
+    }
+
+    private func restoreRevenueCatPurchases() async throws -> [String: Any] {
+        try await withCheckedThrowingContinuation { continuation in
+            Purchases.shared.restorePurchases { customerInfo, error in
+                if let error {
+                    continuation.resume(throwing: error)
+                    return
+                }
+
+                continuation.resume(returning: self.revenueCatStatus(from: customerInfo) ?? self.cachedStatus())
+            }
+        }
+    }
+
+    private func revenueCatStatus() async -> [String: Any]? {
+        guard Self.revenueCatConfigured else { return nil }
+
+        return await withCheckedContinuation { continuation in
+            Purchases.shared.getCustomerInfo { customerInfo, _ in
+                continuation.resume(returning: self.revenueCatStatus(from: customerInfo))
+            }
+        }
+    }
+
+    private func revenueCatStatus(from customerInfo: CustomerInfo?) -> [String: Any]? {
+        guard let customerInfo else { return nil }
+
+        let entitlement = revenueCatEntitlementIds.compactMap { customerInfo.entitlements.active[$0] }.first
+        if let entitlement {
+            saveEntitlement(productId: entitlement.productIdentifier, expirationDate: entitlement.expirationDate)
+            return [
+                "active": true,
+                "source": "revenuecat:\(entitlement.productIdentifier)",
+                "expiresAt": entitlement.expirationDate.map { ISO8601DateFormatter().string(from: $0) } ?? NSNull(),
+            ]
+        }
+
+        if Self.revenueCatConfigured {
+            clearEntitlement()
+            return [
+                "active": false,
+                "source": "revenuecat",
+                "expiresAt": NSNull(),
+            ]
+        }
+
+        return nil
     }
 
     private func productPayload(_ product: Product) -> [String: Any] {
@@ -819,7 +987,7 @@ final class PremiumEntitlementStore: NSObject, UIAdaptivePresentationControllerD
         }
     }
 
-    private func verified<T>(_ result: VerificationResult<T>) throws -> T {
+    private func verified<T>(_ result: StoreKit.VerificationResult<T>) throws -> T {
         switch result {
         case .verified(let value):
             return value
@@ -1014,6 +1182,8 @@ enum NativeBridgeError: LocalizedError {
     case scanCancelled
     case storeKitProductsUnavailable
     case storeKitVerificationFailed
+    case revenueCatNotConfigured
+    case revenueCatProductsUnavailable
     case purchaseCancelled
     case purchaseAlreadyInProgress
 
@@ -1037,6 +1207,10 @@ enum NativeBridgeError: LocalizedError {
             return "Premium-Produkte sind noch nicht in App Store Connect verfuegbar."
         case .storeKitVerificationFailed:
             return "Premium-Kauf konnte nicht verifiziert werden."
+        case .revenueCatNotConfigured:
+            return "RevenueCat ist noch nicht konfiguriert."
+        case .revenueCatProductsUnavailable:
+            return "RevenueCat konnte keine Premium-Angebote laden."
         case .purchaseCancelled:
             return "Kauf abgebrochen."
         case .purchaseAlreadyInProgress:

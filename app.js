@@ -12,9 +12,9 @@ const DEFAULT_PREMIUM_PRODUCTS = [
     displayPrice: "29,99 €",
     period: "pro Jahr",
     featured: true,
-    badge: "Bester Wert",
-    conversionNote: "Empfohlen fuer feste Routinen",
-    cta: "Jaehrlich starten",
+    badge: "Spart ca. 37%",
+    conversionNote: "Beste Wahl fuer feste Routinen",
+    cta: "Jaehrlich Premium starten",
   },
   {
     id: MONTHLY_PREMIUM_PRODUCT_ID,
@@ -25,7 +25,7 @@ const DEFAULT_PREMIUM_PRODUCTS = [
     period: "pro Monat",
     featured: false,
     badge: "Flexibel",
-    conversionNote: "Monatlich kuendbar",
+    conversionNote: "Flexibel testen",
     cta: "Monatlich starten",
   },
 ];
@@ -510,6 +510,7 @@ let nativeCapabilities = {
   notifications: "web",
   cameraScan: false,
   biometrics: false,
+  revenueCat: false,
 };
 let nativeSecureStorageReady = false;
 let nativeSaveTimer = null;
@@ -558,6 +559,9 @@ let state = loadState();
 let activeVaultPin = null;
 let premiumProducts = DEFAULT_PREMIUM_PRODUCTS.map((product) => ({ ...product }));
 let selectedPremiumProductId = YEARLY_PREMIUM_PRODUCT_ID;
+let premiumPurchasePending = false;
+let premiumInlineMessage = "";
+let premiumInlineMessageTone = "info";
 let selectedMedicineId = null;
 
 function createFreshState() {
@@ -611,8 +615,10 @@ const elements = {
   refillSettingsList: document.querySelector("#refill-settings-list"),
   premiumStatus: document.querySelector("#premium-status"),
   premiumPlans: document.querySelector("#premium-plans"),
+  premiumValueRow: document.querySelector("#premium-value-row"),
   premiumButton: document.querySelector("#premium-button"),
   premiumButtonLabel: document.querySelector("#premium-button-label"),
+  premiumMessage: document.querySelector("#premium-message"),
   premiumLegalSelected: document.querySelector("#premium-legal-selected"),
   privacyConsentStatus: document.querySelector("#privacy-consent-status"),
   settingLanguage: document.querySelector("#setting-language"),
@@ -858,6 +864,15 @@ function selectedPremiumLegalText(product = getSelectedPremiumProduct()) {
     return `Ausgewaehlter Tarif: ${title}, ${price} ${period}. Das Abo verlaengert sich automatisch, sofern es nicht mindestens 24 Stunden vor Ablauf gekuendigt wird.`;
   }
   return `Selected plan: ${title}, ${price} ${period}. The subscription renews automatically unless cancelled at least 24 hours before the end of the current period.`;
+}
+
+function setPremiumInlineMessage(message = "", tone = "info") {
+  premiumInlineMessage = message;
+  premiumInlineMessageTone = tone;
+}
+
+function isAppStoreShotMode() {
+  return new URLSearchParams(window.location.search).has("shot");
 }
 
 function requirePremium(feature) {
@@ -1129,15 +1144,18 @@ function renderPremiumPlans() {
       const title = t(product.storeTitle || product.storeDisplayName || product.displayName);
       const note = t(product.conversionNote || product.badge || product.description || "");
       const period = t(product.period || "");
+      const badge = t(product.badge || "");
+      const price = product.displayPrice || t("Preis laut App Store");
+      const ariaLabel = `${title}, ${price} ${period}${note ? `, ${note}` : ""}${active ? ", ausgewaehlt" : ""}`;
       return `
-        <button class="plan-option ${active ? "active" : ""}" type="button" role="radio" aria-checked="${active}" data-premium-product-id="${escapeHtml(product.id)}">
+        <button class="plan-option ${active ? "active" : ""} ${product.featured ? "featured" : ""}" type="button" role="radio" aria-checked="${active}" aria-label="${escapeHtml(ariaLabel)}" data-premium-product-id="${escapeHtml(product.id)}">
           <span class="plan-check" aria-hidden="true"><i data-lucide="${active ? "check" : "circle"}"></i></span>
           <span>
-            <strong>${escapeHtml(title)}</strong>
+            <strong>${escapeHtml(title)}${badge ? `<em class="plan-badge">${escapeHtml(badge)}</em>` : ""}</strong>
             <small>${escapeHtml(note)}</small>
           </span>
           <span class="plan-price">
-            <b>${escapeHtml(product.displayPrice)}</b>
+            <b>${escapeHtml(price)}</b>
             <em>${escapeHtml(period)}</em>
           </span>
         </button>
@@ -1148,6 +1166,11 @@ function renderPremiumPlans() {
 
 function renderSettings() {
   renderPremiumPlans();
+  const selectedProduct = getSelectedPremiumProduct();
+  const selectedPrice = selectedProduct.displayPrice || t("Preis laut App Store");
+  const selectedPeriod = t(selectedProduct.period || "");
+  const selectedTitle = t(selectedProduct.storeTitle || selectedProduct.storeDisplayName || selectedProduct.displayName);
+  const usesApplePurchaseFlow = nativeCapabilities.platform === "ios" || isAppStoreShotMode();
   elements.settingWaterGoal.value = Number(state.settings.waterGoal || 2000);
   elements.settingReminderDelay.value = String(state.settings.reminderDelayMinutes || 15);
   if (elements.settingLanguage) elements.settingLanguage.value = getLocaleConfig().code;
@@ -1158,13 +1181,25 @@ function renderSettings() {
     : `Free: Mini-Modus (${FREE_MEDICINE_LIMIT} Medis)`;
   elements.premiumButtonLabel.textContent = isPremium()
     ? "Premium aktiv"
-    : nativeCapabilities.platform === "ios"
-    ? t(getSelectedPremiumProduct().cta || `${getSelectedPremiumProduct().displayName} kaufen`)
-    : `${t(getSelectedPremiumProduct().displayName)} Webvorschau`;
+    : usesApplePurchaseFlow
+    ? `${t(selectedProduct.cta || `${selectedProduct.displayName} kaufen`)} · ${selectedPrice}`
+    : `${t(selectedProduct.displayName)} Webvorschau`;
+  elements.premiumButton.disabled = premiumPurchasePending || isPremium();
+  elements.premiumButton.setAttribute("aria-busy", String(premiumPurchasePending));
+  elements.premiumValueRow.innerHTML = `
+    <span><strong>${escapeHtml(selectedPrice)}</strong><small>${escapeHtml(selectedPeriod || selectedTitle)}</small></span>
+    <span><strong>${escapeHtml(t(selectedProduct.conversionNote || "Premium"))}</strong><small>${escapeHtml(t("fuer Pflege, Export und Vorrat"))}</small></span>
+  `;
+  elements.premiumMessage.textContent = t(premiumInlineMessage || "");
+  elements.premiumMessage.className = `premium-message ${premiumInlineMessage ? "show" : ""} ${premiumInlineMessageTone === "error" ? "error" : premiumInlineMessageTone === "success" ? "success" : ""}`;
   elements.premiumLegalSelected.textContent = selectedPremiumLegalText();
   elements.privacyConsentStatus.textContent = state.settings.privacyConsentAt ? "bestaetigt" : "offen";
   document.querySelector("#native-status").textContent =
-    nativeCapabilities.platform === "ios" ? "iOS: Keychain, lokale Notifications, QR-Scan" : "Web/PWA: Browser-Funktionen";
+    usesApplePurchaseFlow
+      ? nativeCapabilities.revenueCat
+        ? "iOS: RevenueCat, Keychain, lokale Notifications, QR-Scan"
+        : "iOS: StoreKit-Fallback, Keychain, lokale Notifications, QR-Scan"
+      : "Web/PWA: Browser-Funktionen";
   document.querySelector("#privacy-storage-status").textContent = nativeSecureStorageReady
     ? "Verschluesselter iOS-Speicher. Schluessel liegt in der Keychain dieses Geraets."
     : "Lokaler Browser-Speicher. Optionaler PIN-Vault nutzt Web Crypto.";
@@ -1786,6 +1821,7 @@ document.addEventListener("click", (event) => {
   const premiumPlan = event.target.closest("[data-premium-product-id]");
   if (premiumPlan) {
     selectedPremiumProductId = premiumPlan.dataset.premiumProductId;
+    setPremiumInlineMessage("");
     renderSettings();
     refreshIcons();
     return;
@@ -2374,6 +2410,14 @@ elements.premiumButton.addEventListener("click", async () => {
     return;
   }
 
+  premiumPurchasePending = true;
+  setPremiumInlineMessage(
+    medilogNative.available ? "Apple Kaufdialog wird geoeffnet..." : "Webvorschau wird lokal aktiviert.",
+    "info",
+  );
+  renderSettings();
+  refreshIcons();
+
   try {
     if (medilogNative.available) {
       const entitlement = await medilogNative.call("purchasePremium", { productId: getSelectedPremiumProduct().id });
@@ -2384,9 +2428,16 @@ elements.premiumButton.addEventListener("click", async () => {
       state.settings.premiumSource = `web-preview:${getSelectedPremiumProduct().id}`;
       showToast("Premium-Webvorschau aktiv");
     }
+    setPremiumInlineMessage("Premium ist aktiv.", "success");
   } catch (error) {
-    showToast(error.message || "Premium konnte nicht aktiviert werden");
+    const message = error.message || "Premium konnte nicht aktiviert werden";
+    setPremiumInlineMessage(message, "error");
+    showToast(message);
     return;
+  } finally {
+    premiumPurchasePending = false;
+    renderSettings();
+    refreshIcons();
   }
 
   saveState();
@@ -2395,20 +2446,36 @@ elements.premiumButton.addEventListener("click", async () => {
 
 document.querySelector("#premium-restore").addEventListener("click", async () => {
   if (!medilogNative.available) {
-    showToast("Wiederherstellung ist nur in der iOS-App verfuegbar");
+    const message = "Wiederherstellung ist nur in der iOS-App verfuegbar";
+    setPremiumInlineMessage(message, "error");
+    renderSettings();
+    showToast(message);
     return;
   }
+
+  premiumPurchasePending = true;
+  setPremiumInlineMessage("Kaeufe werden bei Apple geprueft...", "info");
+  renderSettings();
+  refreshIcons();
 
   try {
     const entitlement = await medilogNative.call("restorePurchases");
     if (!applyPremiumEntitlement(entitlement)) {
+      setPremiumInlineMessage("Kein aktiver Premium-Kauf gefunden.", "error");
       showToast("Kein Premium-Kauf gefunden");
       return;
     }
+    setPremiumInlineMessage("Premium wurde wiederhergestellt.", "success");
     saveState();
     render();
   } catch (error) {
-    showToast(error.message || "Kauf konnte nicht wiederhergestellt werden");
+    const message = error.message || "Kauf konnte nicht wiederhergestellt werden";
+    setPremiumInlineMessage(message, "error");
+    showToast(message);
+  } finally {
+    premiumPurchasePending = false;
+    renderSettings();
+    refreshIcons();
   }
 });
 

@@ -318,15 +318,27 @@
             <div>
               <p class="kicker">Zugang</p>
               <h2>Premium fuer echte Routine.</h2>
-              <p>Free bleibt bewusst klein. Premium ist fuer Alltag, Pflege, Export und Vorrat ohne kuenstliche Reibung.</p>
-              <p class="premium-subcopy">Alles, was fuer regelmaessige Dokumentation zaehlt: unbegrenzt, privat, exportierbar.</p>
+              <p>Free bleibt bewusst klein. Premium schaltet den vollen lokalen Medikamenten-Alltag frei: Pflege, Export, Vorrat und sichere Reminder.</p>
+              <p class="premium-subcopy">Keine Cloud. Keine Werbung. Kein medizinischer Rat. Nur ein ruhiges System fuer deine Routine.</p>
             </div>
             <div class="premium-proof" aria-label="Premium Vorteile">
               <span><strong>1 Profil</strong><small>Free</small></span>
-              <span><strong>Unbegrenzt</strong><small>Premium</small></span>
+              <span><strong>Limitlos</strong><small>Premium</small></span>
               <span><strong>Lokal</strong><small>Keine Cloud</small></span>
             </div>
             <div class="premium-plans" id="premium-plans" role="radiogroup" aria-label="Premium Tarif"></div>
+            <div class="premium-message" id="premium-message" role="status" aria-live="polite"></div>
+            <button class="primary-pill" type="button" id="premium-button">
+              <span id="premium-button-label">Premium freischalten</span>
+              <i data-lucide="sparkles"></i>
+            </button>
+            <div class="premium-value-row" id="premium-value-row" aria-live="polite"></div>
+            <button class="ghost-on-dark" type="button" id="premium-restore">Kauf wiederherstellen</button>
+            <div class="premium-trust-row" aria-label="Premium Schutzversprechen">
+              <span><i data-lucide="shield-check"></i>Lokal gespeichert</span>
+              <span><i data-lucide="badge-check"></i>Apple Kaufdialog</span>
+              <span><i data-lucide="rotate-ccw"></i>Jederzeit kuendbar</span>
+            </div>
             <div class="premium-compare" aria-label="Free und Premium Vergleich">
               <div><span>Free</span><strong>1 Profil, 2 Medikamente, Wasser, Tagescheck</strong></div>
               <div><span>Premium</span><strong>Familie, Vorrat, Export, Scan, Vault, Reminder-Regeln</strong></div>
@@ -337,11 +349,6 @@
               <li><i data-lucide="file-text"></i>Arzt-/Apothekenbericht</li>
               <li><i data-lucide="lock-keyhole"></i>Vault, QR, Vorrat und Nachkauf</li>
             </ul>
-            <button class="primary-pill" type="button" id="premium-button">
-              <span id="premium-button-label">Premium freischalten</span>
-              <i data-lucide="sparkles"></i>
-            </button>
-            <button class="ghost-on-dark" type="button" id="premium-restore">Kauf wiederherstellen</button>
             <div class="premium-legal" aria-label="Abo Bedingungen">
               <p>
                 Auto-verlaengerbares Abo. Preis und Laufzeit werden vor dem Kauf von Apple angezeigt.
