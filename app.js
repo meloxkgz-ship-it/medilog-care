@@ -6,15 +6,15 @@ const MONTHLY_PREMIUM_PRODUCT_ID = "com.medilog.care.premium.monthly";
 const DEFAULT_PREMIUM_PRODUCTS = [
   {
     id: YEARLY_PREMIUM_PRODUCT_ID,
-    displayName: "Jaehrlich",
-    storeTitle: "MediLog Premium Jaehrlich",
-    description: "Ein Jahr Premium fuer Alltag, Pflege, Export, Scan, Vault und Vorrat.",
+    displayName: "Jährlich",
+    storeTitle: "MediLog Premium Jährlich",
+    description: "Ein Jahr Premium für Alltag, Pflege, Export, Scan, Vault und Vorrat.",
     displayPrice: "29,99 €",
     period: "pro Jahr",
     featured: true,
     badge: "Spart ca. 37%",
-    conversionNote: "Beste Wahl fuer feste Routinen",
-    cta: "Jaehrlich Premium starten",
+    conversionNote: "Beste Wahl für feste Routinen",
+    cta: "Jährlich Premium starten",
   },
   {
     id: MONTHLY_PREMIUM_PRODUCT_ID,
@@ -36,29 +36,29 @@ const SUPPORTED_LOCALES = [
   { code: "en-GB", short: "GB", label: "English (UK)", dir: "ltr" },
   { code: "en-AU", short: "AU", label: "English (Australia)", dir: "ltr" },
   { code: "en-CA", short: "CA", label: "English (Canada)", dir: "ltr" },
-  { code: "es-ES", short: "ES", label: "Espanol", dir: "ltr" },
-  { code: "es-MX", short: "MX", label: "Espanol (Mexico)", dir: "ltr" },
-  { code: "fr-FR", short: "FR", label: "Francais", dir: "ltr" },
-  { code: "fr-CA", short: "QC", label: "Francais (Canada)", dir: "ltr" },
+  { code: "es-ES", short: "ES", label: "Español", dir: "ltr" },
+  { code: "es-MX", short: "MX", label: "Español (Mexico)", dir: "ltr" },
+  { code: "fr-FR", short: "FR", label: "Français", dir: "ltr" },
+  { code: "fr-CA", short: "QC", label: "Français (Canada)", dir: "ltr" },
   { code: "it-IT", short: "IT", label: "Italiano", dir: "ltr" },
-  { code: "pt-BR", short: "PT", label: "Portugues (Brasil)", dir: "ltr" },
-  { code: "pt-PT", short: "PT", label: "Portugues", dir: "ltr" },
+  { code: "pt-BR", short: "PT", label: "Português (Brasil)", dir: "ltr" },
+  { code: "pt-PT", short: "PT", label: "Português", dir: "ltr" },
   { code: "nl-NL", short: "NL", label: "Nederlands", dir: "ltr" },
   { code: "pl-PL", short: "PL", label: "Polski", dir: "ltr" },
-  { code: "tr-TR", short: "TR", label: "Turkce", dir: "ltr" },
-  { code: "ca", short: "CA", label: "Catala", dir: "ltr" },
+  { code: "tr-TR", short: "TR", label: "Türkçe", dir: "ltr" },
+  { code: "ca", short: "CA", label: "Català", dir: "ltr" },
   { code: "hr", short: "HR", label: "Hrvatski", dir: "ltr" },
   { code: "hu", short: "HU", label: "Magyar", dir: "ltr" },
-  { code: "ro", short: "RO", label: "Romana", dir: "ltr" },
-  { code: "sk", short: "SK", label: "Slovencina", dir: "ltr" },
-  { code: "sl", short: "SL", label: "Slovenscina", dir: "ltr" },
+  { code: "ro", short: "RO", label: "Română", dir: "ltr" },
+  { code: "sk", short: "SK", label: "Slovenčina", dir: "ltr" },
+  { code: "sl", short: "SL", label: "Slovenščina", dir: "ltr" },
   { code: "bg", short: "BG", label: "Български", dir: "ltr" },
   { code: "sr", short: "SR", label: "Srpski", dir: "ltr" },
   { code: "da", short: "DA", label: "Dansk", dir: "ltr" },
   { code: "sv", short: "SV", label: "Svenska", dir: "ltr" },
   { code: "no", short: "NO", label: "Norsk", dir: "ltr" },
   { code: "fi", short: "FI", label: "Suomi", dir: "ltr" },
-  { code: "cs", short: "CS", label: "Cestina", dir: "ltr" },
+  { code: "cs", short: "CS", label: "Čeština", dir: "ltr" },
   { code: "el", short: "EL", label: "Ελληνικά", dir: "ltr" },
   { code: "ru", short: "RU", label: "Русский", dir: "ltr" },
   { code: "uk", short: "UK", label: "Українська", dir: "ltr" },
@@ -99,34 +99,34 @@ const I18N = {
     "Guide": "Guide",
     "1. Medikament erfassen": "1. Add Medication",
     "Name, Angabe laut Plan, Uhrzeit und Vorrat.": "Name, planned dose, time and stock.",
-    "2. Erinnerung pruefen": "2. Check Reminder",
+    "2. Erinnerung prüfen": "2. Check Reminder",
     "Lokale Reminder aktivieren und Abstand setzen.": "Enable local reminders and set delay.",
     "3. Bericht vorbereiten": "3. Prepare Report",
-    "Export fuer Arzt oder Apotheke testen.": "Test export for doctor or pharmacy.",
+    "Export für Arzt oder Apotheke testen.": "Test export for doctor or pharmacy.",
     "Tagescheck": "Daily Check",
     "Heute sinnvoll weitermachen": "Continue Today",
     "Nächster sinnvoller Schritt": "Next useful step",
-    "Einnahmen pruefen": "Check doses",
+    "Einnahmen prüfen": "Check doses",
     "Offene Einnahmen abhaken oder Details ansehen.": "Mark open doses or review details.",
     "Vorrat sichern": "Secure stock",
-    "Niedrige Bestaende frueh nachkaufen.": "Refill low stock early.",
+    "Niedrige Bestände früh nachkaufen.": "Refill low stock early.",
     "Bericht aktuell halten": "Keep report current",
-    "Protokoll fuer Arzt oder Apotheke vorbereiten.": "Prepare a log for doctor or pharmacy.",
-    "Schutz pruefen": "Check protection",
+    "Protokoll für Arzt oder Apotheke vorbereiten.": "Prepare a log for doctor or pharmacy.",
+    "Schutz prüfen": "Check protection",
     "Einwilligung, Vault und lokale Speicherung kontrollieren.": "Review consent, vault and local storage.",
-    "Oeffnen": "Open",
+    "Öffnen": "Open",
     "Pflege-Cockpit": "Care Cockpit",
     "Alle im Blick": "Everything in View",
     "Profile": "Profiles",
     "Einnahmen": "Doses",
     "Eintragen": "Log",
-    "Keine Einnahmen fuer diesen Filter": "No doses for this filter",
-    "Neue Medikamente oder Zeiten kannst du ueber den Plus-Button erfassen.": "Use the plus button to add medications or times.",
+    "Keine Einnahmen für diesen Filter": "No doses for this filter",
+    "Neue Medikamente oder Zeiten kannst du über den Plus-Button erfassen.": "Use the plus button to add medications or times.",
     "Medikament Erfassen": "Add Medication",
-    "Naechste": "Next",
+    "Nächste": "Next",
     "Keine offene Einnahme": "No open dose",
     "Vorrat": "Stock",
-    "niedrige Bestaende": "low items",
+    "niedrige Bestände": "low items",
     "Wasser": "Water",
     "Trinken heute": "Water today",
     "von 2,0 L Tagesziel": "of 2.0 L daily goal",
@@ -138,18 +138,18 @@ const I18N = {
     "Heute offen": "Open today",
     "Therapieplan": "Treatment Plan",
     "Privat dokumentiert": "Privately documented",
-    "Alle Angaben beruhen auf deinem eigenen Plan. Die App veraendert keine Dosis und bewertet keine Therapie.": "All entries are based on your own plan. The app does not change doses or evaluate therapy.",
-    "Regeln fuer Erinnerungen": "Reminder Rules",
-    "Pruefen": "Check",
-    "Erinnerungen sind lokal und koennen jederzeit deaktiviert werden.": "Reminders are local and can be disabled anytime.",
-    "Exportdaten enthalten Gesundheitsdaten und sollten geschuetzt geteilt werden.": "Exports contain health data and should be shared carefully.",
+    "Alle Angaben beruhen auf deinem eigenen Plan. Die App verändert keine Dosis und bewertet keine Therapie.": "All entries are based on your own plan. The app does not change doses or evaluate therapy.",
+    "Regeln für Erinnerungen": "Reminder Rules",
+    "Prüfen": "Check",
+    "Erinnerungen sind lokal und können jederzeit deaktiviert werden.": "Reminders are local and can be disabled anytime.",
+    "Exportdaten enthalten Gesundheitsdaten und sollten geschützt geteilt werden.": "Exports contain health data and should be shared carefully.",
     "Medizinische Entscheidungen bleiben bei Arzt, Apotheke oder Notdienst.": "Medical decisions stay with your doctor, pharmacy or emergency services.",
     "Familien-/Pflege-Modus": "Family/Care Mode",
     "Profil": "Profile",
     "Medikationsplan": "Medication Plan",
     "QR-Import vorbereitet": "QR Import Ready",
     "Scan": "Scan",
-    "Fuer den bundeseinheitlichen Medikationsplan ist ein Premium-Workflow angelegt. In iOS kann ein QR-Code per Kamera gelesen werden, in der Web-Vorschau per Text oder QR-Bild. Es erfolgt keine automatische Dosierungsbewertung.": "A Premium workflow is prepared for medication-plan QR import. On iOS, a QR code can be scanned with the camera; in web preview, use text or a QR image. No automatic dosage evaluation is performed.",
+    "Für den bundeseinheitlichen Medikationsplan ist ein Premium-Workflow angelegt. In iOS kann ein QR-Code per Kamera gelesen werden, in der Web-Vorschau per Text oder QR-Bild. Es erfolgt keine automatische Dosierungsbewertung.": "A Premium workflow is prepared for medication-plan QR import. On iOS, a QR code can be scanned with the camera; in web preview, use text or a QR image. No automatic dosage evaluation is performed.",
     "Eigene Liste": "Own List",
     "Medikamente": "Medications",
     "Erfassen": "Add",
@@ -158,31 +158,31 @@ const I18N = {
     "Vorrat & Nachkauf": "Stock & Refill",
     "Einkaufsliste": "Shopping List",
     "Kopieren": "Copy",
-    "7-Tage-Uebersicht": "7-Day Overview",
+    "7-Tage-Übersicht": "7-Day Overview",
     "Dokumentierte Einnahmetreue": "Documented adherence",
     "Protokoll": "Log",
     "Bericht": "Report",
     "Einstellungen, Premium und Schutz.": "Settings, Premium and Protection.",
-    "MediLog ist als lokaler Tracker konzipiert. Keine Diagnose, keine Therapieempfehlung, keine automatische Wechselwirkungspruefung.": "MediLog is designed as a local tracker. No diagnosis, no treatment recommendation, no automatic interaction check.",
+    "MediLog ist als lokaler Tracker konzipiert. Keine Diagnose, keine Therapieempfehlung, keine automatische Wechselwirkungsprüfung.": "MediLog is designed as a local tracker. No diagnosis, no treatment recommendation, no automatic interaction check.",
     "Zugang": "Access",
-    "Premium fuer echte Routine.": "Premium for real routines.",
-    "Free bleibt bewusst klein. Premium ist fuer Alltag, Pflege, Export und Vorrat ohne kuenstliche Reibung.": "Free stays intentionally small. Premium is for everyday use, care, export and stock without artificial friction.",
-    "Alles, was fuer regelmaessige Dokumentation zaehlt: unbegrenzt, privat, exportierbar.": "Everything that matters for regular documentation: unlimited, private, exportable.",
+    "Premium für echte Routine.": "Premium for real routines.",
+    "Free bleibt bewusst klein. Premium ist für Alltag, Pflege, Export und Vorrat ohne künstliche Reibung.": "Free stays intentionally small. Premium is for everyday use, care, export and stock without artificial friction.",
+    "Alles, was für regelmäßige Dokumentation zählt: unbegrenzt, privat, exportierbar.": "Everything that matters for regular documentation: unlimited, private, exportable.",
     "Unbegrenzt": "Unlimited",
     "Lokal": "Local",
     "Keine Cloud": "No Cloud",
     "Premium Tarif": "Premium Plan",
-    "MediLog Premium Jaehrlich": "MediLog Premium Yearly",
+    "MediLog Premium Jährlich": "MediLog Premium Yearly",
     "MediLog Premium Monatlich": "MediLog Premium Monthly",
-    "Jaehrlich": "Yearly",
+    "Jährlich": "Yearly",
     "Monatlich": "Monthly",
     "pro Jahr": "per year",
     "pro Monat": "per month",
     "Bester Wert": "Best value",
     "Flexibel": "Flexible",
-    "Empfohlen fuer feste Routinen": "Recommended for fixed routines",
-    "Monatlich kuendbar": "Cancel monthly",
-    "Jaehrlich starten": "Start yearly",
+    "Empfohlen für feste Routinen": "Recommended for fixed routines",
+    "Monatlich kündbar": "Cancel monthly",
+    "Jährlich starten": "Start yearly",
     "Monatlich starten": "Start monthly",
     "Free und Premium Vergleich": "Free and Premium comparison",
     "1 Profil, 2 Medikamente, Wasser, Tagescheck": "1 profile, 2 medications, water, daily check",
@@ -193,9 +193,9 @@ const I18N = {
     "Vault, QR, Vorrat und Nachkauf": "Vault, QR, stock and refill",
     "Premium freischalten": "Unlock Premium",
     "Kauf wiederherstellen": "Restore Purchase",
-    "Abo Bedingungen": "Subscription terms",
-    "Auto-verlaengerbares Abo. Preis und Laufzeit werden vor dem Kauf von Apple angezeigt. Kuendigung jederzeit in den App Store Account-Einstellungen.": "Auto-renewable subscription. Apple shows price and duration before purchase. Cancel anytime in App Store account settings.",
-    "Ausgewaehlter Tarif: MediLog Premium.": "Selected plan: MediLog Premium.",
+    "Abo-Bedingungen": "Subscription terms",
+    "Auto-verlängerbares Abo. Preis und Laufzeit werden vor dem Kauf von Apple angezeigt. Kündigung jederzeit in den App Store Account-Einstellungen.": "Auto-renewable subscription. Apple shows price and duration before purchase. Cancel anytime in App Store account settings.",
+    "Ausgewählter Tarif: MediLog Premium.": "Selected plan: MediLog Premium.",
     "Datenschutz": "Privacy",
     "Nutzungsbedingungen (EULA)": "Terms of Use (EULA)",
     "Free: Basis aktiv": "Free: Basic active",
@@ -212,11 +212,11 @@ const I18N = {
     "Zuverlaessige Erinnerungen": "Reliable reminders",
     "iOS nutzt lokale Notifications, Web nutzt Browser-Erlaubnis": "iOS uses local notifications, web uses browser permission",
     "Einfach-Modus": "Simple Mode",
-    "Groessere Schrift und Touch-Ziele": "Larger text and touch targets",
+    "Größere Schrift und Touch-Ziele": "Larger text and touch targets",
     "Nachkaufgrenzen": "Refill thresholds",
     "Medis": "Meds",
-    "Gesundheitsdaten bleiben lokal auf diesem Geraet.": "Health data stays local on this device.",
-    "iOS speichert verschluesselt mit Keychain/AES-GCM, Web optional mit PIN-Vault.": "iOS stores encrypted with Keychain/AES-GCM; web optionally uses PIN vault.",
+    "Gesundheitsdaten bleiben lokal auf diesem Gerät.": "Health data stays local on this device.",
+    "iOS speichert verschlüsselt mit Keychain/AES-GCM, Web optional mit PIN-Vault.": "iOS stores encrypted with Keychain/AES-GCM; web optionally uses PIN vault.",
     "Export nur manuell durch dich.": "Export only manually by you.",
     "DSGVO": "GDPR",
     "Daten & Rechte": "Data & Rights",
@@ -224,23 +224,23 @@ const I18N = {
     "Datenkategorien": "Data categories",
     "Profile, Medikamente, Einnahmen, Wasser, Notizen, Einstellungen.": "Profiles, medications, doses, water, notes, settings.",
     "Zweckbindung": "Purpose limitation",
-    "Nur Tracking, Erinnerung, Pflegeuebersicht und Export. Keine Werbung, kein Verkauf.": "Only tracking, reminders, care overview and export. No ads, no sale.",
+    "Nur Tracking, Erinnerung, Pflegeübersicht und Export. Keine Werbung, kein Verkauf.": "Only tracking, reminders, care overview and export. No ads, no sale.",
     "Speicherort": "Storage location",
-    "Lokal im Browser dieses Geraets. Keine Cloud-Synchronisierung in dieser Version.": "Local in this device browser. No cloud sync in this version.",
+    "Lokal im Browser dieses Geräts. Keine Cloud-Synchronisierung in dieser Version.": "Local in this device browser. No cloud sync in this version.",
     "DSGVO-Export": "GDPR Export",
-    "Einwilligung bestaetigen": "Confirm consent",
+    "Einwilligung bestätigen": "Confirm consent",
     "Lokaler Vault": "Local Vault",
     "PIN-Schutz": "PIN Protection",
     "aus": "off",
     "PIN festlegen oder entsperren": "Set or unlock PIN",
     "Schutz aktivieren": "Enable Protection",
-    "Face ID pruefen": "Check Face ID",
+    "Face ID prüfen": "Check Face ID",
     "Akute Beschwerden?": "Acute symptoms?",
-    "Aerztlicher Bereitschaftsdienst": "Medical on-call service",
-    "App-Gefuehl": "App Feel",
+    "Ärztlicher Bereitschaftsdienst": "Medical on-call service",
+    "App-Gefühl": "App Feel",
     "Installierbar": "Installable",
-    "MediLog kann ueber den Browser zum Home-Bildschirm hinzugefuegt werden und laedt nach dem ersten Besuch auch offline.": "MediLog can be added to the Home Screen and loads offline after the first visit.",
-    "Lokale Demo-Daten zuruecksetzen": "Reset local demo data",
+    "MediLog kann über den Browser zum Home-Bildschirm hinzugefügt werden und lädt nach dem ersten Besuch auch offline.": "MediLog can be added to the Home Screen and loads offline after the first visit.",
+    "Lokale Demo-Daten zurücksetzen": "Reset local demo data",
     "Hauptnavigation": "Main navigation",
     "Schnell erfassen": "Quick Add",
     "Willkommen bei MediLog": "Welcome to MediLog",
@@ -254,8 +254,8 @@ const I18N = {
     "Reminder": "Reminders",
     "Lokale Erinnerungen aktivieren.": "Enable local reminders.",
     "Export": "Export",
-    "Bei Bedarf Bericht fuer Arzt oder Apotheke erstellen.": "Create a report for doctor or pharmacy when needed.",
-    "Lokal auf diesem Geraet": "Local on this device",
+    "Bei Bedarf Bericht für Arzt oder Apotheke erstellen.": "Create a report for doctor or pharmacy when needed.",
+    "Lokal auf diesem Gerät": "Local on this device",
     "Keine Cloud, kein Tracking": "No cloud, no tracking",
     "Free: 1 Profil, 2 Medis": "Free: 1 profile, 2 meds",
     "Für mich selbst": "For myself",
@@ -264,7 +264,7 @@ const I18N = {
     "Erstes Medikament": "First medication",
     "Angabe laut Plan": "Planned dose",
     "Uhrzeit": "Time",
-    "Ich verstehe, dass ich besondere Gesundheitsdaten lokal auf diesem Geraet speichere und MediLog keine medizinische Beratung ersetzt.": "I understand that I store sensitive health data locally on this device and that MediLog does not replace medical advice.",
+    "Ich verstehe, dass ich besondere Gesundheitsdaten lokal auf diesem Gerät speichere und MediLog keine medizinische Beratung ersetzt.": "I understand that I store sensitive health data locally on this device and that MediLog does not replace medical advice.",
     "Demo mit Beispielen": "Demo with examples",
     "App einrichten": "Set up app",
     "Arzt-/Apothekenbericht": "Doctor/pharmacy report",
@@ -280,7 +280,7 @@ const I18N = {
     "Eigenes Medikament erfassen": "Add own medication",
     "Notiz im Verlauf speichern": "Save note in history",
     "Medikament erfassen": "Add Medication",
-    "Bitte nur Angaben uebernehmen, die aerztlich oder pharmazeutisch fuer dich vorgesehen sind.": "Only enter information intended for you by a doctor or pharmacist.",
+    "Bitte nur Angaben übernehmen, die ärztlich oder pharmazeutisch für dich vorgesehen sind.": "Only enter information intended for you by a doctor or pharmacist.",
     "Abbrechen": "Cancel",
     "Speichern": "Save",
     "Medikament": "Medication",
@@ -353,25 +353,25 @@ const LOCALE_OVERRIDES = {
     "Datenschutz": "Privacy", "Nutzungsbedingungen (EULA)": "Terms of Use (EULA)", "Vorrat": "Stock", "Nachkaufgrenzen": "Refill thresholds", "Bericht": "Report", "Premium freischalten": "Unlock Premium"
   },
   "es-ES": {
-    "Heute": "Hoy", "Für dich": "Para ti", "Pläne": "Planes", "Bibliothek": "Medicamentos", "Verlauf": "Historial", "Einstellungen": "Ajustes", "Sprache": "Idioma", "Premium freischalten": "Activar Premium", "Schnell erfassen": "Registro rapido", "Medikament erfassen": "Anadir medicamento", "Wasser": "Agua", "Datenschutz": "Privacidad", "Speichern": "Guardar", "Abbrechen": "Cancelar", "Tagescheck": "Revision diaria", "Heute sinnvoll weitermachen": "Continuar hoy", "Einnahmen pruefen": "Revisar tomas", "Vorrat sichern": "Asegurar inventario", "Bericht aktuell halten": "Mantener informe actualizado", "Oeffnen": "Abrir"
+    "Heute": "Hoy", "Für dich": "Para ti", "Pläne": "Planes", "Bibliothek": "Medicamentos", "Verlauf": "Historial", "Einstellungen": "Ajustes", "Sprache": "Idioma", "Premium freischalten": "Activar Premium", "Schnell erfassen": "Registro rapido", "Medikament erfassen": "Anadir medicamento", "Wasser": "Agua", "Datenschutz": "Privacidad", "Speichern": "Guardar", "Abbrechen": "Cancelar", "Tagescheck": "Revision diaria", "Heute sinnvoll weitermachen": "Continuar hoy", "Einnahmen prüfen": "Revisar tomas", "Vorrat sichern": "Asegurar inventario", "Bericht aktuell halten": "Mantener informe actualizado", "Öffnen": "Abrir"
   },
   "es-MX": {
-    "Heute": "Hoy", "Für dich": "Para ti", "Pläne": "Planes", "Bibliothek": "Medicamentos", "Verlauf": "Historial", "Einstellungen": "Configuracion", "Sprache": "Idioma", "Premium freischalten": "Activar Premium", "Schnell erfassen": "Registro rapido", "Medikament erfassen": "Agregar medicamento", "Wasser": "Agua", "Datenschutz": "Privacidad", "Speichern": "Guardar", "Abbrechen": "Cancelar", "Tagescheck": "Revision diaria", "Heute sinnvoll weitermachen": "Continuar hoy", "Einnahmen pruefen": "Revisar tomas", "Vorrat sichern": "Asegurar inventario", "Bericht aktuell halten": "Mantener informe actualizado", "Oeffnen": "Abrir"
+    "Heute": "Hoy", "Für dich": "Para ti", "Pläne": "Planes", "Bibliothek": "Medicamentos", "Verlauf": "Historial", "Einstellungen": "Configuracion", "Sprache": "Idioma", "Premium freischalten": "Activar Premium", "Schnell erfassen": "Registro rapido", "Medikament erfassen": "Agregar medicamento", "Wasser": "Agua", "Datenschutz": "Privacidad", "Speichern": "Guardar", "Abbrechen": "Cancelar", "Tagescheck": "Revision diaria", "Heute sinnvoll weitermachen": "Continuar hoy", "Einnahmen prüfen": "Revisar tomas", "Vorrat sichern": "Asegurar inventario", "Bericht aktuell halten": "Mantener informe actualizado", "Öffnen": "Abrir"
   },
   "fr-FR": {
-    "Heute": "Aujourd'hui", "Für dich": "Pour vous", "Pläne": "Plans", "Bibliothek": "Medicaments", "Verlauf": "Historique", "Einstellungen": "Reglages", "Sprache": "Langue", "Premium freischalten": "Activer Premium", "Schnell erfassen": "Ajout rapide", "Medikament erfassen": "Ajouter un medicament", "Wasser": "Eau", "Datenschutz": "Confidentialite", "Speichern": "Enregistrer", "Abbrechen": "Annuler", "Tagescheck": "Bilan du jour", "Heute sinnvoll weitermachen": "Continuer aujourd'hui", "Einnahmen pruefen": "Verifier les prises", "Vorrat sichern": "Securiser le stock", "Bericht aktuell halten": "Tenir le rapport a jour", "Oeffnen": "Ouvrir"
+    "Heute": "Aujourd'hui", "Für dich": "Pour vous", "Pläne": "Plans", "Bibliothek": "Medicaments", "Verlauf": "Historique", "Einstellungen": "Reglages", "Sprache": "Langue", "Premium freischalten": "Activer Premium", "Schnell erfassen": "Ajout rapide", "Medikament erfassen": "Ajouter un medicament", "Wasser": "Eau", "Datenschutz": "Confidentialite", "Speichern": "Enregistrer", "Abbrechen": "Annuler", "Tagescheck": "Bilan du jour", "Heute sinnvoll weitermachen": "Continuer aujourd'hui", "Einnahmen prüfen": "Verifier les prises", "Vorrat sichern": "Securiser le stock", "Bericht aktuell halten": "Tenir le rapport a jour", "Öffnen": "Ouvrir"
   },
   "fr-CA": {
-    "Heute": "Aujourd'hui", "Für dich": "Pour vous", "Pläne": "Plans", "Bibliothek": "Medicaments", "Verlauf": "Historique", "Einstellungen": "Reglages", "Sprache": "Langue", "Premium freischalten": "Activer Premium", "Schnell erfassen": "Ajout rapide", "Medikament erfassen": "Ajouter un medicament", "Wasser": "Eau", "Datenschutz": "Confidentialite", "Speichern": "Enregistrer", "Abbrechen": "Annuler", "Tagescheck": "Bilan du jour", "Heute sinnvoll weitermachen": "Continuer aujourd'hui", "Einnahmen pruefen": "Verifier les prises", "Vorrat sichern": "Securiser le stock", "Bericht aktuell halten": "Tenir le rapport a jour", "Oeffnen": "Ouvrir"
+    "Heute": "Aujourd'hui", "Für dich": "Pour vous", "Pläne": "Plans", "Bibliothek": "Medicaments", "Verlauf": "Historique", "Einstellungen": "Reglages", "Sprache": "Langue", "Premium freischalten": "Activer Premium", "Schnell erfassen": "Ajout rapide", "Medikament erfassen": "Ajouter un medicament", "Wasser": "Eau", "Datenschutz": "Confidentialite", "Speichern": "Enregistrer", "Abbrechen": "Annuler", "Tagescheck": "Bilan du jour", "Heute sinnvoll weitermachen": "Continuer aujourd'hui", "Einnahmen prüfen": "Verifier les prises", "Vorrat sichern": "Securiser le stock", "Bericht aktuell halten": "Tenir le rapport a jour", "Öffnen": "Ouvrir"
   },
   "it-IT": {
     "Heute": "Oggi", "Für dich": "Per te", "Pläne": "Piani", "Bibliothek": "Farmaci", "Verlauf": "Storico", "Einstellungen": "Impostazioni", "Sprache": "Lingua", "Premium freischalten": "Attiva Premium", "Schnell erfassen": "Aggiunta rapida", "Medikament erfassen": "Aggiungi farmaco", "Wasser": "Acqua", "Datenschutz": "Privacy", "Speichern": "Salva", "Abbrechen": "Annulla"
   },
   "pt-BR": {
-    "Heute": "Hoje", "Für dich": "Para voce", "Pläne": "Planos", "Bibliothek": "Medicamentos", "Verlauf": "Historico", "Einstellungen": "Ajustes", "Sprache": "Idioma", "Premium freischalten": "Ativar Premium", "Schnell erfassen": "Adicionar rapido", "Medikament erfassen": "Adicionar medicamento", "Wasser": "Agua", "Datenschutz": "Privacidade", "Speichern": "Salvar", "Abbrechen": "Cancelar", "Tagescheck": "Check diario", "Heute sinnvoll weitermachen": "Continuar hoje", "Einnahmen pruefen": "Revisar doses", "Vorrat sichern": "Garantir estoque", "Bericht aktuell halten": "Manter relatorio atualizado", "Oeffnen": "Abrir"
+    "Heute": "Hoje", "Für dich": "Para voce", "Pläne": "Planos", "Bibliothek": "Medicamentos", "Verlauf": "Historico", "Einstellungen": "Ajustes", "Sprache": "Idioma", "Premium freischalten": "Ativar Premium", "Schnell erfassen": "Adicionar rapido", "Medikament erfassen": "Adicionar medicamento", "Wasser": "Agua", "Datenschutz": "Privacidade", "Speichern": "Salvar", "Abbrechen": "Cancelar", "Tagescheck": "Check diario", "Heute sinnvoll weitermachen": "Continuar hoje", "Einnahmen prüfen": "Revisar doses", "Vorrat sichern": "Garantir estoque", "Bericht aktuell halten": "Manter relatorio atualizado", "Öffnen": "Abrir"
   },
   "pt-PT": {
-    "Heute": "Hoje", "Für dich": "Para si", "Pläne": "Planos", "Bibliothek": "Medicamentos", "Verlauf": "Historico", "Einstellungen": "Definicoes", "Sprache": "Idioma", "Premium freischalten": "Ativar Premium", "Schnell erfassen": "Adicionar rapido", "Medikament erfassen": "Adicionar medicamento", "Wasser": "Agua", "Datenschutz": "Privacidade", "Speichern": "Guardar", "Abbrechen": "Cancelar", "Tagescheck": "Check diario", "Heute sinnvoll weitermachen": "Continuar hoje", "Einnahmen pruefen": "Rever tomas", "Vorrat sichern": "Garantir stock", "Bericht aktuell halten": "Manter relatorio atualizado", "Oeffnen": "Abrir"
+    "Heute": "Hoje", "Für dich": "Para si", "Pläne": "Planos", "Bibliothek": "Medicamentos", "Verlauf": "Historico", "Einstellungen": "Definicoes", "Sprache": "Idioma", "Premium freischalten": "Ativar Premium", "Schnell erfassen": "Adicionar rapido", "Medikament erfassen": "Adicionar medicamento", "Wasser": "Agua", "Datenschutz": "Privacidade", "Speichern": "Guardar", "Abbrechen": "Cancelar", "Tagescheck": "Check diario", "Heute sinnvoll weitermachen": "Continuar hoje", "Einnahmen prüfen": "Rever tomas", "Vorrat sichern": "Garantir stock", "Bericht aktuell halten": "Manter relatorio atualizado", "Öffnen": "Abrir"
   },
   "nl-NL": {
     "Heute": "Vandaag", "Für dich": "Voor jou", "Pläne": "Plannen", "Bibliothek": "Medicijnen", "Verlauf": "Geschiedenis", "Einstellungen": "Instellingen", "Sprache": "Taal", "Premium freischalten": "Premium activeren", "Schnell erfassen": "Snel toevoegen", "Medikament erfassen": "Medicijn toevoegen", "Wasser": "Water", "Datenschutz": "Privacy", "Speichern": "Opslaan", "Abbrechen": "Annuleren"
@@ -383,70 +383,70 @@ const LOCALE_OVERRIDES = {
     "Heute": "Bugun", "Für dich": "Senin icin", "Pläne": "Planlar", "Bibliothek": "Ilaclar", "Verlauf": "Gecmis", "Einstellungen": "Ayarlar", "Sprache": "Dil", "Premium freischalten": "Premium'u ac", "Schnell erfassen": "Hizli ekle", "Medikament erfassen": "Ilac ekle", "Wasser": "Su", "Datenschutz": "Gizlilik", "Speichern": "Kaydet", "Abbrechen": "Iptal"
   },
   "ca": {
-    "Heute": "Avui", "Für dich": "Per a tu", "Pläne": "Plans", "Bibliothek": "Medicaments", "Verlauf": "Historial", "Einstellungen": "Configuracio", "Sprache": "Idioma", "Premium freischalten": "Activar Premium", "Schnell erfassen": "Afegir rapid", "Medikament erfassen": "Afegir medicament", "Wasser": "Aigua", "Datenschutz": "Privadesa", "Speichern": "Desar", "Abbrechen": "Cancel-lar", "Tagescheck": "Revisio diaria", "Einnahmen pruefen": "Revisar preses", "Oeffnen": "Obrir", "Sprache gespeichert": "Idioma desat"
+    "Heute": "Avui", "Für dich": "Per a tu", "Pläne": "Plans", "Bibliothek": "Medicaments", "Verlauf": "Historial", "Einstellungen": "Configuracio", "Sprache": "Idioma", "Premium freischalten": "Activar Premium", "Schnell erfassen": "Afegir rapid", "Medikament erfassen": "Afegir medicament", "Wasser": "Aigua", "Datenschutz": "Privadesa", "Speichern": "Desar", "Abbrechen": "Cancel-lar", "Tagescheck": "Revisio diaria", "Einnahmen prüfen": "Revisar preses", "Öffnen": "Obrir", "Sprache gespeichert": "Idioma desat"
   },
   "hr": {
-    "Heute": "Danas", "Für dich": "Za tebe", "Pläne": "Planovi", "Bibliothek": "Lijekovi", "Verlauf": "Povijest", "Einstellungen": "Postavke", "Sprache": "Jezik", "Premium freischalten": "Aktiviraj Premium", "Schnell erfassen": "Brzi unos", "Medikament erfassen": "Dodaj lijek", "Wasser": "Voda", "Datenschutz": "Privatnost", "Speichern": "Spremi", "Abbrechen": "Odustani", "Tagescheck": "Dnevna provjera", "Einnahmen pruefen": "Provjeri doze", "Oeffnen": "Otvori", "Sprache gespeichert": "Jezik spremljen"
+    "Heute": "Danas", "Für dich": "Za tebe", "Pläne": "Planovi", "Bibliothek": "Lijekovi", "Verlauf": "Povijest", "Einstellungen": "Postavke", "Sprache": "Jezik", "Premium freischalten": "Aktiviraj Premium", "Schnell erfassen": "Brzi unos", "Medikament erfassen": "Dodaj lijek", "Wasser": "Voda", "Datenschutz": "Privatnost", "Speichern": "Spremi", "Abbrechen": "Odustani", "Tagescheck": "Dnevna provjera", "Einnahmen prüfen": "Provjeri doze", "Öffnen": "Otvori", "Sprache gespeichert": "Jezik spremljen"
   },
   "hu": {
-    "Heute": "Ma", "Für dich": "Neked", "Pläne": "Tervek", "Bibliothek": "Gyogyszerek", "Verlauf": "Elozmenyek", "Einstellungen": "Beallitasok", "Sprache": "Nyelv", "Premium freischalten": "Premium bekapcsolasa", "Schnell erfassen": "Gyors hozzaadas", "Medikament erfassen": "Gyogyszer hozzaadasa", "Wasser": "Viz", "Datenschutz": "Adatvedelem", "Speichern": "Mentes", "Abbrechen": "Megse", "Tagescheck": "Napi ellenorzes", "Einnahmen pruefen": "Adagok ellenorzese", "Oeffnen": "Megnyitas", "Sprache gespeichert": "Nyelv mentve"
+    "Heute": "Ma", "Für dich": "Neked", "Pläne": "Tervek", "Bibliothek": "Gyogyszerek", "Verlauf": "Elozmenyek", "Einstellungen": "Beallitasok", "Sprache": "Nyelv", "Premium freischalten": "Premium bekapcsolasa", "Schnell erfassen": "Gyors hozzaadas", "Medikament erfassen": "Gyogyszer hozzaadasa", "Wasser": "Viz", "Datenschutz": "Adatvedelem", "Speichern": "Mentes", "Abbrechen": "Megse", "Tagescheck": "Napi ellenorzes", "Einnahmen prüfen": "Adagok ellenorzese", "Öffnen": "Megnyitas", "Sprache gespeichert": "Nyelv mentve"
   },
   "ro": {
-    "Heute": "Astazi", "Für dich": "Pentru tine", "Pläne": "Planuri", "Bibliothek": "Medicamente", "Verlauf": "Istoric", "Einstellungen": "Setari", "Sprache": "Limba", "Premium freischalten": "Activeaza Premium", "Schnell erfassen": "Adaugare rapida", "Medikament erfassen": "Adauga medicament", "Wasser": "Apa", "Datenschutz": "Confidentialitate", "Speichern": "Salveaza", "Abbrechen": "Anuleaza", "Tagescheck": "Verificare zilnica", "Einnahmen pruefen": "Verifica dozele", "Oeffnen": "Deschide", "Sprache gespeichert": "Limba salvata"
+    "Heute": "Astazi", "Für dich": "Pentru tine", "Pläne": "Planuri", "Bibliothek": "Medicamente", "Verlauf": "Istoric", "Einstellungen": "Setari", "Sprache": "Limba", "Premium freischalten": "Activeaza Premium", "Schnell erfassen": "Adaugare rapida", "Medikament erfassen": "Adauga medicament", "Wasser": "Apa", "Datenschutz": "Confidentialitate", "Speichern": "Salveaza", "Abbrechen": "Anuleaza", "Tagescheck": "Verificare zilnica", "Einnahmen prüfen": "Verifica dozele", "Öffnen": "Deschide", "Sprache gespeichert": "Limba salvata"
   },
   "sk": {
-    "Heute": "Dnes", "Für dich": "Pre vas", "Pläne": "Plany", "Bibliothek": "Lieky", "Verlauf": "Historia", "Einstellungen": "Nastavenia", "Sprache": "Jazyk", "Premium freischalten": "Aktivovat Premium", "Schnell erfassen": "Rychle pridat", "Medikament erfassen": "Pridat liek", "Wasser": "Voda", "Datenschutz": "Sukromie", "Speichern": "Ulozit", "Abbrechen": "Zrusit", "Tagescheck": "Denna kontrola", "Einnahmen pruefen": "Skontrolovat davky", "Oeffnen": "Otvorit", "Sprache gespeichert": "Jazyk ulozeny"
+    "Heute": "Dnes", "Für dich": "Pre vas", "Pläne": "Plany", "Bibliothek": "Lieky", "Verlauf": "Historia", "Einstellungen": "Nastavenia", "Sprache": "Jazyk", "Premium freischalten": "Aktivovat Premium", "Schnell erfassen": "Rychle pridat", "Medikament erfassen": "Pridat liek", "Wasser": "Voda", "Datenschutz": "Sukromie", "Speichern": "Ulozit", "Abbrechen": "Zrusit", "Tagescheck": "Denna kontrola", "Einnahmen prüfen": "Skontrolovat davky", "Öffnen": "Otvorit", "Sprache gespeichert": "Jazyk ulozeny"
   },
   "sl": {
-    "Heute": "Danes", "Für dich": "Za vas", "Pläne": "Nacrti", "Bibliothek": "Zdravila", "Verlauf": "Zgodovina", "Einstellungen": "Nastavitve", "Sprache": "Jezik", "Premium freischalten": "Aktiviraj Premium", "Schnell erfassen": "Hitro dodaj", "Medikament erfassen": "Dodaj zdravilo", "Wasser": "Voda", "Datenschutz": "Zasebnost", "Speichern": "Shrani", "Abbrechen": "Preklici", "Tagescheck": "Dnevni pregled", "Einnahmen pruefen": "Preveri odmerke", "Oeffnen": "Odpri", "Sprache gespeichert": "Jezik shranjen"
+    "Heute": "Danes", "Für dich": "Za vas", "Pläne": "Nacrti", "Bibliothek": "Zdravila", "Verlauf": "Zgodovina", "Einstellungen": "Nastavitve", "Sprache": "Jezik", "Premium freischalten": "Aktiviraj Premium", "Schnell erfassen": "Hitro dodaj", "Medikament erfassen": "Dodaj zdravilo", "Wasser": "Voda", "Datenschutz": "Zasebnost", "Speichern": "Shrani", "Abbrechen": "Preklici", "Tagescheck": "Dnevni pregled", "Einnahmen prüfen": "Preveri odmerke", "Öffnen": "Odpri", "Sprache gespeichert": "Jezik shranjen"
   },
   "bg": {
-    "Heute": "Днес", "Für dich": "За вас", "Pläne": "Планове", "Bibliothek": "Лекарства", "Verlauf": "История", "Einstellungen": "Настройки", "Sprache": "Език", "Premium freischalten": "Активирай Premium", "Schnell erfassen": "Бързо добавяне", "Medikament erfassen": "Добави лекарство", "Wasser": "Вода", "Datenschutz": "Поверителност", "Speichern": "Запази", "Abbrechen": "Отказ", "Tagescheck": "Дневна проверка", "Einnahmen pruefen": "Провери приемите", "Oeffnen": "Отвори", "Sprache gespeichert": "Езикът е запазен"
+    "Heute": "Днес", "Für dich": "За вас", "Pläne": "Планове", "Bibliothek": "Лекарства", "Verlauf": "История", "Einstellungen": "Настройки", "Sprache": "Език", "Premium freischalten": "Активирай Premium", "Schnell erfassen": "Бързо добавяне", "Medikament erfassen": "Добави лекарство", "Wasser": "Вода", "Datenschutz": "Поверителност", "Speichern": "Запази", "Abbrechen": "Отказ", "Tagescheck": "Дневна проверка", "Einnahmen prüfen": "Провери приемите", "Öffnen": "Отвори", "Sprache gespeichert": "Езикът е запазен"
   },
   "sr": {
-    "Heute": "Danas", "Für dich": "Za vas", "Pläne": "Planovi", "Bibliothek": "Lekovi", "Verlauf": "Istorija", "Einstellungen": "Podesavanja", "Sprache": "Jezik", "Premium freischalten": "Aktiviraj Premium", "Schnell erfassen": "Brzo dodaj", "Medikament erfassen": "Dodaj lek", "Wasser": "Voda", "Datenschutz": "Privatnost", "Speichern": "Sacuvaj", "Abbrechen": "Otkazi", "Tagescheck": "Dnevna provera", "Einnahmen pruefen": "Proveri doze", "Oeffnen": "Otvori", "Sprache gespeichert": "Jezik sacuvan"
+    "Heute": "Danas", "Für dich": "Za vas", "Pläne": "Planovi", "Bibliothek": "Lekovi", "Verlauf": "Istorija", "Einstellungen": "Podesavanja", "Sprache": "Jezik", "Premium freischalten": "Aktiviraj Premium", "Schnell erfassen": "Brzo dodaj", "Medikament erfassen": "Dodaj lek", "Wasser": "Voda", "Datenschutz": "Privatnost", "Speichern": "Sacuvaj", "Abbrechen": "Otkazi", "Tagescheck": "Dnevna provera", "Einnahmen prüfen": "Proveri doze", "Öffnen": "Otvori", "Sprache gespeichert": "Jezik sacuvan"
   },
   "da": {
-    "Heute": "I dag", "Für dich": "Til dig", "Pläne": "Planer", "Bibliothek": "Medicin", "Verlauf": "Historik", "Einstellungen": "Indstillinger", "Sprache": "Sprog", "Premium freischalten": "Aktiver Premium", "Schnell erfassen": "Hurtig tilfoejelse", "Medikament erfassen": "Tilfoej medicin", "Wasser": "Vand", "Datenschutz": "Privatliv", "Speichern": "Gem", "Abbrechen": "Annuller", "Tagescheck": "Dagens tjek", "Einnahmen pruefen": "Tjek doser", "Oeffnen": "Aabn"
+    "Heute": "I dag", "Für dich": "Til dig", "Pläne": "Planer", "Bibliothek": "Medicin", "Verlauf": "Historik", "Einstellungen": "Indstillinger", "Sprache": "Sprog", "Premium freischalten": "Aktiver Premium", "Schnell erfassen": "Hurtig tilfoejelse", "Medikament erfassen": "Tilfoej medicin", "Wasser": "Vand", "Datenschutz": "Privatliv", "Speichern": "Gem", "Abbrechen": "Annuller", "Tagescheck": "Dagens tjek", "Einnahmen prüfen": "Tjek doser", "Öffnen": "Aabn"
   },
   "sv": {
-    "Heute": "I dag", "Für dich": "For dig", "Pläne": "Planer", "Bibliothek": "Lakemedel", "Verlauf": "Historik", "Einstellungen": "Installningar", "Sprache": "Sprak", "Premium freischalten": "Aktivera Premium", "Schnell erfassen": "Snabb tillaggning", "Medikament erfassen": "Lagg till lakemedel", "Wasser": "Vatten", "Datenschutz": "Integritet", "Speichern": "Spara", "Abbrechen": "Avbryt", "Tagescheck": "Dagens koll", "Einnahmen pruefen": "Kontrollera doser", "Oeffnen": "Oppna"
+    "Heute": "I dag", "Für dich": "For dig", "Pläne": "Planer", "Bibliothek": "Lakemedel", "Verlauf": "Historik", "Einstellungen": "Installningar", "Sprache": "Sprak", "Premium freischalten": "Aktivera Premium", "Schnell erfassen": "Snabb tillaggning", "Medikament erfassen": "Lagg till lakemedel", "Wasser": "Vatten", "Datenschutz": "Integritet", "Speichern": "Spara", "Abbrechen": "Avbryt", "Tagescheck": "Dagens koll", "Einnahmen prüfen": "Kontrollera doser", "Öffnen": "Oppna"
   },
   "no": {
-    "Heute": "I dag", "Für dich": "For deg", "Pläne": "Planer", "Bibliothek": "Medisiner", "Verlauf": "Historikk", "Einstellungen": "Innstillinger", "Sprache": "Sprak", "Premium freischalten": "Aktiver Premium", "Schnell erfassen": "Hurtig registrering", "Medikament erfassen": "Legg til medisin", "Wasser": "Vann", "Datenschutz": "Personvern", "Speichern": "Lagre", "Abbrechen": "Avbryt", "Tagescheck": "Dagens sjekk", "Einnahmen pruefen": "Sjekk doser", "Oeffnen": "Apne"
+    "Heute": "I dag", "Für dich": "For deg", "Pläne": "Planer", "Bibliothek": "Medisiner", "Verlauf": "Historikk", "Einstellungen": "Innstillinger", "Sprache": "Sprak", "Premium freischalten": "Aktiver Premium", "Schnell erfassen": "Hurtig registrering", "Medikament erfassen": "Legg til medisin", "Wasser": "Vann", "Datenschutz": "Personvern", "Speichern": "Lagre", "Abbrechen": "Avbryt", "Tagescheck": "Dagens sjekk", "Einnahmen prüfen": "Sjekk doser", "Öffnen": "Apne"
   },
   "fi": {
-    "Heute": "Tanaan", "Für dich": "Sinulle", "Pläne": "Suunnitelmat", "Bibliothek": "Laakkeet", "Verlauf": "Historia", "Einstellungen": "Asetukset", "Sprache": "Kieli", "Premium freischalten": "Avaa Premium", "Schnell erfassen": "Pikalisays", "Medikament erfassen": "Lisaa laake", "Wasser": "Vesi", "Datenschutz": "Tietosuoja", "Speichern": "Tallenna", "Abbrechen": "Peruuta", "Tagescheck": "Paivan tarkistus", "Einnahmen pruefen": "Tarkista annokset", "Oeffnen": "Avaa"
+    "Heute": "Tanaan", "Für dich": "Sinulle", "Pläne": "Suunnitelmat", "Bibliothek": "Laakkeet", "Verlauf": "Historia", "Einstellungen": "Asetukset", "Sprache": "Kieli", "Premium freischalten": "Avaa Premium", "Schnell erfassen": "Pikalisays", "Medikament erfassen": "Lisaa laake", "Wasser": "Vesi", "Datenschutz": "Tietosuoja", "Speichern": "Tallenna", "Abbrechen": "Peruuta", "Tagescheck": "Paivan tarkistus", "Einnahmen prüfen": "Tarkista annokset", "Öffnen": "Avaa"
   },
   "cs": {
-    "Heute": "Dnes", "Für dich": "Pro vas", "Pläne": "Plany", "Bibliothek": "Leciva", "Verlauf": "Historie", "Einstellungen": "Nastaveni", "Sprache": "Jazyk", "Premium freischalten": "Aktivovat Premium", "Schnell erfassen": "Rychle pridat", "Medikament erfassen": "Pridat lek", "Wasser": "Voda", "Datenschutz": "Soukromi", "Speichern": "Ulozit", "Abbrechen": "Zrusit", "Tagescheck": "Denni kontrola", "Einnahmen pruefen": "Zkontrolovat davky", "Oeffnen": "Otevrit"
+    "Heute": "Dnes", "Für dich": "Pro vas", "Pläne": "Plany", "Bibliothek": "Leciva", "Verlauf": "Historie", "Einstellungen": "Nastaveni", "Sprache": "Jazyk", "Premium freischalten": "Aktivovat Premium", "Schnell erfassen": "Rychle pridat", "Medikament erfassen": "Pridat lek", "Wasser": "Voda", "Datenschutz": "Soukromi", "Speichern": "Ulozit", "Abbrechen": "Zrusit", "Tagescheck": "Denni kontrola", "Einnahmen prüfen": "Zkontrolovat davky", "Öffnen": "Otevrit"
   },
   "el": {
-    "Heute": "Σήμερα", "Für dich": "Για εσάς", "Pläne": "Πλάνα", "Bibliothek": "Φάρμακα", "Verlauf": "Ιστορικό", "Einstellungen": "Ρυθμίσεις", "Sprache": "Γλώσσα", "Premium freischalten": "Ενεργοποίηση Premium", "Schnell erfassen": "Γρήγορη προσθήκη", "Medikament erfassen": "Προσθήκη φαρμάκου", "Wasser": "Νερό", "Datenschutz": "Απόρρητο", "Speichern": "Αποθήκευση", "Abbrechen": "Άκυρο", "Tagescheck": "Ημερήσιος έλεγχος", "Einnahmen pruefen": "Έλεγχος λήψεων", "Oeffnen": "Άνοιγμα"
+    "Heute": "Σήμερα", "Für dich": "Για εσάς", "Pläne": "Πλάνα", "Bibliothek": "Φάρμακα", "Verlauf": "Ιστορικό", "Einstellungen": "Ρυθμίσεις", "Sprache": "Γλώσσα", "Premium freischalten": "Ενεργοποίηση Premium", "Schnell erfassen": "Γρήγορη προσθήκη", "Medikament erfassen": "Προσθήκη φαρμάκου", "Wasser": "Νερό", "Datenschutz": "Απόρρητο", "Speichern": "Αποθήκευση", "Abbrechen": "Άκυρο", "Tagescheck": "Ημερήσιος έλεγχος", "Einnahmen prüfen": "Έλεγχος λήψεων", "Öffnen": "Άνοιγμα"
   },
   "ru": {
-    "Heute": "Сегодня", "Für dich": "Для вас", "Pläne": "Планы", "Bibliothek": "Лекарства", "Verlauf": "История", "Einstellungen": "Настройки", "Sprache": "Язык", "Premium freischalten": "Открыть Premium", "Schnell erfassen": "Быстро добавить", "Medikament erfassen": "Добавить лекарство", "Wasser": "Вода", "Datenschutz": "Конфиденциальность", "Speichern": "Сохранить", "Abbrechen": "Отмена", "Tagescheck": "Проверка дня", "Einnahmen pruefen": "Проверить приемы", "Oeffnen": "Открыть"
+    "Heute": "Сегодня", "Für dich": "Для вас", "Pläne": "Планы", "Bibliothek": "Лекарства", "Verlauf": "История", "Einstellungen": "Настройки", "Sprache": "Язык", "Premium freischalten": "Открыть Premium", "Schnell erfassen": "Быстро добавить", "Medikament erfassen": "Добавить лекарство", "Wasser": "Вода", "Datenschutz": "Конфиденциальность", "Speichern": "Сохранить", "Abbrechen": "Отмена", "Tagescheck": "Проверка дня", "Einnahmen prüfen": "Проверить приемы", "Öffnen": "Открыть"
   },
   "uk": {
-    "Heute": "Сьогодні", "Für dich": "Для вас", "Pläne": "Плани", "Bibliothek": "Ліки", "Verlauf": "Історія", "Einstellungen": "Налаштування", "Sprache": "Мова", "Premium freischalten": "Відкрити Premium", "Schnell erfassen": "Швидко додати", "Medikament erfassen": "Додати ліки", "Wasser": "Вода", "Datenschutz": "Конфіденційність", "Speichern": "Зберегти", "Abbrechen": "Скасувати", "Tagescheck": "Перевірка дня", "Einnahmen pruefen": "Перевірити прийоми", "Oeffnen": "Відкрити"
+    "Heute": "Сьогодні", "Für dich": "Для вас", "Pläne": "Плани", "Bibliothek": "Ліки", "Verlauf": "Історія", "Einstellungen": "Налаштування", "Sprache": "Мова", "Premium freischalten": "Відкрити Premium", "Schnell erfassen": "Швидко додати", "Medikament erfassen": "Додати ліки", "Wasser": "Вода", "Datenschutz": "Конфіденційність", "Speichern": "Зберегти", "Abbrechen": "Скасувати", "Tagescheck": "Перевірка дня", "Einnahmen prüfen": "Перевірити прийоми", "Öffnen": "Відкрити"
   },
   "hi": {
-    "Heute": "आज", "Für dich": "आपके लिए", "Pläne": "योजनाएं", "Bibliothek": "दवाएं", "Verlauf": "इतिहास", "Einstellungen": "सेटिंग्स", "Sprache": "भाषा", "Premium freischalten": "Premium खोलें", "Schnell erfassen": "त्वरित जोड़ें", "Medikament erfassen": "दवा जोड़ें", "Wasser": "पानी", "Datenschutz": "गोपनीयता", "Speichern": "सहेजें", "Abbrechen": "रद्द करें", "Tagescheck": "दैनिक जांच", "Einnahmen pruefen": "खुराक जांचें", "Oeffnen": "खोलें"
+    "Heute": "आज", "Für dich": "आपके लिए", "Pläne": "योजनाएं", "Bibliothek": "दवाएं", "Verlauf": "इतिहास", "Einstellungen": "सेटिंग्स", "Sprache": "भाषा", "Premium freischalten": "Premium खोलें", "Schnell erfassen": "त्वरित जोड़ें", "Medikament erfassen": "दवा जोड़ें", "Wasser": "पानी", "Datenschutz": "गोपनीयता", "Speichern": "सहेजें", "Abbrechen": "रद्द करें", "Tagescheck": "दैनिक जांच", "Einnahmen prüfen": "खुराक जांचें", "Öffnen": "खोलें"
   },
   "id": {
-    "Heute": "Hari ini", "Für dich": "Untuk Anda", "Pläne": "Rencana", "Bibliothek": "Obat", "Verlauf": "Riwayat", "Einstellungen": "Pengaturan", "Sprache": "Bahasa", "Premium freischalten": "Aktifkan Premium", "Schnell erfassen": "Tambah cepat", "Medikament erfassen": "Tambah obat", "Wasser": "Air", "Datenschutz": "Privasi", "Speichern": "Simpan", "Abbrechen": "Batal", "Tagescheck": "Cek harian", "Einnahmen pruefen": "Periksa dosis", "Oeffnen": "Buka"
+    "Heute": "Hari ini", "Für dich": "Untuk Anda", "Pläne": "Rencana", "Bibliothek": "Obat", "Verlauf": "Riwayat", "Einstellungen": "Pengaturan", "Sprache": "Bahasa", "Premium freischalten": "Aktifkan Premium", "Schnell erfassen": "Tambah cepat", "Medikament erfassen": "Tambah obat", "Wasser": "Air", "Datenschutz": "Privasi", "Speichern": "Simpan", "Abbrechen": "Batal", "Tagescheck": "Cek harian", "Einnahmen prüfen": "Periksa dosis", "Öffnen": "Buka"
   },
   "ms": {
-    "Heute": "Hari ini", "Für dich": "Untuk anda", "Pläne": "Pelan", "Bibliothek": "Ubat", "Verlauf": "Sejarah", "Einstellungen": "Tetapan", "Sprache": "Bahasa", "Premium freischalten": "Aktifkan Premium", "Schnell erfassen": "Tambah cepat", "Medikament erfassen": "Tambah ubat", "Wasser": "Air", "Datenschutz": "Privasi", "Speichern": "Simpan", "Abbrechen": "Batal", "Tagescheck": "Semakan harian", "Einnahmen pruefen": "Semak dos", "Oeffnen": "Buka", "Sprache gespeichert": "Bahasa disimpan"
+    "Heute": "Hari ini", "Für dich": "Untuk anda", "Pläne": "Pelan", "Bibliothek": "Ubat", "Verlauf": "Sejarah", "Einstellungen": "Tetapan", "Sprache": "Bahasa", "Premium freischalten": "Aktifkan Premium", "Schnell erfassen": "Tambah cepat", "Medikament erfassen": "Tambah ubat", "Wasser": "Air", "Datenschutz": "Privasi", "Speichern": "Simpan", "Abbrechen": "Batal", "Tagescheck": "Semakan harian", "Einnahmen prüfen": "Semak dos", "Öffnen": "Buka", "Sprache gespeichert": "Bahasa disimpan"
   },
   "th": {
-    "Heute": "วันนี้", "Für dich": "สำหรับคุณ", "Pläne": "แผน", "Bibliothek": "ยา", "Verlauf": "ประวัติ", "Einstellungen": "การตั้งค่า", "Sprache": "ภาษา", "Premium freischalten": "เปิดใช้ Premium", "Schnell erfassen": "เพิ่มด่วน", "Medikament erfassen": "เพิ่มยา", "Wasser": "น้ำ", "Datenschutz": "ความเป็นส่วนตัว", "Speichern": "บันทึก", "Abbrechen": "ยกเลิก", "Tagescheck": "ตรวจประจำวัน", "Einnahmen pruefen": "ตรวจการใช้ยา", "Oeffnen": "เปิด", "Sprache gespeichert": "บันทึกภาษาแล้ว"
+    "Heute": "วันนี้", "Für dich": "สำหรับคุณ", "Pläne": "แผน", "Bibliothek": "ยา", "Verlauf": "ประวัติ", "Einstellungen": "การตั้งค่า", "Sprache": "ภาษา", "Premium freischalten": "เปิดใช้ Premium", "Schnell erfassen": "เพิ่มด่วน", "Medikament erfassen": "เพิ่มยา", "Wasser": "น้ำ", "Datenschutz": "ความเป็นส่วนตัว", "Speichern": "บันทึก", "Abbrechen": "ยกเลิก", "Tagescheck": "ตรวจประจำวัน", "Einnahmen prüfen": "ตรวจการใช้ยา", "Öffnen": "เปิด", "Sprache gespeichert": "บันทึกภาษาแล้ว"
   },
   "vi": {
-    "Heute": "Hom nay", "Für dich": "Cho ban", "Pläne": "Ke hoach", "Bibliothek": "Thuoc", "Verlauf": "Lich su", "Einstellungen": "Cai dat", "Sprache": "Ngon ngu", "Premium freischalten": "Mo Premium", "Schnell erfassen": "Them nhanh", "Medikament erfassen": "Them thuoc", "Wasser": "Nuoc", "Datenschutz": "Quyen rieng tu", "Speichern": "Luu", "Abbrechen": "Huy", "Tagescheck": "Kiem tra ngay", "Einnahmen pruefen": "Kiem tra lieu", "Oeffnen": "Mo"
+    "Heute": "Hom nay", "Für dich": "Cho ban", "Pläne": "Ke hoach", "Bibliothek": "Thuoc", "Verlauf": "Lich su", "Einstellungen": "Cai dat", "Sprache": "Ngon ngu", "Premium freischalten": "Mo Premium", "Schnell erfassen": "Them nhanh", "Medikament erfassen": "Them thuoc", "Wasser": "Nuoc", "Datenschutz": "Quyen rieng tu", "Speichern": "Luu", "Abbrechen": "Huy", "Tagescheck": "Kiem tra ngay", "Einnahmen prüfen": "Kiem tra lieu", "Öffnen": "Mo"
   },
   "he": {
-    "Heute": "היום", "Für dich": "בשבילך", "Pläne": "תכניות", "Bibliothek": "תרופות", "Verlauf": "היסטוריה", "Einstellungen": "הגדרות", "Sprache": "שפה", "Premium freischalten": "הפעלת Premium", "Schnell erfassen": "הוספה מהירה", "Medikament erfassen": "הוספת תרופה", "Wasser": "מים", "Datenschutz": "פרטיות", "Speichern": "שמירה", "Abbrechen": "ביטול", "Tagescheck": "בדיקה יומית", "Einnahmen pruefen": "בדיקת נטילות", "Oeffnen": "פתיחה"
+    "Heute": "היום", "Für dich": "בשבילך", "Pläne": "תכניות", "Bibliothek": "תרופות", "Verlauf": "היסטוריה", "Einstellungen": "הגדרות", "Sprache": "שפה", "Premium freischalten": "הפעלת Premium", "Schnell erfassen": "הוספה מהירה", "Medikament erfassen": "הוספת תרופה", "Wasser": "מים", "Datenschutz": "פרטיות", "Speichern": "שמירה", "Abbrechen": "ביטול", "Tagescheck": "בדיקה יומית", "Einnahmen prüfen": "בדיקת נטילות", "Öffnen": "פתיחה"
   },
   "ar-SA": {
     "Heute": "اليوم", "Für dich": "لك", "Pläne": "الخطط", "Bibliothek": "الأدوية", "Verlauf": "السجل", "Einstellungen": "الإعدادات", "Sprache": "اللغة", "Premium freischalten": "تفعيل Premium", "Schnell erfassen": "إضافة سريعة", "Medikament erfassen": "إضافة دواء", "Wasser": "الماء", "Datenschutz": "الخصوصية", "Speichern": "حفظ", "Abbrechen": "إلغاء"
@@ -458,10 +458,10 @@ const LOCALE_OVERRIDES = {
     "Heute": "오늘", "Für dich": "추천", "Pläne": "계획", "Bibliothek": "약", "Verlauf": "기록", "Einstellungen": "설정", "Sprache": "언어", "Premium freischalten": "Premium 활성화", "Schnell erfassen": "빠른 추가", "Medikament erfassen": "약 추가", "Wasser": "물", "Datenschutz": "개인정보", "Speichern": "저장", "Abbrechen": "취소"
   },
   "zh-Hans": {
-    "Heute": "今天", "Für dich": "为你推荐", "Home": "首页", "Pläne": "计划", "Medis": "药品", "Bibliothek": "药品", "Verlauf": "记录", "Einstellungen": "设置", "Einstellungen, Premium und Schutz.": "设置、Premium 与保护。", "MediLog ist als lokaler Tracker konzipiert. Keine Diagnose, keine Therapieempfehlung, keine automatische Wechselwirkungspruefung.": "MediLog 是本地记录工具。不诊断、不提供治疗建议，也不自动检查相互作用。", "Zugang": "权限", "Premium fuer echte Routine.": "适合真实日常的 Premium。", "Free bleibt bewusst klein. Premium ist fuer Alltag, Pflege, Export und Vorrat ohne kuenstliche Reibung.": "Free 保持精简。Premium 适合日常、护理、导出和库存管理。", "Alles, was fuer regelmaessige Dokumentation zaehlt: unbegrenzt, privat, exportierbar.": "长期记录需要的能力：无限、私密、可导出。", "MediLog Premium Jaehrlich": "MediLog Premium 年度", "MediLog Premium Monatlich": "MediLog Premium 月度", "Empfohlen fuer feste Routinen": "适合固定日常", "Monatlich kuendbar": "可按月取消", "pro Jahr": "每年", "pro Monat": "每月", "1 Profil": "1 个资料", "Unbegrenzt": "无限", "Lokal": "本地", "Keine Cloud": "无云端", "Sprache": "语言", "Premium freischalten": "开启 Premium", "Schnell erfassen": "快速添加", "Medikament erfassen": "添加药品", "Wasser": "饮水", "Datenschutz": "隐私", "Speichern": "保存", "Abbrechen": "取消", "Sprache gespeichert": "语言已保存"
+    "Heute": "今天", "Für dich": "为你推荐", "Home": "首页", "Pläne": "计划", "Medis": "药品", "Bibliothek": "药品", "Verlauf": "记录", "Einstellungen": "设置", "Einstellungen, Premium und Schutz.": "设置、Premium 与保护。", "MediLog ist als lokaler Tracker konzipiert. Keine Diagnose, keine Therapieempfehlung, keine automatische Wechselwirkungsprüfung.": "MediLog 是本地记录工具。不诊断、不提供治疗建议，也不自动检查相互作用。", "Zugang": "权限", "Premium für echte Routine.": "适合真实日常的 Premium。", "Free bleibt bewusst klein. Premium ist für Alltag, Pflege, Export und Vorrat ohne künstliche Reibung.": "Free 保持精简。Premium 适合日常、护理、导出和库存管理。", "Alles, was für regelmäßige Dokumentation zählt: unbegrenzt, privat, exportierbar.": "长期记录需要的能力：无限、私密、可导出。", "MediLog Premium Jährlich": "MediLog Premium 年度", "MediLog Premium Monatlich": "MediLog Premium 月度", "Empfohlen für feste Routinen": "适合固定日常", "Monatlich kündbar": "可按月取消", "pro Jahr": "每年", "pro Monat": "每月", "1 Profil": "1 个资料", "Unbegrenzt": "无限", "Lokal": "本地", "Keine Cloud": "无云端", "Sprache": "语言", "Premium freischalten": "开启 Premium", "Schnell erfassen": "快速添加", "Medikament erfassen": "添加药品", "Wasser": "饮水", "Datenschutz": "隐私", "Speichern": "保存", "Abbrechen": "取消", "Sprache gespeichert": "语言已保存"
   },
   "zh-Hant": {
-    "Heute": "今天", "Für dich": "為你推薦", "Home": "首頁", "Pläne": "計劃", "Medis": "藥品", "Bibliothek": "藥品", "Verlauf": "紀錄", "Einstellungen": "設定", "Einstellungen, Premium und Schutz.": "設定、Premium 與保護。", "MediLog ist als lokaler Tracker konzipiert. Keine Diagnose, keine Therapieempfehlung, keine automatische Wechselwirkungspruefung.": "MediLog 是本機記錄工具。不診斷、不提供治療建議，也不自動檢查交互作用。", "Zugang": "權限", "Premium fuer echte Routine.": "適合真實日常的 Premium。", "Free bleibt bewusst klein. Premium ist fuer Alltag, Pflege, Export und Vorrat ohne kuenstliche Reibung.": "Free 維持精簡。Premium 適合日常、照護、匯出與庫存管理。", "Alles, was fuer regelmaessige Dokumentation zaehlt: unbegrenzt, privat, exportierbar.": "長期記錄需要的能力：無限制、私密、可匯出。", "MediLog Premium Jaehrlich": "MediLog Premium 年度", "MediLog Premium Monatlich": "MediLog Premium 月度", "Empfohlen fuer feste Routinen": "適合固定日常", "Monatlich kuendbar": "可按月取消", "pro Jahr": "每年", "pro Monat": "每月", "1 Profil": "1 個資料", "Unbegrenzt": "無限制", "Lokal": "本機", "Keine Cloud": "無雲端", "Sprache": "語言", "Premium freischalten": "啟用 Premium", "Schnell erfassen": "快速新增", "Medikament erfassen": "新增藥品", "Wasser": "飲水", "Datenschutz": "隱私", "Speichern": "儲存", "Abbrechen": "取消", "Tagescheck": "每日檢查", "Einnahmen pruefen": "檢查用藥", "Oeffnen": "開啟", "Sprache gespeichert": "語言已儲存"
+    "Heute": "今天", "Für dich": "為你推薦", "Home": "首頁", "Pläne": "計劃", "Medis": "藥品", "Bibliothek": "藥品", "Verlauf": "紀錄", "Einstellungen": "設定", "Einstellungen, Premium und Schutz.": "設定、Premium 與保護。", "MediLog ist als lokaler Tracker konzipiert. Keine Diagnose, keine Therapieempfehlung, keine automatische Wechselwirkungsprüfung.": "MediLog 是本機記錄工具。不診斷、不提供治療建議，也不自動檢查交互作用。", "Zugang": "權限", "Premium für echte Routine.": "適合真實日常的 Premium。", "Free bleibt bewusst klein. Premium ist für Alltag, Pflege, Export und Vorrat ohne künstliche Reibung.": "Free 維持精簡。Premium 適合日常、照護、匯出與庫存管理。", "Alles, was für regelmäßige Dokumentation zählt: unbegrenzt, privat, exportierbar.": "長期記錄需要的能力：無限制、私密、可匯出。", "MediLog Premium Jährlich": "MediLog Premium 年度", "MediLog Premium Monatlich": "MediLog Premium 月度", "Empfohlen für feste Routinen": "適合固定日常", "Monatlich kündbar": "可按月取消", "pro Jahr": "每年", "pro Monat": "每月", "1 Profil": "1 個資料", "Unbegrenzt": "無限制", "Lokal": "本機", "Keine Cloud": "無雲端", "Sprache": "語言", "Premium freischalten": "啟用 Premium", "Schnell erfassen": "快速新增", "Medikament erfassen": "新增藥品", "Wasser": "飲水", "Datenschutz": "隱私", "Speichern": "儲存", "Abbrechen": "取消", "Tagescheck": "每日檢查", "Einnahmen prüfen": "檢查用藥", "Öffnen": "開啟", "Sprache gespeichert": "語言已儲存"
   },
 };
 
@@ -488,7 +488,7 @@ const medilogNative = (() => {
       return Boolean(window.webkit?.messageHandlers?.medilogNative);
     },
     call(action, payload = {}) {
-      if (!this.available) return Promise.reject(new Error("Native Bridge nicht verfuegbar"));
+      if (!this.available) return Promise.reject(new Error("Native Bridge nicht verfügbar"));
 
       return new Promise((resolve, reject) => {
         const id = `native-${Date.now()}-${sequence++}`;
@@ -801,13 +801,13 @@ async function bootstrapNative() {
     await syncNativeReminders({ silent: true });
     render();
   } catch {
-    showToast("Native iOS-Funktionen nicht voll verfuegbar");
+    showToast("Native iOS-Funktionen nicht voll verfügbar");
   }
 }
 
 function applyPremiumEntitlement(entitlement, options = {}) {
   if (entitlement?.pending) {
-    if (!options.silent) showToast("Kauf wartet auf Bestaetigung");
+    if (!options.silent) showToast("Kauf wartet auf Bestätigung");
     return false;
   }
   if (!entitlement?.active) return false;
@@ -861,7 +861,7 @@ function selectedPremiumLegalText(product = getSelectedPremiumProduct()) {
   const price = product.displayPrice || "Preis laut App Store";
   const period = t(product.period || "Abo-Laufzeit laut App Store");
   if (getLocaleConfig().code === "de-DE") {
-    return `Ausgewaehlter Tarif: ${title}, ${price} ${period}. Das Abo verlaengert sich automatisch, sofern es nicht mindestens 24 Stunden vor Ablauf gekuendigt wird.`;
+    return `Ausgewählter Tarif: ${title}, ${price} ${period}. Das Abo verlängert sich automatisch, sofern es nicht mindestens 24 Stunden vor Ablauf gekündigt wird.`;
   }
   return `Selected plan: ${title}, ${price} ${period}. The subscription renews automatically unless cancelled at least 24 hours before the end of the current period.`;
 }
@@ -911,7 +911,7 @@ function routeToHash(hashValue = location.hash.slice(1)) {
 
 function requirePrivacyConsent(feature) {
   if (state.settings.privacyConsentAt) return true;
-  showToast(`Bitte Datenschutz bestaetigen: ${feature}`);
+  showToast(`Bitte Datenschutz bestätigen: ${feature}`);
   switchView("schutz");
   return false;
 }
@@ -1108,7 +1108,7 @@ function renderStock() {
             `,
           )
           .join("")
-      : `<div class="stock-row calm"><i data-lucide="circle-check"></i><span><strong>Alles im gruenen Bereich</strong><small>Keine Nachkauf-Erinnerung fuer dieses Profil.</small></span></div>`;
+      : `<div class="stock-row calm"><i data-lucide="circle-check"></i><span><strong>Alles im grünen Bereich</strong><small>Keine Nachkauf-Erinnerung für dieses Profil.</small></span></div>`;
 }
 
 function openMedicineDetail(medicineId) {
@@ -1146,7 +1146,7 @@ function renderPremiumPlans() {
       const period = t(product.period || "");
       const badge = t(product.badge || "");
       const price = product.displayPrice || t("Preis laut App Store");
-      const ariaLabel = `${title}, ${price} ${period}${note ? `, ${note}` : ""}${active ? ", ausgewaehlt" : ""}`;
+      const ariaLabel = `${title}, ${price} ${period}${note ? `, ${note}` : ""}${active ? ", ausgewählt" : ""}`;
       return `
         <button class="plan-option ${active ? "active" : ""} ${product.featured ? "featured" : ""}" type="button" role="radio" aria-checked="${active}" aria-label="${escapeHtml(ariaLabel)}" data-premium-product-id="${escapeHtml(product.id)}">
           <span class="plan-check" aria-hidden="true"><i data-lucide="${active ? "check" : "circle"}"></i></span>
@@ -1188,12 +1188,12 @@ function renderSettings() {
   elements.premiumButton.setAttribute("aria-busy", String(premiumPurchasePending));
   elements.premiumValueRow.innerHTML = `
     <span><strong>${escapeHtml(selectedPrice)}</strong><small>${escapeHtml(selectedPeriod || selectedTitle)}</small></span>
-    <span><strong>${escapeHtml(t(selectedProduct.conversionNote || "Premium"))}</strong><small>${escapeHtml(t("fuer Pflege, Export und Vorrat"))}</small></span>
+    <span><strong>${escapeHtml(t(selectedProduct.conversionNote || "Premium"))}</strong><small>${escapeHtml(t("für Pflege, Export und Vorrat"))}</small></span>
   `;
   elements.premiumMessage.textContent = t(premiumInlineMessage || "");
   elements.premiumMessage.className = `premium-message ${premiumInlineMessage ? "show" : ""} ${premiumInlineMessageTone === "error" ? "error" : premiumInlineMessageTone === "success" ? "success" : ""}`;
   elements.premiumLegalSelected.textContent = selectedPremiumLegalText();
-  elements.privacyConsentStatus.textContent = state.settings.privacyConsentAt ? "bestaetigt" : "offen";
+  elements.privacyConsentStatus.textContent = state.settings.privacyConsentAt ? "bestätigt" : "offen";
   document.querySelector("#native-status").textContent =
     usesApplePurchaseFlow
       ? nativeCapabilities.revenueCat
@@ -1201,7 +1201,7 @@ function renderSettings() {
         : "iOS: StoreKit-Fallback, Keychain, lokale Notifications, QR-Scan"
       : "Web/PWA: Browser-Funktionen";
   document.querySelector("#privacy-storage-status").textContent = nativeSecureStorageReady
-    ? "Verschluesselter iOS-Speicher. Schluessel liegt in der Keychain dieses Geraets."
+    ? "Verschlüsselter iOS-Speicher. Schlüssel liegt in der Keychain dieses Geräts."
     : "Lokaler Browser-Speicher. Optionaler PIN-Vault nutzt Web Crypto.";
 
   const medicines = getProfileMedicines();
@@ -1233,7 +1233,7 @@ function renderRoutineFocus() {
     {
       action: "dose",
       icon: "check-circle-2",
-      title: "Einnahmen pruefen",
+      title: "Einnahmen prüfen",
       detail: open > 0 ? `${open} offen · ${adherence}% diese Woche` : "Heute ist alles dokumentiert",
       tone: open > 0 ? "active" : "done",
     },
@@ -1241,21 +1241,21 @@ function renderRoutineFocus() {
       action: "stock",
       icon: "shopping-bag",
       title: "Vorrat sichern",
-      detail: low > 0 ? `${low} niedrige Bestaende` : "Nachkauf aktuell unkritisch",
+      detail: low > 0 ? `${low} niedrige Bestände` : "Nachkauf aktuell unkritisch",
       tone: low > 0 ? "warning" : "done",
     },
     {
       action: "report",
       icon: "file-text",
       title: "Bericht aktuell halten",
-      detail: isPremium() ? "Export fuer Arzt oder Apotheke bereit" : "Premium: Arzt-/Apothekenbericht",
+      detail: isPremium() ? "Export für Arzt oder Apotheke bereit" : "Premium: Arzt-/Apothekenbericht",
       tone: isPremium() ? "active" : "locked",
     },
     {
       action: "privacy",
       icon: "shield-check",
-      title: "Schutz pruefen",
-      detail: state.settings.privacyConsentAt ? "Lokal, privat und bestaetigt" : "Einwilligung noch offen",
+      title: "Schutz prüfen",
+      detail: state.settings.privacyConsentAt ? "Lokal, privat und bestätigt" : "Einwilligung noch offen",
       tone: state.settings.privacyConsentAt ? "done" : "warning",
     },
   ];
@@ -1269,7 +1269,7 @@ function renderRoutineFocus() {
             <strong>${escapeHtml(check.title)}</strong>
             <small>${escapeHtml(check.detail)}</small>
           </span>
-          <em>${t("Oeffnen")}</em>
+          <em>${t("Öffnen")}</em>
         </button>
       `,
     )
@@ -1393,7 +1393,7 @@ function updateMetrics() {
   elements.vaultStatus.textContent = nativeSecureStorageReady
     ? state.settings.vaultEnabled
       ? "iOS + PIN"
-      : "iOS verschluesselt"
+      : "iOS verschlüsselt"
     : state.settings.vaultEnabled
     ? "aktiv"
     : localStorage.getItem(VAULT_KEY)
@@ -1484,8 +1484,8 @@ function buildReportHtml(data) {
     locale === "de-DE"
       ? {
           title: "Arzt- und Apothekenbericht",
-          intro: "Privates Protokoll fuer {days} Tage · erstellt am {created}",
-          warning: "Dieser Bericht ist eine private Dokumentation. Er ersetzt keine aerztliche, pharmazeutische oder notfallmedizinische Einschaetzung.",
+          intro: "Privates Protokoll für {days} Tage · erstellt am {created}",
+          warning: "Dieser Bericht ist eine private Dokumentation. Er ersetzt keine ärztliche, pharmazeutische oder notfallmedizinische Einschätzung.",
           profile: "Profil",
           adherence: "Einnahmetreue",
           water: "Wasser",
@@ -1499,9 +1499,9 @@ function buildReportHtml(data) {
           today: "Heute",
           documented: "dokumentiert",
           open: "offen",
-          noMedicines: "Keine Medikamente fuer dieses Profil erfasst.",
+          noMedicines: "Keine Medikamente für dieses Profil erfasst.",
           events: "Protokollauszug",
-          noEvents: "Keine Protokolleintraege im ausgewaehlten Zeitraum.",
+          noEvents: "Keine Protokolleinträge im ausgewählten Zeitraum.",
           footer: "Lokal erstellt mit MediLog. Keine automatische Wechselwirkungs-, Diagnose- oder Dosierungsbewertung.",
         }
       : {
@@ -1662,6 +1662,14 @@ function showToast(message) {
   showToast.timer = window.setTimeout(() => elements.toast.classList.remove("show"), 2400);
 }
 
+function scrollAppToTop(behavior = "auto") {
+  if (document.documentElement.classList.contains("native-ios")) {
+    window.scrollTo({ top: 0, behavior });
+    return;
+  }
+  document.querySelector(".screen")?.scrollTo({ top: 0, behavior });
+}
+
 function switchView(viewName, options = {}) {
   const targetView = document.getElementById(`${viewName}-view`);
   if (!targetView) return;
@@ -1676,7 +1684,7 @@ function switchView(viewName, options = {}) {
   if (options.updateHash !== false && location.hash.slice(1) !== viewName) {
     history.replaceState(null, "", `#${viewName}`);
   }
-  document.querySelector(".screen").scrollTo({ top: 0, behavior: "smooth" });
+  scrollAppToTop();
   applyLocale();
 }
 
@@ -1729,7 +1737,7 @@ async function syncNativeReminders(options = {}) {
 
     if (!options.silent) showToast(`${result.scheduled || 0} iOS-Erinnerungen geplant`);
   } catch (error) {
-    if (!options.silent) showToast(error.message || "iOS-Erinnerungen nicht verfuegbar");
+    if (!options.silent) showToast(error.message || "iOS-Erinnerungen nicht verfügbar");
   }
 }
 
@@ -2010,7 +2018,7 @@ document.querySelector("#quick-sheet form").addEventListener("submit", (event) =
   saveState();
   void syncNativeReminders({ silent: true });
   render();
-  showToast("Naechste offene Einnahme dokumentiert");
+  showToast("Nächste offene Einnahme dokumentiert");
 });
 
 document.querySelector("#medicine-detail-sheet form").addEventListener("submit", (event) => {
@@ -2081,7 +2089,7 @@ elements.onboardingForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const data = new FormData(elements.onboardingForm);
   if (!data.get("privacyConsent")) {
-    showToast("Bitte Datenschutz-Bestaetigung setzen");
+    showToast("Bitte Datenschutz-Bestätigung setzen");
     return;
   }
   const mode = data.get("mode");
@@ -2177,7 +2185,7 @@ document.querySelector("#native-scan-button").addEventListener("click", async ()
   if (!requirePremium("nativer Medikationsplan-Scan")) return;
   if (!requirePrivacyConsent("Medikationsplan scannen")) return;
   if (!medilogNative.available) {
-    showToast("Kamera-Scan ist in der Web-Vorschau nicht verfuegbar");
+    showToast("Kamera-Scan ist in der Web-Vorschau nicht verfügbar");
     return;
   }
 
@@ -2190,7 +2198,7 @@ document.querySelector("#native-scan-button").addEventListener("click", async ()
     elements.scanForm.elements.plan.value = result.value;
     showToast("QR-Inhalt erkannt");
   } catch (error) {
-    showToast(error.message || "Kamera-Scan nicht verfuegbar");
+    showToast(error.message || "Kamera-Scan nicht verfügbar");
   }
 });
 
@@ -2215,7 +2223,7 @@ document.querySelector("#qr-file").addEventListener("change", async (event) => {
     elements.scanForm.elements.plan.value = value;
     showToast("QR-Inhalt erkannt");
   } catch {
-    showToast("QR-Erkennung nicht verfuegbar");
+    showToast("QR-Erkennung nicht verfügbar");
   }
 });
 
@@ -2271,7 +2279,7 @@ document.querySelector("#print-report").addEventListener("click", () => {
 });
 
 document.querySelector("#reset-button").addEventListener("click", async () => {
-  const confirmed = window.confirm("Lokale Demo-Daten wirklich loeschen? Diese Aktion entfernt gespeicherte Gesundheitsdaten aus diesem Browser.");
+  const confirmed = window.confirm("Lokale Demo-Daten wirklich löschen? Diese Aktion entfernt gespeicherte Gesundheitsdaten aus diesem Browser.");
   if (!confirmed) return;
   localStorage.removeItem(STORAGE_KEY);
   localStorage.removeItem(VAULT_KEY);
@@ -2280,7 +2288,7 @@ document.querySelector("#reset-button").addEventListener("click", async () => {
   }
   state = structuredClone(seedState);
   render();
-  showToast("Demo-Daten zurueckgesetzt");
+  showToast("Demo-Daten zurückgesetzt");
 });
 
 document.querySelector("#privacy-export").addEventListener("click", () => {
@@ -2289,8 +2297,8 @@ document.querySelector("#privacy-export").addEventListener("click", () => {
       exportedAt: new Date().toISOString(),
       purpose: "DSGVO-Auskunft / lokale Datenkopie",
       storage: nativeSecureStorageReady
-        ? "iOS Application Support, AES-GCM verschluesselt; Schluessel in iOS Keychain"
-        : "Browser localStorage / optional verschluesselter Web-Crypto-Vault",
+        ? "iOS Application Support, AES-GCM verschlüsselt; Schlüssel in iOS Keychain"
+        : "Browser localStorage / optional verschlüsselter Web-Crypto-Vault",
       categories: ["profile", "medicines", "dose log", "hydration", "notes", "settings"],
       state,
     },
@@ -2317,7 +2325,7 @@ document.querySelector("#privacy-consent").addEventListener("click", () => {
 document.querySelector("#copy-shopping-list").addEventListener("click", async () => {
   if (!requirePremium("Nachkaufliste")) return;
   const low = getProfileMedicines().filter((medicine) => Number(medicine.stock) <= Number(medicine.refillAt || 7));
-  const list = low.length ? low.map((medicine) => `${medicine.name} (${medicine.dose})`).join("\n") : "Keine Nachkaeufe offen";
+  const list = low.length ? low.map((medicine) => `${medicine.name} (${medicine.dose})`).join("\n") : "Keine Nachkäufe offen";
   try {
     await navigator.clipboard?.writeText(list);
     showToast("Nachkaufliste kopiert");
@@ -2412,7 +2420,7 @@ elements.premiumButton.addEventListener("click", async () => {
 
   premiumPurchasePending = true;
   setPremiumInlineMessage(
-    medilogNative.available ? "Apple Kaufdialog wird geoeffnet..." : "Webvorschau wird lokal aktiviert.",
+    medilogNative.available ? "Apple Kaufdialog wird geöffnet..." : "Webvorschau wird lokal aktiviert.",
     "info",
   );
   renderSettings();
@@ -2446,7 +2454,7 @@ elements.premiumButton.addEventListener("click", async () => {
 
 document.querySelector("#premium-restore").addEventListener("click", async () => {
   if (!medilogNative.available) {
-    const message = "Wiederherstellung ist nur in der iOS-App verfuegbar";
+    const message = "Wiederherstellung ist nur in der iOS-App verfügbar";
     setPremiumInlineMessage(message, "error");
     renderSettings();
     showToast(message);
@@ -2454,7 +2462,7 @@ document.querySelector("#premium-restore").addEventListener("click", async () =>
   }
 
   premiumPurchasePending = true;
-  setPremiumInlineMessage("Kaeufe werden bei Apple geprueft...", "info");
+  setPremiumInlineMessage("Käufe werden bei Apple geprüft...", "info");
   renderSettings();
   refreshIcons();
 
@@ -2507,7 +2515,7 @@ document.querySelector("#vault-button").addEventListener("click", async () => {
       state.settings.vaultEnabled = true;
       activeVaultPin = pin;
       await encryptVault(pin);
-      showToast("Lokaler Vault verschluesselt");
+      showToast("Lokaler Vault verschlüsselt");
     }
     elements.vaultPin.value = "";
     render();
@@ -2519,13 +2527,13 @@ document.querySelector("#vault-button").addEventListener("click", async () => {
 document.querySelector("#vault-biometric-button").addEventListener("click", async () => {
   if (!requirePremium("Face ID / Touch ID")) return;
   if (!medilogNative.available) {
-    showToast("Biometrie ist nur in der iOS-App verfuegbar");
+    showToast("Biometrie ist nur in der iOS-App verfügbar");
     return;
   }
 
   try {
     const result = await medilogNative.call("biometricUnlock");
-    showToast(result?.unlocked ? "Biometrie bestaetigt" : "Biometrie ist auf diesem Simulator nicht verfuegbar");
+    showToast(result?.unlocked ? "Biometrie bestätigt" : "Biometrie ist auf diesem Simulator nicht verfügbar");
   } catch (error) {
     showToast(error.message || "Biometrie konnte nicht verwendet werden");
   }

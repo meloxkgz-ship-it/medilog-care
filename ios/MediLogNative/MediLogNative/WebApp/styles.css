@@ -30,6 +30,7 @@ html,
 body {
   width: 100%;
   max-width: 100%;
+  height: auto;
   overflow-x: hidden;
   overscroll-behavior-x: none;
   -webkit-text-size-adjust: 100%;
@@ -179,9 +180,10 @@ button:active {
 
 html.native-ios body {
   width: 100vw;
-  min-height: 100dvh;
+  min-height: 100svh;
   display: block;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
   background: var(--bg);
 }
 
@@ -199,8 +201,11 @@ html.native-ios {
   --danger: #ff9c91;
   --shadow: 0 22px 58px rgba(0, 0, 0, 0.34);
   min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: var(--bg);
   color-scheme: dark;
+  overscroll-behavior-y: none;
 }
 
 html.native-ios .ambient,
@@ -211,10 +216,10 @@ html.native-ios .device::before {
 html.native-ios .device {
   width: 100vw;
   min-height: 100vh;
-  min-height: 100dvh;
-  height: 100vh;
-  height: 100dvh;
+  min-height: 100svh;
+  height: auto;
   max-width: none;
+  overflow: visible;
   border: 0;
   border-radius: 0;
   background:
@@ -229,11 +234,16 @@ html.native-ios .screen {
   --tabbar-offset: 0px;
   --tabbar-height: calc(96px + env(safe-area-inset-bottom));
   --tabbar-clearance: calc(var(--tabbar-height) + 28px);
+  min-height: 100svh;
+  overflow: visible;
   padding-right: max(16px, calc(env(safe-area-inset-right) + 16px));
   background: var(--bg);
+  -webkit-overflow-scrolling: auto;
 }
 
 html.native-ios .tabbar {
+  position: fixed;
+  z-index: 5;
   right: 0;
   bottom: 0;
   left: 0;
@@ -2910,6 +2920,7 @@ textarea:focus {
   .report-controls,
   .report-document,
   .report-events div,
+  .guide-actions button,
   .choice-grid label,
   .onboarding-points span,
   .setup-path,
@@ -2953,6 +2964,12 @@ textarea:focus {
       radial-gradient(circle at 78% 18%, rgba(146, 207, 166, 0.16), transparent 30%),
       linear-gradient(138deg, rgba(23, 31, 27, 0.98), rgba(14, 20, 17, 0.96) 58%, rgba(18, 27, 22, 0.98));
     box-shadow: 0 22px 46px rgba(0, 0, 0, 0.28);
+  }
+
+  .guide-panel {
+    background:
+      radial-gradient(circle at 88% 10%, rgba(134, 215, 154, 0.11), transparent 30%),
+      rgba(18, 25, 21, 0.9);
   }
 
   .protocol-card::after {
@@ -3157,6 +3174,23 @@ textarea:focus {
     border: 0;
     border-radius: 0;
     box-shadow: none;
+  }
+
+  html.native-ios body {
+    min-height: 100svh;
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+
+  html.native-ios .device {
+    min-height: 100svh;
+    height: auto;
+    overflow: visible;
+  }
+
+  html.native-ios .screen {
+    min-height: 100svh;
+    overflow: visible;
   }
 
   .device::before {
