@@ -1,0 +1,7 @@
+// Copy this file to RevenueCat.local.xcconfig and insert the iOS Public SDK Key
+// from RevenueCat Dashboard -> Project settings -> API keys -> App specific keys.
+//
+// Never commit RevenueCat secret/API v2 keys here. The iOS SDK key must start
+// with "appl_".
+
+REVENUECAT_API_KEY = appl_REPLACE_WITH_IOS_PUBLIC_SDK_KEY

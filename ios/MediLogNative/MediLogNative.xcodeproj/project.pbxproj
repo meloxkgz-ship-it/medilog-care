@@ -169,7 +169,7 @@
 				INFOPLIST_FILE = MediLogNative/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.8;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.medilog.care;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -191,7 +191,7 @@
 				INFOPLIST_FILE = MediLogNative/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.medilog.care;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REVENUECAT_API_KEY = "";

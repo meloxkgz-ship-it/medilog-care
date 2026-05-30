@@ -9,3 +9,4 @@ DerivedData/
 xcuserdata/
 *.xcuserdatad/
 ios/MediLogNative/DerivedData/
+ios/MediLogNative/Config/RevenueCat.local.xcconfig
