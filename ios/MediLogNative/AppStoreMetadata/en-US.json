@@ -4,7 +4,7 @@
   "description": "MediLog helps you privately document medications, water, stock and notes. Free stays intentionally small as a trial mode; Premium adds family and care profiles, stock and refill management, export reports for doctor or pharmacy, QR/medication-plan import preparation, local vault and reliable local reminders. The app stores data locally, uses no cloud sync and no tracking. StoreKit subscriptions are managed by Apple and can be cancelled any time in App Store account settings. MediLog does not replace medical advice, does not diagnose and does not provide dosage or treatment recommendations. Terms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
   "keywords": "medication,pills,reminder,tracker,refill,care,water,doctor,pharmacy",
   "promotionalText": "New in 1.10: improved iPhone layout, steadier scrolling, fixed navigation and cleaner German text rendering.",
-  "whatsNew": "MediLog 1.10 improves the iPhone layout: steadier scrolling, a fixed bottom navigation, cleaner German text rendering and better dark-mode contrast. The bundled WebApp files were synced and localization plus UI smoke checks were verified again.",
+  "whatsNew": "MediLog 1.10 improves the iPhone layout with steadier scrolling, a fixed bottom navigation, cleaner German umlaut rendering and better dark-mode contrast. The bundled WebApp files were synced again, and localization plus UI smoke checks were rerun.",
   "supportUrl": "https://meloxkgz-ship-it.github.io/medilog-care/support.html",
   "privacyPolicyUrl": "https://meloxkgz-ship-it.github.io/medilog-care/privacy.html",
   "marketingUrl": "https://meloxkgz-ship-it.github.io/medilog-care/landing.html",
