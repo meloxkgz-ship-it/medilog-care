@@ -2,6 +2,10 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = process.cwd();
+const infoPlist = fs.readFileSync(path.join(root, "ios", "MediLogNative", "MediLogNative", "Info.plist"), "utf8");
+const versionMatch = infoPlist.match(/<key>CFBundleShortVersionString<\/key>\s*<string>([^<]+)<\/string>/);
+const currentMarketingVersion = versionMatch?.[1]?.trim();
+if (!currentMarketingVersion) throw new Error("Could not resolve MARKETING_VERSION");
 const expectedAppLocales = [
   "de-DE",
   "en-US",
@@ -73,7 +77,9 @@ for (const locale of expectedMetadataLocales) {
   if ([...data.name].length > 30) throw new Error(`${locale}: name too long`);
   if ([...data.subtitle].length > 30) throw new Error(`${locale}: subtitle too long`);
   if ([...data.keywords].length > 100) throw new Error(`${locale}: keywords too long`);
-  if (!data.whatsNew.includes("1.7")) throw new Error(`${locale}: release notes do not mention 1.7`);
+  if (!data.whatsNew.includes(currentMarketingVersion)) {
+    throw new Error(`${locale}: release notes do not mention ${currentMarketingVersion}`);
+  }
   for (const urlField of ["supportUrl", "privacyPolicyUrl", "marketingUrl", "termsOfUseUrl"]) {
     if (!data[urlField].startsWith("https://")) throw new Error(`${locale}: ${urlField} is not https`);
   }
