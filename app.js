@@ -91,7 +91,7 @@ const I18N = {
     "Vorrat niedrig": "Low stock",
     "Aktueller Plan": "Current Plan",
     "Herz & Blutdruck": "Heart & Blood Pressure",
-    "Privates Einnahmeprotokoll mit lokalen Erinnerungen. Keine Dosierungsberatung.": "Private medication log with local reminders. No dosage advice.",
+    "Privates Protokoll mit lokalen Erinnerungen. Keine Dosisberatung.": "Private medication log with local reminders. No dosage advice.",
     "Aktiv": "Active",
     "Plan ansehen": "View Plan",
     "Erste Schritte": "First Steps",
@@ -167,19 +167,31 @@ const I18N = {
     "Zugang": "Access",
     "Premium für echte Routine.": "Premium for real routines.",
     "Free bleibt bewusst klein. Premium ist für Alltag, Pflege, Export und Vorrat ohne künstliche Reibung.": "Free stays intentionally small. Premium is for everyday use, care, export and stock without artificial friction.",
+    "Free bleibt bewusst klein. Premium schaltet den vollen lokalen Medikamenten-Alltag frei: Pflege, Export, Vorrat und sichere Reminder.": "Free stays intentionally small. Premium unlocks the full local medication routine: care, export, stock and reliable reminders.",
+    "Keine Cloud. Keine Werbung. Kein medizinischer Rat. Nur ein ruhiges System für deine Routine.": "No cloud. No ads. No medical advice. Just a calm system for your routine.",
     "Alles, was für regelmäßige Dokumentation zählt: unbegrenzt, privat, exportierbar.": "Everything that matters for regular documentation: unlimited, private, exportable.",
     "Unbegrenzt": "Unlimited",
+    "Limitlos": "Unlimited",
     "Lokal": "Local",
     "Keine Cloud": "No Cloud",
+    "Lokal gespeichert": "Stored locally",
+    "Apple Kaufdialog": "Apple purchase flow",
+    "Jederzeit kündbar": "Cancel anytime",
     "Premium Tarif": "Premium Plan",
     "MediLog Premium Jährlich": "MediLog Premium Yearly",
     "MediLog Premium Monatlich": "MediLog Premium Monthly",
+    "Ein Jahr Premium für Alltag, Pflege, Export, Scan, Vault und Vorrat.": "One year of Premium for daily use, care, export, scan, vault and stock.",
+    "Premium monatlich flexibel nutzen.": "Use Premium flexibly month to month.",
     "Jährlich": "Yearly",
     "Monatlich": "Monthly",
     "pro Jahr": "per year",
     "pro Monat": "per month",
     "Bester Wert": "Best value",
+    "Spart ca. 37%": "Save about 37%",
     "Flexibel": "Flexible",
+    "Beste Wahl für feste Routinen": "Best choice for fixed routines",
+    "Flexibel testen": "Try flexibly",
+    "Jährlich Premium starten": "Start yearly Premium",
     "Empfohlen für feste Routinen": "Recommended for fixed routines",
     "Monatlich kündbar": "Cancel monthly",
     "Jährlich starten": "Start yearly",
@@ -187,7 +199,8 @@ const I18N = {
     "Free und Premium Vergleich": "Free and Premium comparison",
     "1 Profil, 2 Medikamente, Wasser, Tagescheck": "1 profile, 2 medications, water, daily check",
     "Familie, Vorrat, Export, Scan, Vault, Reminder-Regeln": "Family, stock, export, scan, vault, reminder rules",
-    "Zuverlaessige lokale Erinnerungen": "Reliable local reminders",
+    "für Pflege, Export und Vorrat": "for care, export and stock",
+    "Zuverlässige lokale Erinnerungen": "Reliable local reminders",
     "Familien-/Pflege-Modus": "Family/Care Mode",
     "Arzt-/Apothekenbericht": "Doctor/pharmacy report",
     "Vault, QR, Vorrat und Nachkauf": "Vault, QR, stock and refill",
@@ -209,7 +222,7 @@ const I18N = {
     "App-Sprache und regionale Formate": "App language and regional formats",
     "Reminder-Abstand": "Reminder delay",
     "Warnung nach geplanter Zeit": "Warning after scheduled time",
-    "Zuverlaessige Erinnerungen": "Reliable reminders",
+    "Zuverlässige Erinnerungen": "Reliable reminders",
     "iOS nutzt lokale Notifications, Web nutzt Browser-Erlaubnis": "iOS uses local notifications, web uses browser permission",
     "Einfach-Modus": "Simple Mode",
     "Größere Schrift und Touch-Ziele": "Larger text and touch targets",
@@ -240,7 +253,7 @@ const I18N = {
     "App-Gefühl": "App Feel",
     "Installierbar": "Installable",
     "MediLog kann über den Browser zum Home-Bildschirm hinzugefügt werden und lädt nach dem ersten Besuch auch offline.": "MediLog can be added to the Home Screen and loads offline after the first visit.",
-    "Lokale Demo-Daten zurücksetzen": "Reset local demo data",
+    "Lokale Beispieldaten zurücksetzen": "Reset local example data",
     "Hauptnavigation": "Main navigation",
     "Schnell erfassen": "Quick Add",
     "Willkommen bei MediLog": "Welcome to MediLog",
@@ -248,7 +261,11 @@ const I18N = {
     "Richte die App in einer Minute mit echten Basisdaten ein. MediLog dokumentiert, erinnert und exportiert, gibt aber keine medizinische Empfehlung.": "Set up the app in one minute with real basics. MediLog documents, reminds and exports, but gives no medical advice.",
     "Wichtige Hinweise": "Important notes",
     "So nutzt du MediLog": "How to use MediLog",
-    "Einmal einrichten, dann taeglich nur abhaken.": "Set it up once, then just check off daily.",
+    "Einmal einrichten, dann täglich nur abhaken.": "Set it up once, then just check off daily.",
+    "Einnahme heute markieren": "Mark dose today",
+    "Notiz speichern": "Save Note",
+    "Text aus QR-Code oder Medikationsplan einfügen": "Paste text from QR code or medication plan",
+    "z. B. Einnahme nach Rücksprache verschoben": "e.g. dose moved after consultation",
     "Medikamente": "Medications",
     "Zeiten und Vorrat nach deinem Plan erfassen.": "Enter times and stock from your plan.",
     "Reminder": "Reminders",
@@ -265,7 +282,7 @@ const I18N = {
     "Angabe laut Plan": "Planned dose",
     "Uhrzeit": "Time",
     "Ich verstehe, dass ich besondere Gesundheitsdaten lokal auf diesem Gerät speichere und MediLog keine medizinische Beratung ersetzt.": "I understand that I store sensitive health data locally on this device and that MediLog does not replace medical advice.",
-    "Demo mit Beispielen": "Demo with examples",
+    "Mit Beispielplan starten": "Start with example plan",
     "App einrichten": "Set up app",
     "Arzt-/Apothekenbericht": "Doctor/pharmacy report",
     "Bericht vorbereiten": "Prepare report",
@@ -284,9 +301,9 @@ const I18N = {
     "Abbrechen": "Cancel",
     "Speichern": "Save",
     "Medikament": "Medication",
-    "Einnahme Heute Markieren": "Mark Today's Dose",
+    "Einnahme heute markieren": "Mark dose today",
     "Vorrat +14": "Stock +14",
-    "Notiz Speichern": "Save Note",
+    "Notiz speichern": "Save Note",
     "Profil erfassen": "Add Profile",
     "Rolle": "Role",
     "Medikationsplan importieren": "Import medication plan",
@@ -449,7 +466,7 @@ const LOCALE_OVERRIDES = {
     "Heute": "היום", "Für dich": "בשבילך", "Pläne": "תכניות", "Bibliothek": "תרופות", "Verlauf": "היסטוריה", "Einstellungen": "הגדרות", "Sprache": "שפה", "Premium freischalten": "הפעלת Premium", "Schnell erfassen": "הוספה מהירה", "Medikament erfassen": "הוספת תרופה", "Wasser": "מים", "Datenschutz": "פרטיות", "Speichern": "שמירה", "Abbrechen": "ביטול", "Tagescheck": "בדיקה יומית", "Einnahmen prüfen": "בדיקת נטילות", "Öffnen": "פתיחה"
   },
   "ar-SA": {
-    "Heute": "اليوم", "Für dich": "لك", "Pläne": "الخطط", "Bibliothek": "الأدوية", "Verlauf": "السجل", "Einstellungen": "الإعدادات", "Sprache": "اللغة", "Premium freischalten": "تفعيل Premium", "Schnell erfassen": "إضافة سريعة", "Medikament erfassen": "إضافة دواء", "Wasser": "الماء", "Datenschutz": "الخصوصية", "Speichern": "حفظ", "Abbrechen": "إلغاء"
+    "Heute": "اليوم", "Für dich": "لك", "Home": "الرئيسية", "Pläne": "الخطط", "Medis": "الأدوية", "Bibliothek": "الأدوية", "Verlauf": "السجل", "Einstellungen": "الإعدادات", "Sprache": "اللغة", "Zugang": "الوصول", "Premium für echte Routine.": "Premium لروتين حقيقي.", "Free bleibt bewusst klein. Premium schaltet den vollen lokalen Medikamenten-Alltag frei: Pflege, Export, Vorrat und sichere Reminder.": "يبقى الإصدار المجاني بسيطاً. يفتح Premium روتين الأدوية المحلي الكامل: الرعاية، التصدير، المخزون والتذكيرات الموثوقة.", "Keine Cloud. Keine Werbung. Kein medizinischer Rat. Nur ein ruhiges System für deine Routine.": "لا سحابة. لا إعلانات. لا نصائح طبية. نظام هادئ فقط لروتينك.", "1 Profil": "ملف واحد", "1 Profil, 2 Medikamente, Wasser, Tagescheck": "ملف واحد، دواءان، ماء وفحص يومي", "Familie, Vorrat, Export, Scan, Vault, Reminder-Regeln": "العائلة، المخزون، التصدير، المسح، الخزنة وقواعد التذكير", "Free": "مجاني", "Premium": "Premium", "Limitlos": "غير محدود", "Lokal": "محلي", "Keine Cloud": "بلا سحابة", "Lokal gespeichert": "محفوظ محلياً", "Apple Kaufdialog": "شراء عبر Apple", "Jederzeit kündbar": "يمكن الإلغاء في أي وقت", "MediLog Premium Jährlich": "MediLog Premium السنوي", "MediLog Premium Monatlich": "MediLog Premium الشهري", "Spart ca. 37%": "وفّر نحو 37%", "Flexibel": "مرن", "Beste Wahl für feste Routinen": "أفضل خيار للروتين الثابت", "Flexibel testen": "جرّبه بمرونة", "pro Jahr": "سنوياً", "pro Monat": "شهرياً", "Jährlich Premium starten": "ابدأ Premium السنوي", "Kauf wiederherstellen": "استعادة الشراء", "für Pflege, Export und Vorrat": "للرعاية والتصدير والمخزون", "Premium freischalten": "تفعيل Premium", "Schnell erfassen": "إضافة سريعة", "Medikament erfassen": "إضافة دواء", "Wasser": "الماء", "Datenschutz": "الخصوصية", "Speichern": "حفظ", "Abbrechen": "إلغاء"
   },
   "ja-JP": {
     "Heute": "今日", "Für dich": "おすすめ", "Pläne": "プラン", "Bibliothek": "薬", "Verlauf": "履歴", "Einstellungen": "設定", "Sprache": "言語", "Premium freischalten": "Premiumを有効化", "Schnell erfassen": "クイック追加", "Medikament erfassen": "薬を追加", "Wasser": "水分", "Datenschutz": "プライバシー", "Speichern": "保存", "Abbrechen": "キャンセル"
@@ -601,6 +618,7 @@ const elements = {
   historyBars: document.querySelector("#history-bars"),
   historyList: document.querySelector("#history-list"),
   calendarStrip: document.querySelector("#calendar-strip"),
+  guideActions: document.querySelector("#guide-actions"),
   routineFocusList: document.querySelector("#routine-focus-list"),
   careDashboard: document.querySelector("#care-dashboard"),
   profileList: document.querySelector("#profile-list"),
@@ -711,12 +729,24 @@ function t(value, replacements = {}) {
   const original = String(value ?? "");
   const locale = normalizeLocale(state?.settings?.locale || "de-DE");
   const normalized = original.replace(/\s+/g, " ").trim();
-  const translated = I18N[locale]?.[original] || I18N[locale]?.[normalized] || original;
+  const translated =
+    I18N[locale]?.[original] ||
+    I18N[locale]?.[normalized] ||
+    (locale !== "de-DE" ? I18N["en-US"]?.[original] || I18N["en-US"]?.[normalized] : null) ||
+    original;
   return Object.entries(replacements).reduce((text, [key, replacement]) => text.replaceAll(`{${key}}`, replacement), translated);
 }
 
 function formatNumber(value, options = {}) {
   return new Intl.NumberFormat(getLocaleConfig().code, options).format(value);
+}
+
+function isGermanLocale() {
+  return getLocaleConfig().code === "de-DE";
+}
+
+function localizedPair(deText, enText) {
+  return isGermanLocale() ? deText : enText;
 }
 
 function applyLocale() {
@@ -877,8 +907,13 @@ function isAppStoreShotMode() {
 
 function requirePremium(feature) {
   if (isPremium()) return true;
+  setPremiumInlineMessage(`Premium erforderlich: ${feature}`, "info");
+  renderSettings();
   showToast(`Premium erforderlich: ${feature}`);
   switchView("schutz");
+  window.setTimeout(() => {
+    document.querySelector(".premium-card")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 80);
   return false;
 }
 
@@ -913,6 +948,9 @@ function requirePrivacyConsent(feature) {
   if (state.settings.privacyConsentAt) return true;
   showToast(`Bitte Datenschutz bestätigen: ${feature}`);
   switchView("schutz");
+  window.setTimeout(() => {
+    document.querySelector(".privacy-rights")?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, 80);
   return false;
 }
 
@@ -961,6 +999,7 @@ function render() {
   renderStock();
   renderSettings();
   renderHydration();
+  renderGuideActions();
   updateMetrics();
   renderRoutineFocus();
   document.body.classList.toggle("senior", Boolean(state.settings.seniorMode));
@@ -988,6 +1027,52 @@ function renderLanguageOptions() {
   }
 }
 
+function renderGuideActions() {
+  if (!elements.guideActions) return;
+  const medicines = getProfileMedicines();
+  const freeLimitReached = !isPremium() && medicines.length >= FREE_MEDICINE_LIMIT;
+  const firstAction = freeLimitReached
+    ? {
+        icon: "book-open",
+        title: localizedPair("1. Medikamente prüfen", "1. Review medications"),
+        detail: localizedPair("Free enthält 2 Medikamente. Weitere sind Premium.", "Free includes 2 medications. More are Premium."),
+        attribute: 'data-view="bibliothek"',
+      }
+    : {
+        icon: "pill",
+        title: localizedPair("1. Medikament erfassen", "1. Add medication"),
+        detail: localizedPair("Name, Angabe laut Plan, Uhrzeit und Vorrat.", "Name, planned dose, time and stock."),
+        attribute: 'data-action="open-medicine-form"',
+      };
+
+  const actions = [
+    firstAction,
+    {
+      icon: "bell-ring",
+      title: localizedPair("2. Erinnerung prüfen", "2. Check reminders"),
+      detail: localizedPair("Lokale Reminder aktivieren und Abstand setzen.", "Enable local reminders and set delay."),
+      attribute: 'data-action="open-reminder-settings"',
+    },
+    {
+      icon: "file-text",
+      title: localizedPair("3. Bericht vorbereiten", "3. Prepare report"),
+      detail: localizedPair("Export für Arzt oder Apotheke testen.", "Test export for doctor or pharmacy."),
+      attribute: 'data-action="open-report"',
+    },
+  ];
+
+  elements.guideActions.innerHTML = actions
+    .map(
+      (action) => `
+        <button type="button" ${action.attribute}>
+          <i data-lucide="${action.icon}"></i>
+          <span><strong>${escapeHtml(action.title)}</strong><small>${escapeHtml(action.detail)}</small></span>
+        </button>
+      `,
+    )
+    .join("");
+}
+
 function renderCareDashboard() {
   const profiles = isPremium() ? state.profiles : state.profiles.filter((profile) => profile.id === state.activeProfileId).slice(0, 1);
   elements.careDashboard.innerHTML = profiles
@@ -1001,7 +1086,7 @@ function renderCareDashboard() {
           <span class="care-avatar">${escapeHtml(profile.name.slice(0, 1))}</span>
           <span>
             <strong>${escapeHtml(profile.name)}</strong>
-            <small>${done ? "alles erledigt" : `${open} offen`} · ${low} Vorrat niedrig</small>
+            <small>${done ? localizedPair("alles erledigt", "all done") : `${open} ${localizedPair("offen", "open")}`} · ${low} ${localizedPair("Vorrat niedrig", "low stock")}</small>
           </span>
           <i data-lucide="${done ? "circle-check" : "clock-3"}"></i>
         </button>
@@ -1012,7 +1097,7 @@ function renderCareDashboard() {
   if (!isPremium()) {
     elements.careDashboard.innerHTML += `<button class="care-card locked" type="button" data-premium-feature="Pflege-Cockpit">
       <span class="care-avatar"><i data-lucide="lock"></i></span>
-      <span><strong>Pflege-Cockpit</strong><small>Mehrere Personen nur mit Premium</small></span>
+      <span><strong>Pflege-Cockpit</strong><small>${escapeHtml(localizedPair("Mehrere Personen nur mit Premium", "Multiple people with Premium"))}</small></span>
       <i data-lucide="sparkles"></i>
     </button>`;
   }
@@ -1090,7 +1175,7 @@ function renderProfiles() {
 
 function renderStock() {
   if (!isPremium()) {
-    elements.stockList.innerHTML = `<button class="stock-row locked" type="button" data-premium-feature="Vorratsmanagement"><i data-lucide="lock"></i><span><strong>Vorratsmanagement</strong><small>Nachkauf, Grenzen und Liste sind Premium.</small></span></button>`;
+    elements.stockList.innerHTML = `<button class="stock-row locked" type="button" data-premium-feature="Vorratsmanagement"><i data-lucide="lock"></i><span><strong>${escapeHtml(localizedPair("Vorratsmanagement", "Stock management"))}</strong><small>${escapeHtml(localizedPair("Nachkauf, Grenzen und Liste sind Premium.", "Refill, thresholds and shopping list are Premium."))}</small></span></button>`;
     return;
   }
 
@@ -1102,13 +1187,13 @@ function renderStock() {
             (medicine) => `
               <div class="stock-row">
                 <i data-lucide="shopping-bag"></i>
-                <span><strong>${escapeHtml(medicine.name)}</strong><small>${medicine.stock} uebrig · Schwelle ${medicine.refillAt}</small></span>
+                <span><strong>${escapeHtml(medicine.name)}</strong><small>${medicine.stock} ${localizedPair("übrig", "left")} · ${localizedPair("Schwelle", "threshold")} ${medicine.refillAt}</small></span>
                 <button type="button" data-restock-id="${medicine.id}">+14</button>
               </div>
             `,
           )
           .join("")
-      : `<div class="stock-row calm"><i data-lucide="circle-check"></i><span><strong>Alles im grünen Bereich</strong><small>Keine Nachkauf-Erinnerung für dieses Profil.</small></span></div>`;
+      : `<div class="stock-row calm"><i data-lucide="circle-check"></i><span><strong>${escapeHtml(localizedPair("Alles im grünen Bereich", "Stock looks good"))}</strong><small>${escapeHtml(localizedPair("Keine Nachkauf-Erinnerung für dieses Profil.", "No refill reminder for this profile."))}</small></span></div>`;
 }
 
 function openMedicineDetail(medicineId) {
@@ -1126,10 +1211,10 @@ function openMedicineDetail(medicineId) {
       </div>
     </div>
     <div class="detail-grid">
-      <div><span>Status</span><strong>${isDone(medicine.id) ? "Heute erledigt" : "Heute offen"}</strong></div>
-      <div><span>Vorrat</span><strong>${medicine.stock} Einheiten</strong></div>
-      <div><span>Nachkauf ab</span><strong>${medicine.refillAt || 7}</strong></div>
-      <div><span>Hinweis</span><strong>${low ? "Vorrat niedrig" : "ausreichend"}</strong></div>
+      <div><span>${escapeHtml(localizedPair("Status", "Status"))}</span><strong>${isDone(medicine.id) ? localizedPair("Heute erledigt", "Done today") : localizedPair("Heute offen", "Open today")}</strong></div>
+      <div><span>${escapeHtml(localizedPair("Vorrat", "Stock"))}</span><strong>${medicine.stock} ${escapeHtml(localizedPair("Einheiten", "units"))}</strong></div>
+      <div><span>${escapeHtml(localizedPair("Nachkauf ab", "Refill at"))}</span><strong>${medicine.refillAt || 7}</strong></div>
+      <div><span>${escapeHtml(localizedPair("Hinweis", "Note"))}</span><strong>${low ? localizedPair("Vorrat niedrig", "Low stock") : localizedPair("ausreichend", "enough")}</strong></div>
     </div>
   `;
   elements.medicineDetailSheet.showModal();
@@ -1233,29 +1318,29 @@ function renderRoutineFocus() {
     {
       action: "dose",
       icon: "check-circle-2",
-      title: "Einnahmen prüfen",
-      detail: open > 0 ? `${open} offen · ${adherence}% diese Woche` : "Heute ist alles dokumentiert",
+      title: localizedPair("Einnahmen prüfen", "Check doses"),
+      detail: open > 0 ? `${open} ${localizedPair("offen", "open")} · ${adherence}% ${localizedPair("diese Woche", "this week")}` : localizedPair("Heute ist alles dokumentiert", "Everything is documented today"),
       tone: open > 0 ? "active" : "done",
     },
     {
       action: "stock",
       icon: "shopping-bag",
-      title: "Vorrat sichern",
-      detail: low > 0 ? `${low} niedrige Bestände` : "Nachkauf aktuell unkritisch",
+      title: localizedPair("Vorrat sichern", "Secure stock"),
+      detail: low > 0 ? `${low} ${localizedPair("niedrige Bestände", "low-stock items")}` : localizedPair("Nachkauf aktuell unkritisch", "Refill is currently fine"),
       tone: low > 0 ? "warning" : "done",
     },
     {
       action: "report",
       icon: "file-text",
-      title: "Bericht aktuell halten",
-      detail: isPremium() ? "Export für Arzt oder Apotheke bereit" : "Premium: Arzt-/Apothekenbericht",
+      title: localizedPair("Bericht aktuell halten", "Keep report current"),
+      detail: isPremium() ? localizedPair("Export für Arzt oder Apotheke bereit", "Export for doctor or pharmacy is ready") : localizedPair("Premium: Arzt-/Apothekenbericht", "Premium: doctor/pharmacy report"),
       tone: isPremium() ? "active" : "locked",
     },
     {
       action: "privacy",
       icon: "shield-check",
-      title: "Schutz prüfen",
-      detail: state.settings.privacyConsentAt ? "Lokal, privat und bestätigt" : "Einwilligung noch offen",
+      title: localizedPair("Schutz prüfen", "Check protection"),
+      detail: state.settings.privacyConsentAt ? localizedPair("Lokal, privat und bestätigt", "Local, private and confirmed") : localizedPair("Einwilligung noch offen", "Consent still open"),
       tone: state.settings.privacyConsentAt ? "done" : "warning",
     },
   ];
@@ -1375,15 +1460,15 @@ function updateMetrics() {
   const total = medicines.length;
   const done = medicines.filter((medicine) => isDone(medicine.id)).length;
   const percent = total ? Math.round((done / total) * 100) : 0;
-  elements.completionText.textContent = `${done} von ${total} erledigt`;
+  elements.completionText.textContent = isGermanLocale() ? `${done} von ${total} erledigt` : `${done} of ${total} done`;
   elements.completionBar.style.width = `${percent}%`;
-  elements.adherencePill.textContent = `${getAdherence()}% diese Woche`;
+  elements.adherencePill.textContent = isGermanLocale() ? `${getAdherence()}% diese Woche` : `${getAdherence()}% this week`;
 
   const next = medicines
     .filter((medicine) => !isDone(medicine.id))
     .sort((a, b) => a.time.localeCompare(b.time))[0];
   elements.nextDose.textContent = next?.time || "--:--";
-  elements.nextDoseName.textContent = next?.name || "Keine offene Einnahme";
+  elements.nextDoseName.textContent = next?.name || localizedPair("Keine offene Einnahme", "No open dose");
 
   const open = medicines.filter((medicine) => !isDone(medicine.id)).length;
   elements.lowStockCount.textContent = medicines.filter((medicine) => Number(medicine.stock) <= Number(medicine.refillAt || 7)).length;
@@ -1393,12 +1478,12 @@ function updateMetrics() {
   elements.vaultStatus.textContent = nativeSecureStorageReady
     ? state.settings.vaultEnabled
       ? "iOS + PIN"
-      : "iOS verschlüsselt"
+      : localizedPair("iOS verschlüsselt", "iOS encrypted")
     : state.settings.vaultEnabled
-    ? "aktiv"
+    ? localizedPair("aktiv", "active")
     : localStorage.getItem(VAULT_KEY)
-    ? "gesperrt"
-    : "aus";
+    ? localizedPair("gesperrt", "locked")
+    : localizedPair("aus", "off");
 }
 
 function getAdherence() {
@@ -2133,7 +2218,7 @@ document.querySelector("#skip-onboarding").addEventListener("click", () => {
   saveState();
   elements.onboardingSheet.close();
   render();
-  showToast("Demo gestartet");
+  showToast("Beispielplan gestartet");
 });
 
 elements.onboardingForm.elements.mode.forEach((input) => {
@@ -2279,7 +2364,7 @@ document.querySelector("#print-report").addEventListener("click", () => {
 });
 
 document.querySelector("#reset-button").addEventListener("click", async () => {
-  const confirmed = window.confirm("Lokale Demo-Daten wirklich löschen? Diese Aktion entfernt gespeicherte Gesundheitsdaten aus diesem Browser.");
+  const confirmed = window.confirm("Lokale Beispieldaten wirklich löschen? Diese Aktion entfernt gespeicherte Gesundheitsdaten aus diesem Browser.");
   if (!confirmed) return;
   localStorage.removeItem(STORAGE_KEY);
   localStorage.removeItem(VAULT_KEY);
@@ -2288,7 +2373,7 @@ document.querySelector("#reset-button").addEventListener("click", async () => {
   }
   state = structuredClone(seedState);
   render();
-  showToast("Demo-Daten zurückgesetzt");
+  showToast("Beispieldaten zurückgesetzt");
 });
 
 document.querySelector("#privacy-export").addEventListener("click", () => {

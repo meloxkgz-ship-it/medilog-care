@@ -1,12 +1,17 @@
-import { spawn } from "node:child_process";
-import { mkdirSync, writeFileSync } from "node:fs";
+import fs from "node:fs";
+import http from "node:http";
+import path from "node:path";
+import { createRequire } from "node:module";
 import { dirname, resolve } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const chromePath = process.env.CHROME_PATH || "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+const require = createRequire(import.meta.url);
+const { chromium } = require(path.join(root, ".asc/test-runner/node_modules/playwright"));
+
 const outputDir = resolve(root, "ios/MediLogNative/AppStoreAssets/iphone-65");
-const appUrl = pathToFileURL(resolve(root, "index.html")).href;
+const viewport = { width: 428, height: 926 };
+const deviceScaleFactor = 3;
 
 const shots = [
   ["01-home", "home"],
@@ -16,117 +21,143 @@ const shots = [
   ["05-premium", "premium"],
 ];
 
-function wait(ms) {
-  return new Promise((resolveWait) => setTimeout(resolveWait, ms));
-}
+const mime = new Map([
+  [".html", "text/html;charset=utf-8"],
+  [".js", "text/javascript;charset=utf-8"],
+  [".css", "text/css;charset=utf-8"],
+  [".json", "application/json;charset=utf-8"],
+  [".png", "image/png"],
+  [".svg", "image/svg+xml"],
+  [".webmanifest", "application/manifest+json"],
+]);
 
-function launchChrome() {
-  const args = [
-    "--headless=new",
-    "--disable-gpu",
-    "--disable-background-networking",
-    "--disable-component-update",
-    "--remote-debugging-port=0",
-    `--user-data-dir=/tmp/medilog-appstore-${Date.now()}`,
-    "about:blank",
-  ];
-
-  return spawn(chromePath, args, { stdio: ["ignore", "ignore", "pipe"] });
-}
-
-async function connectToPage(child) {
-  const endpoint = await new Promise((resolveEndpoint, rejectEndpoint) => {
-    let stderr = "";
-    const timer = setTimeout(() => rejectEndpoint(new Error("Chrome DevTools endpoint timed out")), 10000);
-    child.stderr.on("data", (chunk) => {
-      stderr += chunk.toString();
-      const match = stderr.match(/DevTools listening on (ws:\/\/[^\s]+)/);
-      if (!match) return;
-      clearTimeout(timer);
-      resolveEndpoint(match[1]);
-    });
-  });
-
-  const base = `http://${endpoint.match(/ws:\/\/([^/]+)/)[1]}`;
-  await wait(400);
-  const pages = await (await fetch(`${base}/json`)).json();
-  const page = pages.find((item) => item.type === "page");
-  const ws = new WebSocket(page.webSocketDebuggerUrl);
-  let sequence = 0;
-  const pending = new Map();
-
-  ws.onmessage = (event) => {
-    const message = JSON.parse(event.data);
-    if (!pending.has(message.id)) return;
-    pending.get(message.id)(message);
-    pending.delete(message.id);
+function createScreenshotState(locale = "de-DE") {
+  const now = new Date().toISOString();
+  return {
+    activeFilter: "all",
+    activeProfileId: "profile-self",
+    settings: {
+      onboarded: true,
+      remindersEnabled: true,
+      reminderDelayMinutes: 15,
+      vaultEnabled: false,
+      seniorMode: false,
+      waterGoal: 2000,
+      premiumActive: false,
+      premiumPreview: false,
+      premiumSource: "none",
+      premiumUntil: null,
+      privacyConsentAt: now,
+      locale,
+    },
+    profiles: [
+      { id: "profile-self", name: locale === "de-DE" ? "Ich" : "Me", role: locale === "de-DE" ? "Selbst" : "Self" },
+      { id: "profile-care", name: "Mama", role: locale === "de-DE" ? "Pflege" : "Care" },
+    ],
+    medicines: [
+      { id: "med-ramipril", profileId: "profile-self", name: "Ramipril", dose: "5 mg", time: "08:00", stock: 6, refillAt: 7 },
+      { id: "med-vitamin-d", profileId: "profile-self", name: "Vitamin D", dose: "1000 IE", time: "09:00", stock: 31, refillAt: 10 },
+    ],
+    completedToday: {},
+    hydration: {
+      [new Date().toISOString().slice(0, 10)]: {
+        "profile-self": { amount: 750, goal: 2000 },
+      },
+    },
+    history: [
+      { type: "done", title: "Vitamin D dokumentiert", detail: "09:04", profileId: "profile-self", date: now },
+      { type: "done", title: "Ramipril dokumentiert", detail: "08:06", profileId: "profile-self", date: now },
+    ],
   };
-
-  await new Promise((resolveOpen) => {
-    ws.onopen = resolveOpen;
-  });
-
-  const send = (method, params = {}) =>
-    new Promise((resolveSend) => {
-      const id = ++sequence;
-      pending.set(id, resolveSend);
-      ws.send(JSON.stringify({ id, method, params }));
-    });
-
-  return { send };
 }
 
-async function capture() {
-  mkdirSync(outputDir, { recursive: true });
-  const child = launchChrome();
+function createServer() {
+  const server = http.createServer((request, response) => {
+    const url = new URL(request.url, "http://127.0.0.1");
+    const safePath = path.normalize(decodeURIComponent(url.pathname)).replace(/^(\.\.[/\\])+/, "");
+    const filePath = path.join(root, safePath === "/" ? "index.html" : safePath);
+
+    if (!filePath.startsWith(root)) {
+      response.writeHead(403).end();
+      return;
+    }
+
+    fs.readFile(filePath, (error, data) => {
+      if (error) {
+        response.writeHead(404).end("Not found");
+        return;
+      }
+      response.writeHead(200, { "content-type": mime.get(path.extname(filePath)) || "application/octet-stream" });
+      response.end(data);
+    });
+  });
+
+  return new Promise((resolveServer) => {
+    server.listen(0, "127.0.0.1", () => resolveServer(server));
+  });
+}
+
+async function preparePage(page, baseUrl, locale) {
+  await page.goto(`${baseUrl}/index.html?shot=appstore`, { waitUntil: "networkidle" });
+  await page.evaluate((state) => {
+    localStorage.setItem("medilog-state-v1", JSON.stringify(state));
+    localStorage.removeItem("medilog-vault-v1");
+    document.documentElement.classList.add("native-ios");
+  }, createScreenshotState(locale));
+  await page.reload({ waitUntil: "networkidle" });
+  await page.evaluate(() => {
+    document.documentElement.classList.add("native-ios");
+    document.querySelector("#onboarding-sheet")?.close();
+  });
+  await page.waitForTimeout(350);
+}
+
+async function openRoute(page, route) {
+  await page.evaluate((targetRoute) => {
+    const button =
+      targetRoute === "premium"
+        ? document.querySelector('[data-view="schutz"]')
+        : document.querySelector(`.tabbar [data-view="${targetRoute}"], [data-view="${targetRoute}"]`);
+    button?.click();
+  }, route);
+  await page.waitForTimeout(350);
+
+  await page.evaluate((targetRoute) => {
+    if (targetRoute === "premium") {
+      document.querySelector(".premium-card")?.scrollIntoView({ block: "start" });
+      return;
+    }
+    window.scrollTo(0, 0);
+  }, route);
+  await page.waitForTimeout(200);
+}
+
+async function captureScreenshots(locale = "de-DE", targetDir = outputDir) {
+  fs.mkdirSync(targetDir, { recursive: true });
+  const server = await createServer();
+  const { port } = server.address();
+  const baseUrl = `http://127.0.0.1:${port}`;
+  const browser = await chromium.launch();
+  const page = await browser.newPage({
+    viewport,
+    deviceScaleFactor,
+    isMobile: true,
+    hasTouch: true,
+    locale,
+  });
 
   try {
-    const page = await connectToPage(child);
-    await page.send("Page.enable");
-    await page.send("Runtime.enable");
-    await page.send("Emulation.setDeviceMetricsOverride", {
-      width: 428,
-      height: 926,
-      deviceScaleFactor: 3,
-      mobile: true,
-    });
-    await page.send("Emulation.setUserAgentOverride", {
-      userAgent:
-        "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1",
-    });
-
+    await preparePage(page, baseUrl, locale);
     for (const [name, route] of shots) {
-      await page.send("Page.navigate", { url: `${appUrl}?shot=${name}#${route}` });
-      await wait(1500);
-      await page.send("Runtime.evaluate", {
-        expression: `
-          document.querySelector('#onboarding-sheet')?.close();
-          const screen = document.querySelector('.screen');
-          const premium = document.querySelector('.premium-card');
-          if (screen && '${route}' === 'premium' && premium) {
-            const target = premium.getBoundingClientRect().top - screen.getBoundingClientRect().top + screen.scrollTop - 16;
-            screen.scrollTo(0, Math.max(0, target));
-          } else {
-            screen?.scrollTo(0, 0);
-          }
-        `,
-      });
-      await wait(250);
-      const screenshot = await page.send("Page.captureScreenshot", {
-        format: "png",
-        captureBeyondViewport: false,
-        fromSurface: true,
-      });
-      const outputPath = resolve(outputDir, `${name}.png`);
-      writeFileSync(outputPath, Buffer.from(screenshot.result.data, "base64"));
+      await openRoute(page, route);
+      const outputPath = path.join(targetDir, `${name}.png`);
+      await page.screenshot({ path: outputPath, fullPage: false });
       console.log(outputPath);
     }
   } finally {
-    child.kill("SIGTERM");
+    await browser.close();
+    server.close();
   }
 }
 
-capture().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+await captureScreenshots(process.env.MEDILOG_SCREENSHOT_LOCALE || "de-DE", outputDir);

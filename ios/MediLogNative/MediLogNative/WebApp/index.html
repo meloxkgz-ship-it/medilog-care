@@ -65,7 +65,7 @@
             <div class="protocol-copy">
               <p class="kicker">Aktueller Plan</p>
               <h2 id="protocol-name">Herz & Blutdruck</h2>
-              <p>Privates Einnahmeprotokoll mit lokalen Erinnerungen. Keine Dosierungsberatung.</p>
+              <p>Privates Protokoll mit lokalen Erinnerungen. Keine Dosisberatung.</p>
               <div class="status-row">
                 <span class="status good">Aktiv</span>
                 <span class="status" id="adherence-pill">0% diese Woche</span>
@@ -97,7 +97,7 @@
               </div>
               <span class="status good">Guide</span>
             </div>
-            <div class="guide-actions">
+            <div class="guide-actions" id="guide-actions">
               <button type="button" data-action="open-medicine-form">
                 <i data-lucide="pill"></i>
                 <span><strong>1. Medikament erfassen</strong><small>Name, Angabe laut Plan, Uhrzeit und Vorrat.</small></span>
@@ -344,7 +344,7 @@
               <div><span>Premium</span><strong>Familie, Vorrat, Export, Scan, Vault, Reminder-Regeln</strong></div>
             </div>
             <ul>
-              <li><i data-lucide="bell-ring"></i>Zuverlaessige lokale Erinnerungen</li>
+              <li><i data-lucide="bell-ring"></i>Zuverlässige lokale Erinnerungen</li>
               <li><i data-lucide="users-round"></i>Familien-/Pflege-Modus</li>
               <li><i data-lucide="file-text"></i>Arzt-/Apothekenbericht</li>
               <li><i data-lucide="lock-keyhole"></i>Vault, QR, Vorrat und Nachkauf</li>
@@ -395,7 +395,7 @@
                 </select>
               </label>
               <label class="setting-row">
-                <span><strong>Zuverlaessige Erinnerungen</strong><small>iOS nutzt lokale Notifications, Web nutzt Browser-Erlaubnis</small></span>
+                <span><strong>Zuverlässige Erinnerungen</strong><small>iOS nutzt lokale Notifications, Web nutzt Browser-Erlaubnis</small></span>
                 <input id="setting-reminders-enabled" type="checkbox" />
               </label>
               <label class="setting-row">
@@ -483,7 +483,7 @@
           </section>
           <button class="danger-button" type="button" id="reset-button">
             <i data-lucide="trash-2"></i>
-            Lokale Demo-Daten zurücksetzen
+            Lokale Beispieldaten zurücksetzen
           </button>
         </section>
       </section>
@@ -515,7 +515,7 @@
         </div>
         <div class="setup-path" aria-label="So nutzt du MediLog">
           <p class="kicker">So nutzt du MediLog</p>
-          <strong>Einmal einrichten, dann taeglich nur abhaken.</strong>
+          <strong>Einmal einrichten, dann täglich nur abhaken.</strong>
           <div>
             <span><b>Medikamente</b><small>Zeiten und Vorrat nach deinem Plan erfassen.</small></span>
             <span><b>Reminder</b><small>Lokale Erinnerungen aktivieren.</small></span>
@@ -539,7 +539,7 @@
           <span>Ich verstehe, dass ich besondere Gesundheitsdaten lokal auf diesem Gerät speichere und MediLog keine medizinische Beratung ersetzt.</span>
         </label>
         <div class="form-actions">
-          <button class="ghost-button" type="button" id="skip-onboarding">Demo mit Beispielen</button>
+          <button class="ghost-button" type="button" id="skip-onboarding">Mit Beispielplan starten</button>
           <button class="solid-button" type="submit">App einrichten</button>
         </div>
       </form>
@@ -608,9 +608,9 @@
         <h2 id="medicine-detail-title">Medikament</h2>
         <div class="medicine-detail" id="medicine-detail-content"></div>
         <div class="sheet-options compact">
-          <button value="done" type="submit"><i data-lucide="check-circle-2"></i>Einnahme Heute Markieren</button>
+          <button value="done" type="submit"><i data-lucide="check-circle-2"></i>Einnahme heute markieren</button>
           <button value="restock" type="submit"><i data-lucide="shopping-bag"></i>Vorrat +14</button>
-          <button value="note" type="submit"><i data-lucide="notebook-pen"></i>Notiz Speichern</button>
+          <button value="note" type="submit"><i data-lucide="notebook-pen"></i>Notiz speichern</button>
         </div>
       </form>
     </dialog>
@@ -639,7 +639,7 @@
           <i data-lucide="scan-line"></i>
           Kamera-Scan starten
         </button>
-        <label class="full-label">QR-/Planinhalt<textarea name="plan" required placeholder="Text aus QR-Code oder Medikationsplan einfuegen"></textarea></label>
+        <label class="full-label">QR-/Planinhalt<textarea name="plan" required placeholder="Text aus QR-Code oder Medikationsplan einfügen"></textarea></label>
         <label class="full-label">QR-Bild optional<input id="qr-file" type="file" accept="image/*" /></label>
         <p class="form-help">Der Import wird als private Notiz gespeichert. Die App erzeugt daraus keine Dosierungsempfehlung.</p>
         <div class="form-actions">
@@ -653,7 +653,7 @@
       <form id="note-form">
         <div class="sheet-handle"></div>
         <h2 id="note-title">Notiz speichern</h2>
-        <label class="full-label">Notiz<textarea name="note" required placeholder="z. B. Einnahme nach Ruecksprache verschoben"></textarea></label>
+        <label class="full-label">Notiz<textarea name="note" required placeholder="z. B. Einnahme nach Rücksprache verschoben"></textarea></label>
         <p class="form-help">Notizen sind privat und werden nur lokal gespeichert.</p>
         <div class="form-actions">
           <button class="ghost-button" type="button" data-close="note-sheet">Abbrechen</button>

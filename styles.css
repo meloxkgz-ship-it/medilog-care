@@ -255,6 +255,88 @@ html.native-ios .tabbar {
   border-radius: 0;
 }
 
+html.native-ios .icon-button,
+html.native-ios .chip,
+html.native-ios .chip.active,
+html.native-ios .search-panel,
+html.native-ios .panel,
+html.native-ios .metric-tile,
+html.native-ios .med-card,
+html.native-ios .day-pill,
+html.native-ios .profile-card,
+html.native-ios .stock-row,
+html.native-ios .setting-row,
+html.native-ios .refill-row,
+html.native-ios .language-card,
+html.native-ios .language-chip,
+html.native-ios .privacy-rights div,
+html.native-ios .reminder-grid div,
+html.native-ios .report-controls,
+html.native-ios .report-document,
+html.native-ios .report-events div,
+html.native-ios .guide-actions button,
+html.native-ios .choice-grid label,
+html.native-ios .onboarding-points span,
+html.native-ios .setup-path,
+html.native-ios .routine-card,
+html.native-ios .sheet-options button,
+html.native-ios .ghost-button {
+  border-color: rgba(232, 245, 234, 0.08);
+  background: rgba(18, 25, 21, 0.9);
+  color: var(--ink);
+  box-shadow:
+    0 16px 34px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+html.native-ios .guide-actions button {
+  border-color: rgba(134, 215, 154, 0.16);
+  background: linear-gradient(180deg, rgba(22, 33, 27, 0.96), rgba(13, 20, 16, 0.94));
+}
+
+html.native-ios .guide-actions small,
+html.native-ios .routine-card small,
+html.native-ios .stock-row small,
+html.native-ios .profile-card small,
+html.native-ios .care-card small,
+html.native-ios .setting-row small {
+  color: #a8b5ad;
+}
+
+html.native-ios .protocol-card {
+  border-color: rgba(232, 245, 234, 0.08);
+  background:
+    radial-gradient(circle at 78% 18%, rgba(146, 207, 166, 0.16), transparent 30%),
+    linear-gradient(138deg, rgba(23, 31, 27, 0.98), rgba(14, 20, 17, 0.96) 58%, rgba(18, 27, 22, 0.98));
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.28);
+}
+
+html.native-ios .guide-panel,
+html.native-ios .routine-panel {
+  background:
+    radial-gradient(circle at 88% 10%, rgba(134, 215, 154, 0.11), transparent 30%),
+    rgba(18, 25, 21, 0.9);
+}
+
+html.native-ios .tabbar {
+  background: rgba(14, 20, 17, 0.92);
+  backdrop-filter: blur(22px);
+}
+
+html.native-ios .tab {
+  color: #8f9c94;
+}
+
+html.native-ios .tab.active,
+html.native-ios .dose-main strong,
+html.native-ios .med-card h3,
+html.native-ios .care-card strong,
+html.native-ios .profile-card strong,
+html.native-ios .stock-row strong,
+html.native-ios .empty-state strong {
+  color: var(--ink);
+}
+
 .screen {
   width: 100%;
   max-width: 100%;

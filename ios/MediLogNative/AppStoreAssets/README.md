@@ -23,6 +23,22 @@ ios/MediLogNative/AppStoreAssets/iphone-65/
 
 Die erzeugten PNGs sind `1284x2778` und passen zu `APP_IPHONE_65`.
 
+Lokalisierte Marketingbilder fuer alle App-Store-Lokalisierungen erzeugen:
+
+```sh
+node scripts/generate-localized-marketing-screenshots.mjs
+```
+
+Zielordner:
+
+```text
+.asc/screenshots/marketing-localized/iphone-65/<locale>/
+```
+
+Die Marketingbilder enthalten lokalisierte Captions und einen aktuellen App-Screenshot
+im Phone-Rahmen. Sie sind fuer Review/Upload vorbereitet, werden aber nicht im Git-Repo
+versioniert, damit keine hunderten PNGs in den Quellbaum gelangen.
+
 Der aktuelle iPhone-6.5-Screenshot-Satz wurde in App Store Connect hochgeladen:
 
 - Screenshot Set ID: `240d6303-3855-4607-904e-796e030dbf16`
